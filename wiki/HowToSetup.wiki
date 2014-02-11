@@ -1,5 +1,5 @@
+#summary How to set up and run iqr-gazebo.
 #labels SettingUp
-#Steps needed to set up iqr-gazebo.
 
 = Introduction =
 
@@ -94,4 +94,3 @@ iqr -f  gazeboBug.iqr
 }}}
 
 Press run in iqr. You should see the robot driving around the arena avoiding walls. Check out the sensory states of the robot using the space plot tool. 
-
