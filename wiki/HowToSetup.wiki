@@ -11,7 +11,7 @@ For iqr-gazebo to work you need to install both iqr and gazebo and then compile 
 ===Install General Packages===
 Install general packages used to compile and run iqr-gazebo
 {{{
-sudo apt-get install gdebi subversion
+sudo apt-get install gdebi subversion build-essential cmake libqt4-dev 
 }}}
 
 ===Install IQR===
