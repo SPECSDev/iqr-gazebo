@@ -1,0 +1,30 @@
+#summary iqrBug features, sensors and actions.
+
+
+= Introduction =
+
+The iqrBug consists in a compilation of files including the  iqr module called moduleGazeboBug, the gazebo plugins and the gazebo model files. 
+
+
+
+
+= Features=
+==Sensors==
+===Laser Range Finder===
+
+===Laser Range Finder Gripper===
+
+===Camera===
+
+===GPS===
+
+===Microphone===
+
+
+==Actuators==
+
+===Motors===
+
+===Gripper===
+
+===Speaker===
