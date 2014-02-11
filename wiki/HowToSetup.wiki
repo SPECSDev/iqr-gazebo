@@ -95,12 +95,3 @@ iqr -f  gazeboBug.iqr
 
 Press run in iqr. You should see the robot driving around the arena avoiding walls. Check out the sensory states of the robot using the space plot tool. 
 
-
-
-
-
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
