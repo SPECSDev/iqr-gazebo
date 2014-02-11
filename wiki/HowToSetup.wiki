@@ -31,7 +31,7 @@ Install Gazebo following the instruction on: http://gazebosim.org/wiki/2.2/insta
 === Get the iqr-gazebo Files ===
 Check out the files using svn to your home directory. 
 {{{
-cd 
+cd $HOME
 svn checkout http://iqr-gazebo.googlecode.com/svn/trunk/ iqr-gazebo
 }}}
 
