@@ -25,7 +25,71 @@ gdebi iqr-2.4.1.Ubuntu-xxx-xxx.deb
 Install Gazebo following the instruction on: http://gazebosim.org/wiki/2.2/install
 
 === Get the iqr-gazebo Files ===
+Check out the files using svn to your home directory. 
+{{{
+cd 
+svn checkout http://iqr-gazebo.googlecode.com/svn/trunk/ iqr-gazebo
+}}}
 
+=== Setting environment variables ===
+Append the following lines to your .profile file in the home directory using gedit.
+{{{
+export GAZEBO_MODEL_PATH=$HOME/iqr-gazebo/gazebo_files/models
+export GAZEBO_PLUGINS_PATH=$HOME/iqr-gazebo/gazebo_files/plugins
+}}}
+or use the following commands to add them from the console line
+{{{
+echo 'export GAZEBO_MODEL_PATH=$HOME/iqr-gazebo/gazebo_files/models' >> $HOME/.profile
+echo 'export GAZEBO_PLUGINS_PATH=$HOME/iqr-gazebo/gazebo_files/plugins' >> $HOME/.profile
+}}}
+
+Please logout and login again to make sure the file is sourced. 
+
+=== Build the iqr module ==
+Compile the moduleGazeboBug module.
+{{{
+cd $HOME/iqr-gazebo/iqr_module
+mkdir build
+cd build
+cmake ..
+make install
+}}}
+
+=== Build the gazebo plugins ==
+Compile the gazebo vel_plugin.
+{{{
+cd $HOME/iqr-gazebo/gazebo_files/vel_plugin
+mkdir build
+cd build
+cmake ..
+make install
+}}}
+
+Compile the gazebo vel_plugin.
+{{{
+cd $HOME/iqr-gazebo/gazebo_files/target_plugin
+mkdir build
+cd build
+cmake ..
+make install
+}}}
+
+===Run gazebo and iqr===
+You are all setup. Run gazebo first and than iqr in two different terminals.
+
+In the first terminal:
+{{{
+cd $HOME/iqr-gazebo/gazebo_files
+gazebo SDIC_arena.world
+}}}
+
+In the second terminal:
+{{
+cd $HOME/iqr-gazebo/iqr_files
+iqr -f  gazeboBug.iqr
+}}}
+
+Press run in iqr. You should see the robot driving around the arena avoiding walls. Check out the sensory states of the robot using the space plot tool. 
 
 
 
