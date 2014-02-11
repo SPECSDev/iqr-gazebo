@@ -15,10 +15,15 @@ sudo apt-get install gdebi subversion build-essential cmake libqt4-dev
 }}}
 
 ===Install IQR===
-Download the binary packages for ubuntu form http://iqr.sourceforge.net/ and install using 
+Download the binary packages for ubuntu form http://sourceforge.net/projects/iqr/files/iqr/ and install using:
 {{{
 gdebi iqr-2.4.1.Ubuntu-xxx-xxx.deb
 }}}
+Download the developer files from http://sourceforge.net/projects/iqr/files/iqr-devel/2.0.0/ and install using:
+{{{
+dpkg -i iqr-dev_2.0-0.ubuntu_debian.i386.deb
+}}
+
 
 ===Install Gazebo===
 
