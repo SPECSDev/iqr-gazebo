@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE System PUBLIC '-//INI/iqr421' 'iqrSystem.dtd'>
+<System syncPlots="false" port="54923" author="Armin Duff" id="L-2960-1390229637-1765900425" cylesPerSecond="25" name="Gazebo System" date="Mon Jan 20 15:53:57 2014&#xa;">
+    <Note></Note>
+    <Process port="54923" path="/home/armin/IQR/iqrModules/extra/moduleGazeboBug/iqr_files/iqrBug.iqrProcess" hostname="" id="L-21140-1391256391-1268359437" name="iqrBug_01" enableModule="true" color="#FFFFFF">
+        <Module name="moduleGazeboBug">
+            <Parameter value="iqrBug_01" name="device_name"/>
+            <Parameter value="25" name="cps"/>
+            <Parameter value="default_com_key_0" name="comkey"/>
+            <Parameter value="false" name="grayscale"/>
+            <Parameter value="false" name="hsv"/>
+            <Parameter value="1" name="transSpeed"/>
+            <Parameter value="1" name="rotSpeed"/>
+            <Parameter value="0" name="placeXOffset"/>
+            <Parameter value="0" name="placeYOffset"/>
+            <Parameter value="10" name="placeXMax"/>
+            <Parameter value="10" name="placeYMax"/>
+            <Parameter value="0.2" name="placeSigma"/>
+            <Parameter value="0.2" name="headSigma"/>
+            <XRefHolder name="InputFromGroup">
+                <XRef target="L-21140-1391256461-1131353522" name="_motor"/>
+                <XRef target="L-7682-1391584902-1579767840" name="_gripper"/>
+                <XRef target="L-5187-1392113039-752108502" name="_audio_out"/>
+            </XRefHolder>
+            <XRefHolder name="OutputToGroup">
+                <XRef target="L-21140-1391256483-1795368048" name="_proximity"/>
+                <XRef target="L-14827-1391619839-708665346" name="_proximityGripper"/>
+                <XRef target="L-21140-1391256502-559135222" name="_gps"/>
+                <XRef target="L-7682-1391584698-1118956004" name="_image_RH"/>
+                <XRef target="L-7682-1391584747-543418880" name="_image_GS"/>
+                <XRef target="L-7682-1391584798-763199705" name="_image_BV"/>
+                <XRef target="L-7682-1391584645-967144301" name="placeCell"/>
+                <XRef target="L-7682-1391584664-40820444" name="headCell"/>
+                <XRef target="L-5187-1392113009-698644756" name="_audio_in"/>
+            </XRefHolder>
+        </Module>
+        <Note></Note>
+        <DiagramIcon width="50" x="77" y="44" height="50"/>
+    </Process>
+</System>
+
