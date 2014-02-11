@@ -1,0 +1,29 @@
+#labels SettingUp
+#Steps needed to set up iqr-gazebo.
+
+= Introduction =
+
+For iqr-gazebo to work you need to install both iqr and gazebo and then compile the iqr module as well as the gazebo plugins. This instructions are for Ubuntu OS. Please use the analog commands for different linux distributions
+
+
+= How To Step by Step=
+
+===Install General Packages===
+Install general packages used to compile and run iqr-gazebo
+{{{
+sudo apt-get install gdebi
+}}}
+
+==Install IQR==
+Download the binary p
+
+
+
+
+
+
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
