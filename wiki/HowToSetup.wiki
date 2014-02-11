@@ -24,7 +24,6 @@ Download the developer files from http://sourceforge.net/projects/iqr/files/iqr-
 dpkg -i iqr-dev_2.0-0.ubuntu_debian.i386.deb
 }}}
 
-
 ===Install Gazebo===
 
 Install Gazebo following the instruction on: http://gazebosim.org/wiki/2.2/install
@@ -89,7 +88,7 @@ gazebo SDIC_arena.world
 }}}
 
 In the second terminal:
-{{
+{{{
 cd $HOME/iqr-gazebo/iqr_files
 iqr -f  gazeboBug.iqr
 }}}
