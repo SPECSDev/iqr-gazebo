@@ -78,10 +78,6 @@ cmake ..
 make install
 }}}
 
-
-===Module Variable Settings IQR ===
-Run iqr by typing 'iqr' in the console. Under  File>Settings set the local module path to /home/username/iqr/lib/Modules. Press apply. Quit iqr. 
-
 ===Run gazebo and iqr===
 You are all setup. Run gazebo first and than iqr in two different terminals.
 
