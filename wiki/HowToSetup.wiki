@@ -11,11 +11,20 @@ For iqr-gazebo to work you need to install both iqr and gazebo and then compile 
 ===Install General Packages===
 Install general packages used to compile and run iqr-gazebo
 {{{
-sudo apt-get install gdebi
+sudo apt-get install gdebi subversion
 }}}
 
-==Install IQR==
-Download the binary p
+===Install IQR===
+Download the binary packages for ubuntu form http://iqr.sourceforge.net/ and install using 
+{{{
+gdebi iqr-2.4.1.Ubuntu-xxx-xxx.deb
+}}}
+
+===Install Gazebo===
+
+Install Gazebo following the instruction on: http://gazebosim.org/wiki/2.2/install
+
+=== Get the iqr-gazebo Files ===
 
 
 
