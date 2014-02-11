@@ -2,7 +2,7 @@
 <!DOCTYPE System PUBLIC '-//INI/iqr421' 'iqrSystem.dtd'>
 <System syncPlots="false" port="54923" author="Armin Duff" id="L-2960-1390229637-1765900425" cylesPerSecond="25" name="Gazebo System" date="Mon Jan 20 15:53:57 2014&#xa;">
     <Note></Note>
-    <Process port="54923" path="/home/armin/IQR/iqrModules/extra/moduleGazeboBug/iqr_files/iqrBug.iqrProcess" hostname="" id="L-21140-1391256391-1268359437" name="iqrBug_01" enableModule="true" color="#FFFFFF">
+    <Process port="54923" path="iqrBug.iqrProcess" hostname="" id="L-21140-1391256391-1268359437" name="iqrBug_01" enableModule="true" color="#FFFFFF">
         <Module name="moduleGazeboBug">
             <Parameter value="iqrBug_01" name="device_name"/>
             <Parameter value="25" name="cps"/>
