@@ -1,0 +1,83 @@
+#summary Describtion and rules of  SDIC robot challange
+
+=SDIC Robot Challenge=
+
+Two teams of robots will compete in the same arena for limited resources. The arena is surrounded by walls and comprises, resources i.e. small spheres of different colors,  obstacles and two home corners for each team. The goal of the competition is to search for resources and bring them back to the home corner. Different resources will be associated to different number of points.
+
+==Configuration==
+  * Robots Team A = red, Robots Team B = green 
+  * Home corner Team A = black, Home corner Team B = black
+  * Resources  blue=1 point, yellow = -1 point;
+  * Obstacles grey
+
+==Rules==
+  * The competition lasts 5 min.
+  * The robots are controlled over IQR only.
+  * During the competition you are allowed to change parameters and start stop the simulation.  
+  * During the competition you are not allowed to use the state manipulation panel or any other means of     inducing user defined or predefined activity.
+  * Every robot is controlled over a separate iqr system. 
+  * Communication between the robots is only allowed over the provided communication system. No direct communication between groups of different robots. 
+  * No Cheating! Cheaters will be disqualified.
+
+==Extensions==
+  * Battery ?
+  * Resources Expire?
+
+==Projects==
+Each group is supposed to select a subsystem of their competition system for a more detailed design and analysis following the biomimetic approach. However also the overall system should follow a biomimetic approach. 
+
+Possible subsystems:
+  * Goal based Navigation
+  * Space  Value Learning
+  * Communication
+  * Avoidance Learning 
+  * Optimal Path Learning
+  * Search and Grasp
+  * Homeostasis - State Control
+
+The more detailed design and analysis should contain:
+  * Analysis of biological System > Constraints
+  * Research Question
+  * Design Principles 
+  * Validation Constraint
+  * Results
+  * Conclusion
+
+==Presentations==
+Before the competition the different groups will present their system in a 5 min presentation. The emphasis of the presentation should be on the subsystem you selected for the more detailed biomimetic design and analysis. 
+
+==Report==
+Same as for the presentation the report should focus on the subsystem for which you have followed the more detailed biomimetic design and analysis. However the whole system has to be described in the report. 
+
+=Template for the report:=
+
+===Project title:===
+ 
+===Group members:===
+ 
+ 
+==1. Introduction ==
+This section should include all the necessary background information, the motivation and the objectives of the projects.
+ 
+== 2. Methods ==
+ 
+===a. System description ===
+This should include a description of the overall architecture of the system, hardware platforms required, functional breakdown of the system into processes and how data is exchange among them. The relevant data exchange format should be properly explained if required. Explain and justify all the assumptions in your design of the system.
+ 
+===b. Validation experiments===
+This section should explain the criteria used for evaluation (dependent on whether it is an engineered system, modeling of a natural system, etc). Testing paradigms and experiments should be defined for evaluation of the functional role and/or modeling work of the system.
+ 
+==3. Results==
+This section contains the results of the system validation. Please apply the rules and methods you learned in the research methods class.
+ 
+==4.  Conclusions==
+This section summarizes your results and discusses them in a wider context.
+
+==5. References==
+ 
+ 
+ 
+Please save the file in pdf format and with a meaningful name including some keywords describing you rproject.
+{{{
+Example: PlaceCellNavigation_SDIC2014.pdf
+}}}
