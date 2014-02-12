@@ -14,6 +14,8 @@ Install general packages used to compile and run iqr-gazebo
 sudo apt-get install gdebi subversion build-essential cmake libqt4-dev 
 }}}
 
+If you have already installed the latest version of gazebo and iqr continue at step *Setting environment variables*
+
 ===Install IQR===
 Download the binary packages for ubuntu form http://sourceforge.net/projects/iqr/files/iqr/ and install using:
 {{{
@@ -47,7 +49,7 @@ echo 'export GAZEBO_MODEL_PATH=$HOME/iqr-gazebo/gazebo_files/models' >> $HOME/.p
 echo 'export GAZEBO_PLUGIN_PATH=$HOME/iqr-gazebo/gazebo_files/plugins' >> $HOME/.profile
 }}}
 
-Please logout and login again to make sure the file is sourced. 
+Please *logout and login again* to make sure the file is sourced. 
 
 === Build the iqr module ==
 Compile the moduleGazeboBug module.
@@ -69,7 +71,7 @@ cmake ..
 make install
 }}}
 
-Compile the gazebo vel_plugin.
+Compile the gazebo target_plugin.
 {{{
 cd $HOME/iqr-gazebo/gazebo_files/target_plugin
 mkdir build
