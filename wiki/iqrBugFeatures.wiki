@@ -7,8 +7,12 @@ The iqrBug consists in a compilation of files including the  iqr module called m
 
 
 = Features=
-==General==
+The iqrBug offers a series of sensors and actuators. Here we describe their properties an proper use. 
 
+==General==
+The iqr module provides the communication between iqr and gazebo. All communication happens over groups of cells. An iqr system can comprise more than one iqrBug. To differentiate what iqrBug is controlled by what module use the *Bug name* parameter. To name needs to correspond to the name given to the bug in the gazebo world by default or in the  .world file. 
+
+The *Cycles/Second*
 
 ==Sensors==
 ===Laser Range Finder===
