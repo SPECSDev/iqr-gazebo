@@ -54,13 +54,13 @@ namespace gazebo
       topic= "/gazebo/default/";
       topic += modelName + "/vel_cmd"; 
      
-      std::cerr << "Subscribing to: " << topic << " ..." << std::endl;
+      std::cerr << "Subscribing to: " << topic << " ..." << std::flush;
       commandSubscriber = node->Subscribe(topic, &gazebo::VelPlugin::OnCommand, this);      
       std::cout << "done!"<< std::endl;
-      std::cout.flush();
+      
       // Listen to the update event. This event is broadcast every
       // simulation iteration.
-      gazebo::transport::run();
+      
       this->updateConnection = event::Events::ConnectWorldUpdateBegin(
 								      boost::bind(&VelPlugin::OnUpdate, this));
     }

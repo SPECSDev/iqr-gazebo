@@ -81,3 +81,5 @@ WorldControl::WorldControl(QWidget *parent)
   setWindowTitle("World Control");
 
 }
+
+

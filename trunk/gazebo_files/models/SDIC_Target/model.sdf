@@ -31,6 +31,6 @@
         <angular>0</angular>
       </velocity_decay>
     </link>
-    <plugin name="model_push" filename="libtarget_plugin.so" />  
+    <plugin name="model_push" filename="libtarget_plugin.so" /> 
   </model>
 </sdf>

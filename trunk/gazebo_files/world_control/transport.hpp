@@ -10,7 +10,8 @@
 
 #include "gazebo/transport/transport.hh"
 #include "gazebo/msgs/msgs.hh"
-#include "gazebo/msgs/vector2d.pb.h"
+#include "gazebo/msgs/vector3d.pb.h"
+#include "gazebo/gui/GuiIface.hh"
 
 namespace gazebo
 {
@@ -20,8 +21,16 @@ namespace gazebo
     float pos_y;
     float prob;
     float radius;
-};
-
+  };
+  typedef struct resource_t Resource;
+  struct resource_t{
+    int id;
+    int state;
+  };
+  
+  const int MAX_RESOURCES=100;
+  const math::Pose DEFAULT_POSE = math::Pose(0,0,0,0,0,0);
+  
   class Transport : public QObject
   {
     Q_OBJECT
@@ -36,26 +45,36 @@ namespace gazebo
     
   private:
     transport::NodePtr node;
-    transport::SubscriberPtr targetSubscriber;
+    transport::SubscriberPtr resourceSubscriber;
     
     transport::PublisherPtr createPub;
-    transport::PublisherPtr deletePub;
+    transport::PublisherPtr modelPub;
     
+
+
     msgs::Factory createMsg;
-    msgs::Request deleteMsg;
+    //msgs::Request deleteMsg;
     
     sdf::ElementPtr modelElem;
     boost::shared_ptr<sdf::SDF> sdf;
     
-    void OnTarget(ConstVector2dPtr &msg);
+    void setPoseResource(int modelNumber, math::Pose pose);
+    void resetResource(int modelNumber);   
+    void createResources();
+    int findAvailableResource();
+    
+    
+    
+    void OnScore(ConstVector3dPtr &msg);
     QTimer *timer;
     
-    int numTargets;
-		  
-    QList<Side> targetSides; // x,y,prob,spread
-		  
+ 		  
+    QList<Side> resourceSides; // x,y,prob,spread
+    QList<Resource> resources;
+			     
+			     
   private slots:
-    void create();
+    void spawnResource();
   signals:
     void addPointA();
     void addPointB();
