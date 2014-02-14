@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <math.h>
+#include <algorithm>
 
 #define _USE_MATH_DEFINES
 
@@ -64,8 +65,6 @@ Transport::Transport(){
   resourceSides.append(side);
   side.pos_x=-2.0;  side.pos_y=2.0;  side.prob=1.0;  side.radius=2.0;
   resourceSides.append(side);
-  
-  createResources();
 }
 
 Transport::~Transport(){
@@ -76,19 +75,22 @@ Transport::~Transport(){
 
 void Transport::OnScore(ConstVector3dPtr &msg)
 {
+  int name = (int)msg->x();
+  int id = (int)msg->y();
+  int target=(int)msg->z();
   
-  if((int)msg->z()==0)
+  if(target==0)
     emit addPointA();
-  if((int)msg->z()==1)
+  if(target==1)
     emit addPointB();   
-
-  if((int)msg->x()<MAX_RESOURCES){
-    resources[(int)msg->x()].id=(int)msg->y();
-    resources[(int)msg->x()].state=-1;
+  
+  int index=nameToIndex(name);
+  if(index>=0 && index<resources.size()){
+    resources[index].id=id;
+    resources[index].state=-1;
   }else{
-    std::cout<<"OnScore::WrongName"<<std::endl;
+    std::cout<<"Transport::OnScore::WrongName"<<std::endl;
   }
-  std::cout<<"ID "<<msg->y()<<std::endl;
 }
 
 void Transport::start(){
@@ -100,85 +102,89 @@ void Transport::reset(){
   std::cout<<"Transport::Reset"<<std::endl;
   
   timer->stop();
-  for(int i=0;i<MAX_RESOURCES;i++){
-    if (resources[i].state>0)
+  for(int i=0;i<resources.size();i++){
+    if (resources[i].state>0){
       resetResource(i);
+      setPoseResource(i,DEFAULT_POSE);
+    }
   }
 }
 
-void Transport::setPoseResource(int  modelNumber, gazebo::math::Pose pose){
-  std::ostringstream sStream;  
-  sStream <<modelNumber;
-  std::string modelName= sStream.str();  
-  std::cout<<"Transport::setPosResource()::modelName "<<modelName<< " id "<<resources[modelNumber].id<<std::endl;  
+void Transport::setPoseResource(int  index, gazebo::math::Pose pose){
+  std::string modelName= indexToName(index);  
   msgs::Model msg;
-  msg.set_id(resources[modelNumber].id);
+  msg.set_id(resources[index].id);
   msg.set_name(modelName);
   msgs::Set(msg.mutable_pose(), pose);
   this->modelPub->Publish(msg);
 }
 
-void Transport::resetResource(int modelNumber){
-  std::cout<<"Transport::resetResources"<<std::endl;
-  if(!modelNumber>MAX_RESOURCES)
-    resources[modelNumber].state=-1;
+void Transport::resetResource(int index){
+  resources[index].state=-1;
 }
 
-void Transport::createResources(){
-  std::cout<<"Transport::createResources"<<std::endl;
- 
-  
-  for(int i=0;i<MAX_RESOURCES;i++){
-    std::ostringstream sStream;  
-    sStream <<i;
-    std::string modelName = sStream.str();
-    modelElem->GetAttribute("name")->SetFromString(modelName);
-    math::Pose pose = modelElem->Get<math::Pose>("pose");
-    pose=DEFAULT_POSE;
-    createMsg.set_sdf(sdf->ToString());
-    msgs::Set(createMsg.mutable_pose(), pose);
-    createPub->WaitForConnection();
-    createPub->Publish(createMsg, true);
-    Resource resource;
-    resource.state=-1;
-    resource.id=-1;
-    resources.push_back(resource);
-    usleep(100000);
-    std::cout<<"Transport::createResource::modelName"<<modelName<<std::endl;
-  }
+void Transport::createResource(math::Pose pose){
+  std::string modelName= indexToName(resources.size());
+  modelElem->GetAttribute("name")->SetFromString(modelName);
+  createMsg.set_sdf(sdf->ToString());
+  msgs::Set(createMsg.mutable_pose(), pose);
+  createPub->Publish(createMsg, true);
+  Resource resource;
+  resource.state=1;
+  resource.id=-1;
+  resources.push_back(resource);
 }
+
 
 void Transport::spawnResource(){
-  std::cout<<"Transport::spawnResource()"<<std::endl;  
+  
   
   //TODO make random access to sides
+  std::random_shuffle(resourceSides.begin(), resourceSides.end());
   foreach(const Side& side, resourceSides){
-    int i=findAvailableResource();
-    if(i>=0){
-      //std::cout<<"Transport::spawnResource()::index= "<<i<<std::endl;  
-      if(((float) std::rand() / (RAND_MAX)) < side.prob){
-  	math::Pose pose;
-  	float radius = (float) std::rand() / (RAND_MAX)*side.radius;
-  	float angle= (float) std::rand() / (RAND_MAX)*2*M_PI;
-  	pose.pos.x = side.pos_x+radius*cos(angle);
-  	pose.pos.y = side.pos_y+radius*sin(angle);
-  	pose.pos.z = 10.0;
-	resources[i].state=1;
-  	setPoseResource(i,pose);
-      }
+    if(((float) std::rand() / (RAND_MAX)) < side.prob){    
+      math::Pose pose;
+      float radius = (float) std::rand() / (RAND_MAX)*side.radius;
+      float angle= (float) std::rand() / (RAND_MAX)*2*M_PI;
+      pose.pos.x = side.pos_x+radius*cos(angle);
+      pose.pos.y = side.pos_y+radius*sin(angle);
+      pose.pos.z = 10.0;
+      
+      if(resources.size()==0){
+	createResource(pose);
+      }else{
+	int i=findAvailableResource();
+	if(i>=0){
+	  resources[i].state=1;
+	  setPoseResource(i,pose);
+	}else{
+	  if(resources.size()<MAX_RESOURCES){
+	    createResource(pose);
+	  }
+	}
+      }    
     }
   }
 }
 
 int Transport::findAvailableResource(){
   int i=0;
-  while(i<MAX_RESOURCES){
-    //std::cout<<"Transport:findAvailableResource::state "<<resources[i].state<<std::endl;
+  while(i<resources.size()){
     if(resources[i].state==-1){
-      //std::cout<<"Transport:findAvailableResource::index "<<i<<std::endl;
       return i;
     }
     i++;
   }
-    return -1;
+  return -1;
+}
+
+std::string Transport::indexToName(int index){
+  std::ostringstream sStream;  
+  sStream << (index+NAME_KEY);
+  return  sStream.str();
+}
+
+
+int Transport::nameToIndex(int name){
+  return name-NAME_KEY;
 }

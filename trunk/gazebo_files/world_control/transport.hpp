@@ -28,9 +28,10 @@ namespace gazebo
     int state;
   };
   
-  const int MAX_RESOURCES=100;
+  const int MAX_RESOURCES=10;
   const math::Pose DEFAULT_POSE = math::Pose(0,0,0,0,0,0);
-  
+  const int NAME_KEY = 19299;
+
   class Transport : public QObject
   {
     Q_OBJECT
@@ -50,19 +51,20 @@ namespace gazebo
     transport::PublisherPtr createPub;
     transport::PublisherPtr modelPub;
     
-
+    
 
     msgs::Factory createMsg;
-    //msgs::Request deleteMsg;
-    
+        
     sdf::ElementPtr modelElem;
     boost::shared_ptr<sdf::SDF> sdf;
     
     void setPoseResource(int modelNumber, math::Pose pose);
     void resetResource(int modelNumber);   
-    void createResources();
+    void createResource(math::Pose pose);
     int findAvailableResource();
     
+    std::string indexToName(int index);
+    int nameToIndex(int name);
     
     
     void OnScore(ConstVector3dPtr &msg);

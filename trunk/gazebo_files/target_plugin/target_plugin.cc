@@ -25,6 +25,8 @@
 #include "gazebo/msgs/msgs.hh"
 #include "gazebo/msgs/vector2d.pb.h"
 
+
+
 /// \example examples/plugins/vel_plugin.cc
 /// This example creates a ModelPlugin, and applies a force to a box to move
 /// it alone the ground plane.
@@ -43,42 +45,26 @@ namespace gazebo
   private: msgs::Request deleteCmd;
   private: msgs::Vector3d targetCmd;  
   
-  private: bool targetSent;
+
     
   private: physics::ModelPtr model;
   private: event::ConnectionPtr updateConnection;    
   private: std::string modelName; 
-
-  public: void Init(){
-    std::cout<<"TargetInit::waiting for connection ..."<<std::flush;
-    targetPub->WaitForConnection();
-    targetCmd.set_x(atoi( modelName.c_str()));
-    targetCmd.set_y(this->model->GetId());
-    targetCmd.set_z(-1);
-    targetPub->Publish(targetCmd);
-    std::cout<<"done!"<<std::endl;
-  }
   
   public: void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf)
     {
       // Store the pointer to the model
       this->model = _parent;
-      targetSent=false;      
-      node = transport::NodePtr(new transport::Node());
-      node->Init();
       
-      // modelName = model->GetSDF()->GetAttribute("name")->GetAsString();
+      
+      
       modelName = model->GetScopedName();
       
-      std::string topic;
-      topic = "/gazebo/default/";
-      topic +="TargetReached";  // publish to the joints of the bugs
       
+      node = transport::NodePtr(new transport::Node());
+      node->Init();
       this->targetPub = this->node->Advertise<gazebo::msgs::Vector3d>
 	("/gazebo/default/Score");
-      //  targetPub->WaitForConnection();
-      //  deletePub = this->node->Advertise<msgs::Request>("/gazebo/default/request");
-      //deletePub->WaitForConnection();
       
       // Listen to the update event. This event is broadcast every
       // simulation iteration.
@@ -89,32 +75,23 @@ namespace gazebo
     // Called by the world update start event
   public: void OnUpdate()
     {
-      
       math::Vector3 pos = this->model->GetWorldPose().pos;
       if (pos.Distance(TARGET_A)<RADIUS||pos.Distance(TARGET_B)<RADIUS){
-	//	if(!targetSent){
 	targetCmd.set_x(atoi( modelName.c_str()));
 	targetCmd.set_y(this->model->GetId());	 
 	if (pos.Distance(TARGET_A)<RADIUS){
 	  targetCmd.set_z(0);
 	}
 	if (pos.Distance(TARGET_B)<RADIUS){
-	    targetCmd.set_z(1);
+	  targetCmd.set_z(1);
 	}
 	
 	targetPub->Publish(targetCmd);
-	//	  targetSent=true;
 	model->SetWorldPose(math::Pose(0,0,0,0,0,0));
-	std::cout<<"HomeBasedReached"<<std::endl;
-	
-	//Delete Sphere when on target
-	//	  deleteCmd = *msgs::CreateRequest("entity_delete", modelName);
-	//deletePub->Publish(deleteCmd);
       }
-      //    }
     }
   };
-
+  
    // Register this plugin with the simulator
   GZ_REGISTER_MODEL_PLUGIN(TargetPlugin)
 }
