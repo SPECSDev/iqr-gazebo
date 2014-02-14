@@ -12,6 +12,7 @@ For iqr-gazebo to work you need to install both iqr and gazebo and then compile 
 Install general packages used to compile and run iqr-gazebo
 {{{
 sudo apt-get install gdebi subversion build-essential cmake libqt4-dev 
+
 }}}
 
 If you have already installed the latest version of gazebo and iqr continue at step *Setting environment variables*
@@ -20,10 +21,15 @@ If you have already installed the latest version of gazebo and iqr continue at s
 Download the binary packages for ubuntu form http://sourceforge.net/projects/iqr/files/iqr/ and install using:
 {{{
 sudo gdebi iqr-2.4.1.Ubuntu-xxx-xxx.deb
+
 }}}
+You have to introduce this command in the directory where you have downloaded the files. Please replace the xxx-xxx with the file name you have downloaded corresponding to your os. 
+
+
 Download the developer files from http://sourceforge.net/projects/iqr/files/iqr-devel/2.0.0/ and install using:
 {{{
 sudo dpkg -i iqr-dev_2.0-0.ubuntu_debian.i386.deb
+
 }}}
 
 ===Install Gazebo===
@@ -35,6 +41,7 @@ Check out the files using svn to your home directory.
 {{{
 cd $HOME
 svn checkout http://iqr-gazebo.googlecode.com/svn/trunk/ iqr-gazebo
+
 }}}
 
 === Setting environment variables ===
@@ -47,6 +54,7 @@ or use the following commands to add them from the console line
 {{{
 echo 'export GAZEBO_MODEL_PATH=$HOME/iqr-gazebo/gazebo_files/models' >> $HOME/.profile
 echo 'export GAZEBO_PLUGIN_PATH=$HOME/iqr-gazebo/gazebo_files/plugins' >> $HOME/.profile
+
 }}}
 
 Please *logout and login again* to make sure the file is sourced. 
@@ -59,6 +67,7 @@ mkdir build
 cd build
 cmake ..
 make install
+
 }}}
 
 === Build the gazebo plugins ==
@@ -69,6 +78,7 @@ mkdir build
 cd build
 cmake ..
 make install
+
 }}}
 
 Compile the gazebo target_plugin.
@@ -78,6 +88,7 @@ mkdir build
 cd build
 cmake ..
 make install
+
 }}}
 
 ===Run gazebo and iqr===
@@ -87,12 +98,14 @@ In the first terminal:
 {{{
 cd $HOME/iqr-gazebo/gazebo_files
 gazebo SDIC_arena.world
+
 }}}
 
 In the second terminal:
 {{{
 cd $HOME/iqr-gazebo/iqr_files
 iqr -f  gazeboBug.iqr
+
 }}}
 
 Press run in iqr. You should see the robot driving around the arena avoiding walls. Check out the sensory states of the robot using the space plot tool. 
