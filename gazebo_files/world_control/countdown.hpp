@@ -16,10 +16,12 @@
  public slots:
    void reset();
    void start();
-		
+   void stop();
+	      
  private slots:
-     void count();
-   
+   void count();
+ signals:
+   void end();
  };
 
  #endif
