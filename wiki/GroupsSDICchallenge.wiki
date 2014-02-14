@@ -1,8 +1,27 @@
 #summary Groups and other general info!
 =Groups of SDIC Robot Challenge=
 
-==RAMMSTEIN==
+==RAMMBOT==
   * Marie Schaper 
   * Adriana Alvarado
   * Marcel Schmidt
   * Alica Lathe
+
+==SHORTCUT==
+  * Stefan Acin
+  * David Cabrera Dalmazo
+  * Alan Brame
+  * Lina (Stavroula) Bampatzia
+  * Selin Akcakaya
+
+==I CUTE R==
+  * Oksana Pryshchepa
+  * Carles Tardio
+  * Maria Blancas
+  * Haoyi Xu
+
+==ROBOTS ON FIRE==
+  * Xavier Durán
+  * Marina Sanz
+  * Diana Carolina Díaz
+  * Borja Sabio
