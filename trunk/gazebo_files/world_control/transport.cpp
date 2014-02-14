@@ -51,9 +51,16 @@ Transport::Transport(){
   gazebo::transport::run();
   createPub = node->Advertise<msgs::Factory>("/gazebo/default/factory");
   createPub->WaitForConnection();
+  
+  deletePub = node->Advertise<msgs::Request>("/gazebo/default/request");
+  deletePub->WaitForConnection();
 
+  
   modelPub = this->node->Advertise<msgs::Model>("~/model/modify");
   modelPub->WaitForConnection();
+
+  controlPub = this->node->Advertise<msgs::WorldControl>("~/world_control");
+  controlPub->WaitForConnection();
 
   timer = new QTimer(this);
   connect(timer, SIGNAL(timeout()), this, SLOT(spawnResource()));
@@ -75,8 +82,8 @@ Transport::Transport(){
 }
 
 Transport::~Transport(){
-  node->Fini();
   gazebo::transport::fini();
+  
 }
 
 
@@ -115,6 +122,37 @@ void Transport::reset(){
       setPoseResource(i,DEFAULT_POSE);
     }
   }
+  msgs::WorldControl worldMsg;
+  msgs::WorldReset *resetMsg = worldMsg.mutable_reset();
+  resetMsg->set_all(true);
+  controlPub->Publish(worldMsg);
+}
+
+void Transport::stop(){
+  std::cout<<"Transport::Stop"<<std::endl; 
+  timer->stop();
+}
+
+void Transport::close(){
+  std::cout<<"Transport::Close"<<std::endl;
+  deleteMsg = *msgs::CreateRequest("entity_delete", "dummy");
+  deletePub->Publish(deleteMsg);  
+  
+  for(int i=0;i<resources.size();i++){
+    deleteMsg = *msgs::CreateRequest("entity_delete", indexToName(i));
+    deletePub->Publish(deleteMsg);
+  }  
+
+
+  //  resourceSubscriber->Unsubscribe();
+  resourceSubscriber.reset();
+  createPub.reset();
+  modelPub.reset();
+  deletePub.reset();
+  controlPub.reset();
+  node->Fini();
+  gazebo::transport::fini();
+  emit quit();
 }
 
 void Transport::setPoseResource(int  index, gazebo::math::Pose pose){
@@ -199,3 +237,5 @@ std::string Transport::indexToName(int index){
 int Transport::nameToIndex(int name){
   return name-NAME_KEY;
 }
+
+

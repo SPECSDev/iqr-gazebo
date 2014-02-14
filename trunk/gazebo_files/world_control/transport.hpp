@@ -35,7 +35,7 @@ namespace gazebo
   class Transport : public QObject
   {
     Q_OBJECT
-    
+ 
   public:
     Transport();
     ~Transport();
@@ -43,16 +43,21 @@ namespace gazebo
   public slots:
     void reset();
     void start();
+    void stop();
+    void close();
+  
     
   private:
     transport::NodePtr node;
     transport::SubscriberPtr resourceSubscriber;
     
     transport::PublisherPtr createPub;
+    transport::PublisherPtr deletePub;
     transport::PublisherPtr modelPub;
+    transport::PublisherPtr controlPub;
     
     
-
+    msgs::Request deleteMsg;
     msgs::Factory createMsg;
         
     sdf::ElementPtr modelElem;
@@ -80,6 +85,7 @@ namespace gazebo
   signals:
     void addPointA();
     void addPointB();
+    void quit();
   };
 }
 

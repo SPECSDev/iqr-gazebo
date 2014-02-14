@@ -1,4 +1,4 @@
-#include <QtGui>
+
 
 #include "worldcontrol.hpp"
 
@@ -20,19 +20,15 @@ WorldControl::WorldControl(QWidget *parent)
   
   Score *score = new Score(this); 
   
- 
-  
-
-  QPushButton *quit = new QPushButton(tr("Quit"));
-  quit->setFont(QFont("Arial", 18, QFont::Bold));
-  connect(quit, SIGNAL(clicked()), qApp, SLOT(quit()));
-
-  QPushButton *start = new QPushButton(tr("Start"));
+  start = new QPushButton(tr("Start"));
   start->setFont(QFont("Arial", 18, QFont::Bold));
   connect(start, SIGNAL(clicked()), countdown, SLOT(start()));
   
-
-  QPushButton *reset = new QPushButton(tr("Reset"));
+  stop = new QPushButton(tr("Stop"));
+  stop->setFont(QFont("Arial", 18, QFont::Bold));
+  connect(stop, SIGNAL(clicked()), countdown, SLOT(stop()));
+  
+  reset = new QPushButton(tr("Reset"));
   reset->setFont(QFont("Arial", 18, QFont::Bold));
   connect(reset, SIGNAL(clicked()), countdown, SLOT(reset()));
   connect(reset, SIGNAL(clicked()), score, SLOT(reset()));
@@ -40,46 +36,60 @@ WorldControl::WorldControl(QWidget *parent)
   gazebo::Transport *transport = new gazebo::Transport();
   connect(reset, SIGNAL(clicked()), transport, SLOT(reset()));
   connect(start, SIGNAL(clicked()), transport, SLOT(start()));
+  connect(stop, SIGNAL(clicked()), transport, SLOT(stop()));
   connect(transport, SIGNAL(addPointA()), score, SLOT(addPointA()));
   connect(transport, SIGNAL(addPointB()), score, SLOT(addPointB()));
-  
-
-  /*
-  QPushButton *addA = new QPushButton(tr("+A"));
-  addA->setFont(QFont("Arial", 18, QFont::Bold));
-  //connect(addA, SIGNAL(clicked()), score, SLOT(addPointA()));
-  connect(addA, SIGNAL(clicked()), transport, SLOT(reset()));
+  connect(countdown, SIGNAL(end()), transport, SLOT(reset()));
+   
+  quit = new QPushButton(tr("Quit"));
+  quit->setFont(QFont("Arial", 18, QFont::Bold));
+  connect(quit, SIGNAL(clicked()), transport, SLOT(close()));
+  connect(transport, SIGNAL(quit()), qApp, SLOT(quit()));
     
-  QPushButton *addB = new QPushButton(tr("+B"));
-  addB->setFont(QFont("Arial", 18, QFont::Bold));
-  connect(addB, SIGNAL(clicked()), score, SLOT(addPointB()));
-  */
+  connect(start,SIGNAL(clicked()), this, SLOT(visibilityStart()));
+  connect(stop,SIGNAL(clicked()), this, SLOT(visibilityStop()));
+  connect(reset,SIGNAL(clicked()), this, SLOT(visibilityReset()));
+  connect(countdown, SIGNAL(end()), this, SLOT(visibilityEnd()));
 
-  
-
-  
   QGridLayout *layout = new QGridLayout;
-  layout->addWidget(labelTime,1,1,1,3);
-  layout->addWidget(countdown,2,1,3,3);  
+  layout->addWidget(labelTime,1,1,1,4);
+  layout->addWidget(countdown,2,1,3,4);  
 
-  layout->addWidget(labelScore,5,1,1,3);
-  layout->addWidget(score,6,1,3,3);    
+  layout->addWidget(labelScore,5,1,1,4);
+  layout->addWidget(score,6,1,3,4);    
   
-  layout->addWidget(start,9,1);  
-  layout->addWidget(reset,9,2);  
-  layout->addWidget(quit,9,3);
+  layout->addWidget(start,9,1);
+  layout->addWidget(stop,9,2);
+  layout->addWidget(reset,9,3);  
+  layout->addWidget(quit,9,4);
   
-  /*
-  layout->addWidget(addA,10,1);
-  layout->addWidget(addB,10,3);
-  */
- 
-  
-  
+    
   setLayout(layout);
   setMinimumSize(200,400);
   setWindowTitle("World Control");
-
+  
+  visibilityReset();
 }
 
+void WorldControl::visibilityStart(){
+  start->setEnabled(false);
+  stop->setEnabled(true);
+  reset->setEnabled(true);
+}
 
+void WorldControl::visibilityStop(){
+  start->setEnabled(true);
+  stop->setEnabled(false);
+  reset->setEnabled(true);
+}
+void WorldControl::visibilityReset(){
+  start->setEnabled(true);
+  stop->setEnabled(false);
+  reset->setEnabled(false);
+}
+
+void WorldControl::visibilityEnd(){
+  start->setEnabled(false);
+  stop->setEnabled(false);
+  reset->setEnabled(true);
+}
