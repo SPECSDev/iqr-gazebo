@@ -58,7 +58,14 @@ Transport::Transport(){
   timer = new QTimer(this);
   connect(timer, SIGNAL(timeout()), this, SLOT(spawnResource()));
   
-  
+  //Creaet dummy resource
+  std::string modelName="dummy";
+  modelElem->GetAttribute("name")->SetFromString(modelName);
+  createMsg.set_sdf(sdf->ToString());
+  msgs::Set(createMsg.mutable_pose(), DEFAULT_POSE);
+  createPub->Publish(createMsg, true);
+
+
 
   Side  side;
   side.pos_x=6.0;  side.pos_y=-6.0;  side.prob=1.0;  side.radius=0.5;
@@ -127,12 +134,16 @@ void Transport::createResource(math::Pose pose){
   std::string modelName= indexToName(resources.size());
   modelElem->GetAttribute("name")->SetFromString(modelName);
   createMsg.set_sdf(sdf->ToString());
-  msgs::Set(createMsg.mutable_pose(), pose);
+  msgs::Set(createMsg.mutable_pose(), DEFAULT_POSE);
   createPub->Publish(createMsg, true);
   Resource resource;
   resource.state=1;
   resource.id=-1;
   resources.push_back(resource);
+  int index=resources.size()-1;
+  while(resources[index].id<0)
+    usleep(100000);
+  setPoseResource(index,pose);
 }
 
 

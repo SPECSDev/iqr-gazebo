@@ -27,50 +27,62 @@
 
 
 
-/// \example examples/plugins/vel_plugin.cc
-/// This example creates a ModelPlugin, and applies a force to a box to move
-/// it alone the ground plane.
 namespace gazebo
 {
   const math::Vector3 TARGET_A(-10,10,0);
   const math::Vector3 TARGET_B(10,-10,0);
   const float RADIUS =3;
-
+  
+   
   class TargetPlugin : public ModelPlugin
   {
   private: transport::NodePtr node;
   private: transport::PublisherPtr targetPub;
-  private: transport::PublisherPtr deletePub;
-  
-  private: msgs::Request deleteCmd;
+    
   private: msgs::Vector3d targetCmd;  
-  
-
     
   private: physics::ModelPtr model;
-  private: event::ConnectionPtr updateConnection;    
   private: std::string modelName; 
+  private: math::Pose initialPose;
+    
+
+  private: event::ConnectionPtr updateConnection;    
   
+
   public: void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf)
     {
       // Store the pointer to the model
       this->model = _parent;
-      
-      
-      
       modelName = model->GetScopedName();
-      
-      
-      node = transport::NodePtr(new transport::Node());
-      node->Init();
-      this->targetPub = this->node->Advertise<gazebo::msgs::Vector3d>
-	("/gazebo/default/Score");
-      
+      initialPose = model->GetWorldPose();
+        
       // Listen to the update event. This event is broadcast every
       // simulation iteration.
       this->updateConnection = 
 	event::Events::ConnectWorldUpdateBegin(boost::bind(&TargetPlugin::OnUpdate, this));
     }
+    
+  public: void Init(){
+    node = transport::NodePtr(new transport::Node());
+    node->Init();
+    this->targetPub = this->node->Advertise<gazebo::msgs::Vector3d>
+      ("/gazebo/default/Score");
+    
+    targetCmd.set_x(atoi( modelName.c_str()));
+    targetCmd.set_y(this->model->GetId());
+    targetCmd.set_z(-1);
+    targetPub->Publish(targetCmd);	 
+  
+  }
+
+  public: void Reset(){
+    targetPub.reset();
+    node->Fini();
+    node = transport::NodePtr(new transport::Node());
+    node->Init();
+    this->targetPub = this->node->Advertise<gazebo::msgs::Vector3d>
+      ("/gazebo/default/Score");
+  }
     
     // Called by the world update start event
   public: void OnUpdate()
@@ -87,11 +99,11 @@ namespace gazebo
 	}
 	
 	targetPub->Publish(targetCmd);
-	model->SetWorldPose(math::Pose(0,0,0,0,0,0));
+	model->SetWorldPose(initialPose);
       }
     }
   };
   
-   // Register this plugin with the simulator
+  // Register this plugin with the simulator
   GZ_REGISTER_MODEL_PLUGIN(TargetPlugin)
 }
