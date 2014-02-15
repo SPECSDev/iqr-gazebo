@@ -37,8 +37,10 @@ WorldControl::WorldControl(QWidget *parent)
   connect(reset, SIGNAL(clicked()), transport, SLOT(reset()));
   connect(start, SIGNAL(clicked()), transport, SLOT(start()));
   connect(stop, SIGNAL(clicked()), transport, SLOT(stop()));
-  connect(transport, SIGNAL(addPointA()), score, SLOT(addPointA()));
-  connect(transport, SIGNAL(addPointB()), score, SLOT(addPointB()));
+  connect(transport, SIGNAL(plusPointA()), score, SLOT(plusPointA()));
+  connect(transport, SIGNAL(plusPointB()), score, SLOT(plusPointB()));
+  connect(transport, SIGNAL(minusPointA()), score, SLOT(minusPointA()));
+  connect(transport, SIGNAL(minusPointB()), score, SLOT(minusPointB()));
   connect(countdown, SIGNAL(end()), transport, SLOT(reset()));
    
   quit = new QPushButton(tr("Quit"));

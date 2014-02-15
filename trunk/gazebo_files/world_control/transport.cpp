@@ -94,9 +94,9 @@ void Transport::OnScore(ConstVector3dPtr &msg)
   int target=(int)msg->z();
   
   if(target==0)
-    emit addPointA();
+    emit plusPointA();
   if(target==1)
-    emit addPointB();   
+    emit plusPointB();   
   
   int index=nameToIndex(name);
   if(index>=0 && index<resources.size()){
@@ -129,6 +129,8 @@ void Transport::reset(){
 }
 
 void Transport::stop(){
+  emit minusPointA();
+  emit plusPointB();
   std::cout<<"Transport::Stop"<<std::endl; 
   timer->stop();
 }

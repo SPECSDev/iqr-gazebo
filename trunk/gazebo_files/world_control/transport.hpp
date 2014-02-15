@@ -84,8 +84,10 @@ namespace gazebo
   private slots:
     void spawnResource();
   signals:
-    void addPointA();
-    void addPointB();
+    void plusPointA();
+    void plusPointB();
+    void minusPointA();
+    void minusPointB();
     void quit();
   };
 }

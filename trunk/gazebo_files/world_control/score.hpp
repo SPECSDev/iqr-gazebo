@@ -15,12 +15,15 @@ private:
   int pointsB;
   void setDisplay();
 
-		   
+
 public slots:
   void reset();
-  void addPointA();
-  void addPointB();
-  
+
+  void plusPointA();
+  void plusPointB();
+
+  void minusPointA();
+  void minusPointB();
 };
 
  #endif
