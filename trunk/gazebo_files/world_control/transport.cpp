@@ -75,7 +75,7 @@ Transport::Transport(){
 
 
   Side  side;
-  side.pos_x=6.0;  side.pos_y=-6.0;  side.prob=1.0;  side.radius=0.5;
+  side.pos_x=9.0;  side.pos_y=-9.0;  side.prob=1.0;  side.radius=0.5;
   resourceSides.append(side);
   side.pos_x=-2.0;  side.pos_y=2.0;  side.prob=1.0;  side.radius=2.0;
   resourceSides.append(side);
@@ -119,7 +119,7 @@ void Transport::reset(){
   for(int i=0;i<resources.size();i++){
     if (resources[i].state>0){
       resetResource(i);
-      setPoseResource(i,DEFAULT_POSE);
+      setPoseResource(i,addNoisePose(DEFAULT_POSE,0.2));
     }
   }
   msgs::WorldControl worldMsg;
@@ -172,7 +172,7 @@ void Transport::createResource(math::Pose pose){
   std::string modelName= indexToName(resources.size());
   modelElem->GetAttribute("name")->SetFromString(modelName);
   createMsg.set_sdf(sdf->ToString());
-  msgs::Set(createMsg.mutable_pose(), DEFAULT_POSE);
+  msgs::Set(createMsg.mutable_pose(), addNoisePose(DEFAULT_POSE,0.2));
   createPub->Publish(createMsg, true);
   Resource resource;
   resource.state=1;
@@ -193,11 +193,10 @@ void Transport::spawnResource(){
   foreach(const Side& side, resourceSides){
     if(((float) std::rand() / (RAND_MAX)) < side.prob){    
       math::Pose pose;
-      float radius = (float) std::rand() / (RAND_MAX)*side.radius;
-      float angle= (float) std::rand() / (RAND_MAX)*2*M_PI;
-      pose.pos.x = side.pos_x+radius*cos(angle);
-      pose.pos.y = side.pos_y+radius*sin(angle);
+      pose.pos.x = side.pos_x;
+      pose.pos.y = side.pos_y;
       pose.pos.z = 10.0;
+      pose = addNoisePose(pose, side.radius);
       
       if(resources.size()==0){
 	createResource(pose);
@@ -239,3 +238,10 @@ int Transport::nameToIndex(int name){
 }
 
 
+math::Pose Transport::addNoisePose(math::Pose pose, float radius){
+  float randRadius = (float) std::rand() / (RAND_MAX)*radius;
+  float randAngle= (float) std::rand() / (RAND_MAX)*2*M_PI;
+  pose.pos.x = pose.pos.x+randRadius*cos(randAngle);
+  pose.pos.y = pose.pos.y+randRadius*sin(randAngle);
+  return pose;
+}

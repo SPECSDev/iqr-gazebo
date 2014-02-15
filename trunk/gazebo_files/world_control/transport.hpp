@@ -28,7 +28,7 @@ namespace gazebo
     int state;
   };
   
-  const int MAX_RESOURCES=10;
+  const int MAX_RESOURCES=100;
   const math::Pose DEFAULT_POSE = math::Pose(0,0,0,0,0,0);
   const int NAME_KEY = 19299;
 
@@ -70,6 +70,7 @@ namespace gazebo
     
     std::string indexToName(int index);
     int nameToIndex(int name);
+    math::Pose addNoisePose(math::Pose pose, float radius);
     
     
     void OnScore(ConstVector3dPtr &msg);
