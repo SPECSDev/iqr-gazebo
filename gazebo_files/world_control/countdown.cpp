@@ -10,8 +10,8 @@
      setSegmentStyle(Filled);
 
      timer = new QTimer(this);
-     timeStart = new QTime(0,0,10);
-     timeCurrent = new QTime(0,0,10);
+     timeStart = new QTime(0,5,0);
+     timeCurrent = new QTime(0,5,0);
      this->display(timeCurrent->toString());
      
      connect(timer, SIGNAL(timeout()), this, SLOT(count()));
