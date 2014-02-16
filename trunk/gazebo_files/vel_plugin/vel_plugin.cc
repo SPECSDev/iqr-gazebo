@@ -30,6 +30,11 @@
 /// it alone the ground plane.
 namespace gazebo
 {
+
+  const float RAND_ROT=0.005;
+  const float RAND_TRANS=0.005; 
+  
+  
   class VelPlugin : public ModelPlugin
   {
   private: transport::NodePtr node;
@@ -45,11 +50,12 @@ namespace gazebo
     {
       // Store the pointer to the model
       this->model = _parent;
-    
+      modelName = model->GetScopedName();
+      
       node = transport::NodePtr(new transport::Node());
       node->Init();
       
-      modelName = model->GetSDF()->GetAttribute("name")->GetAsString();
+      
       std::string topic;
       topic= "/gazebo/default/";
       topic += modelName + "/vel_cmd"; 
@@ -68,8 +74,12 @@ namespace gazebo
     // Called by the world update start event
     public: void OnUpdate()
     {
+
+      float rTrans =RAND_TRANS*2*((std::rand()/(float)RAND_MAX)-0.5);
+      float rRot = RAND_ROT*2*((std::rand()/(float)RAND_MAX)-0.5);
+     
       // Apply a small linear velocity to the model.
-      math::Vector3 v(trans, 0, 0);
+      math::Vector3 v(trans+rTrans, 0, 0);
       math::Pose pose = this->model->GetWorldPose();
      
       
@@ -81,11 +91,12 @@ namespace gazebo
       
       // Apply a small linear velocity to the model. 
       this->model->SetLinearVel(v);
-      this->model->SetAngularVel(math::Vector3(0, 0, rot));
+      this->model->SetAngularVel(math::Vector3(0, 0, rot+rRot));
     }
     
   public: void OnCommand(ConstVector2dPtr &msg)
     {
+      
       trans=msg->x();
       rot=msg->y();
       

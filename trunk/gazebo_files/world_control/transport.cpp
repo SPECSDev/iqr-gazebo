@@ -167,7 +167,6 @@ void Transport::close(){
   controlPub.reset();
   node->Fini();
   gazebo::transport::fini();
-  emit quit();
 }
 
 void Transport::setPoseResource(int  index, gazebo::math::Pose pose){

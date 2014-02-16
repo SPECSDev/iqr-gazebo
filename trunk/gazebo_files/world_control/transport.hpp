@@ -101,8 +101,7 @@ namespace gazebo
     void plusPointB();
     void minusPointA();
     void minusPointB();
-    void quit();
-  };
+   };
 }
 
 
