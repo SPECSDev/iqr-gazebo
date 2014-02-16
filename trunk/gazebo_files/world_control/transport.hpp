@@ -13,6 +13,8 @@
 #include "gazebo/msgs/vector3d.pb.h"
 #include "gazebo/gui/GuiIface.hh"
 
+
+
 namespace gazebo
 {
   typedef struct side_t Side;
@@ -22,15 +24,23 @@ namespace gazebo
     float prob;
     float radius;
   };
+
+  enum State {AVAILABLE, GOOD, BAD};
+  
   typedef struct resource_t Resource;
   struct resource_t{
     int id;
-    int state;
+    State state;
+    int age;
   };
   
-  const int MAX_RESOURCES=100;
+  
+  
+  const int MAX_RESOURCES=10;
   const math::Pose DEFAULT_POSE = math::Pose(0,0,0,0,0,0);
   const int NAME_KEY = 19299;
+  const int MAX_AGE =40;
+  const int TURN_AGE =30;
 
   class Transport : public QObject
   {
@@ -55,6 +65,7 @@ namespace gazebo
     transport::PublisherPtr deletePub;
     transport::PublisherPtr modelPub;
     transport::PublisherPtr controlPub;
+    transport::PublisherPtr visualPub;
     
     
     msgs::Request deleteMsg;
@@ -66,6 +77,8 @@ namespace gazebo
     void setPoseResource(int modelNumber, math::Pose pose);
     void resetResource(int modelNumber);   
     void createResource(math::Pose pose);
+    void recycleResource(int index, math::Pose pose);
+    void setColorResource(int index, std::string color);
     int findAvailableResource();
     
     std::string indexToName(int index);
