@@ -62,6 +62,9 @@ Transport::Transport(){
   controlPub = this->node->Advertise<msgs::WorldControl>("~/world_control");
   controlPub->WaitForConnection();
 
+  visualPub = this->node->Advertise<msgs::Visual>("~/visual");
+  visualPub->WaitForConnection();
+ 
   timer = new QTimer(this);
   connect(timer, SIGNAL(timeout()), this, SLOT(spawnResource()));
   
@@ -75,9 +78,9 @@ Transport::Transport(){
 
 
   Side  side;
-  side.pos_x=9.0;  side.pos_y=-9.0;  side.prob=1.0;  side.radius=0.5;
+  side.pos_x=6.0;  side.pos_y=-6.0;  side.prob=1.0;  side.radius=0.5;
   resourceSides.append(side);
-  side.pos_x=-2.0;  side.pos_y=2.0;  side.prob=1.0;  side.radius=2.0;
+  side.pos_x=-3.0;  side.pos_y=3.0;  side.prob=1.0;  side.radius=1.0;
   resourceSides.append(side);
 }
 
@@ -93,15 +96,26 @@ void Transport::OnScore(ConstVector3dPtr &msg)
   int id = (int)msg->y();
   int target=(int)msg->z();
   
-  if(target==0)
-    emit plusPointA();
-  if(target==1)
-    emit plusPointB();   
-  
   int index=nameToIndex(name);
+  //add points TODO plus minus
+  if(target==0){
+    if(resources[index].state==GOOD)
+      emit plusPointA();
+    else
+      emit minusPointA();
+  }
+
+  if(target==1){
+    if(resources[index].state==GOOD)
+      emit plusPointB();   
+    else
+      emit minusPointB();
+  }
+  //Make resource available
+ 
   if(index>=0 && index<resources.size()){
     resources[index].id=id;
-    resources[index].state=-1;
+    resetResource(index);
   }else{
     std::cout<<"Transport::OnScore::WrongName"<<std::endl;
   }
@@ -129,9 +143,8 @@ void Transport::reset(){
 }
 
 void Transport::stop(){
-  emit minusPointA();
-  emit plusPointB();
   std::cout<<"Transport::Stop"<<std::endl; 
+  
   timer->stop();
 }
 
@@ -167,7 +180,25 @@ void Transport::setPoseResource(int  index, gazebo::math::Pose pose){
 }
 
 void Transport::resetResource(int index){
-  resources[index].state=-1;
+  resources[index].age=0;
+  resources[index].state=AVAILABLE;
+}
+
+void Transport::recycleResource(int index, math::Pose pose){
+  setColorResource(index, "Gazebo/Red");
+  resources[index].state=GOOD;
+  setPoseResource(index,pose);
+}
+
+void Transport::setColorResource(int index, std::string color){
+  msgs::Visual visualMsg;
+  visualMsg.set_id(resources[index].id);
+  visualMsg.set_name(indexToName(index));
+  visualMsg.set_parent_name("~");
+  visualMsg.mutable_material()
+    ->mutable_script()->add_uri("file://media/materials/scripts/gazebo.material");
+  visualMsg.mutable_material()->mutable_script()->set_name(color);
+  visualPub->Publish(visualMsg);
 }
 
 void Transport::createResource(math::Pose pose){
@@ -177,7 +208,8 @@ void Transport::createResource(math::Pose pose){
   msgs::Set(createMsg.mutable_pose(), addNoisePose(DEFAULT_POSE,0.2));
   createPub->Publish(createMsg, true);
   Resource resource;
-  resource.state=1;
+  resource.state=GOOD;
+  resource.age=0;
   resource.id=-1;
   resources.push_back(resource);
   int index=resources.size()-1;
@@ -188,9 +220,21 @@ void Transport::createResource(math::Pose pose){
 
 
 void Transport::spawnResource(){
+  //age resources
+  for(int i=0;i<resources.size();i++){
+    if(resources[i].state>0)
+      resources[i].age++;
+    if(resources[i].age==TURN_AGE){
+      resources[i].state=BAD;
+      setColorResource(i,"Gazebo/Blue");
+    }
+    if(resources[i].age==MAX_AGE){
+      resetResource(i);
+      setPoseResource(i,addNoisePose(DEFAULT_POSE,0.2));
+    }
+  }
   
-  
-  //TODO make random access to sides
+  //spawn resources
   std::random_shuffle(resourceSides.begin(), resourceSides.end());
   foreach(const Side& side, resourceSides){
     if(((float) std::rand() / (RAND_MAX)) < side.prob){    
@@ -205,8 +249,7 @@ void Transport::spawnResource(){
       }else{
 	int i=findAvailableResource();
 	if(i>=0){
-	  resources[i].state=1;
-	  setPoseResource(i,pose);
+	  recycleResource(i,pose);
 	}else{
 	  if(resources.size()<MAX_RESOURCES){
 	    createResource(pose);
@@ -220,7 +263,7 @@ void Transport::spawnResource(){
 int Transport::findAvailableResource(){
   int i=0;
   while(i<resources.size()){
-    if(resources[i].state==-1){
+    if(resources[i].state==AVAILABLE){
       return i;
     }
     i++;
