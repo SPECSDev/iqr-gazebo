@@ -43,9 +43,7 @@ namespace gazebo
     
   private: physics::ModelPtr model;
   private: std::string modelName; 
-  private: math::Pose initialPose;
-    
-
+  
   private: event::ConnectionPtr updateConnection;    
   
 
@@ -54,8 +52,7 @@ namespace gazebo
       // Store the pointer to the model
       this->model = _parent;
       modelName = model->GetScopedName();
-      initialPose = model->GetWorldPose();
-        
+          
       // Listen to the update event. This event is broadcast every
       // simulation iteration.
       this->updateConnection = 
@@ -99,7 +96,7 @@ namespace gazebo
 	}
 	
 	targetPub->Publish(targetCmd);
-	model->SetWorldPose(initialPose);
+	model->Reset();
       }
     }
   };

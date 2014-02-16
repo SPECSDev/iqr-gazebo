@@ -45,9 +45,9 @@ WorldControl::WorldControl(QWidget *parent)
    
   quit = new QPushButton(tr("Quit"));
   quit->setFont(QFont("Arial", 18, QFont::Bold));
-  connect(quit, SIGNAL(clicked()), transport, SLOT(close()));
-  connect(transport, SIGNAL(quit()), qApp, SLOT(quit()));
-    
+  connect(quit, SIGNAL(clicked()), qApp, SLOT(quit()));
+  connect(qApp, SIGNAL(aboutToQuit()), transport, SLOT(close()));
+  
   connect(start,SIGNAL(clicked()), this, SLOT(visibilityStart()));
   connect(stop,SIGNAL(clicked()), this, SLOT(visibilityStop()));
   connect(reset,SIGNAL(clicked()), this, SLOT(visibilityReset()));
