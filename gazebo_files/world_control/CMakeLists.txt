@@ -51,11 +51,11 @@ SET(GCC_BOOST_LINK_FLAGS  "-lboost_system")
 TARGET_LINK_LIBRARIES(
   worldcontrol 
   ${QT_LIBRARIES}
-  ${GAZEBO_libraries}
   gazebo_transport
   gazebo_common
   gazebo_msgs
   gazebo_math
-  "${GCC_BOOST_LINK_FLAGS}"
+  boost_system
   protobuf
+  sdformat
   )
