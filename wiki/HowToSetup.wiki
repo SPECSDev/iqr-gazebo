@@ -67,7 +67,7 @@ Please *logout and login again* to make sure the file is sourced.
 To build the necessary iqr moudles and gazebo plugins please run the following script:
 {{{
 cd $HOME/iqr-gazebo
-sh ./update_compile.sh
+. ./update_compile.sh
 }}}
 
 If the script fails please follow the instruction at the end of the document. You can use the same script for updating and compiling the iqr-gazebo project from the svn repository. 
@@ -93,7 +93,7 @@ Press run in iqr. You should see the robot driving around the arena avoiding wal
 
 
 
-== In case things go wrong... ==
+= In case things go wrong... =
 Build the iqr modules and gazebo plugins without the script. 
 
 === Build the iqr module ==
