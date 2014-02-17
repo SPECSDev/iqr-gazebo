@@ -281,9 +281,10 @@ void iqrcommon::GazeboBugInterface::onScan(ConstLaserScanStampedPtr &_msg){
   }
 
   //Emualte GPS
-  current.gps[0]=scan.world_pose().position().x() ;
-  current.gps[1]=scan.world_pose().position().y() ;
-  current.gps[2]=scan.world_pose().orientation().z() ;
+  current.gps[0]=scan.world_pose().position().x();
+  current.gps[1]=scan.world_pose().position().y();
+  current.gps[2]=gazebo::msgs::Convert(scan.world_pose().orientation()).GetYaw();
+  
   qMutex->unlock();
   //std::cout << "Range " << i << ": " << current.ranges[i] << endl;   
 }

@@ -1,7 +1,7 @@
     <iqrEntity type="Process">
-        <Process port="54923" path="iqrBug.iqrProcess" hostname="" id="L-21140-1391256391-1268359437" name="SDIC_Bug" enableModule="true" color="#FFFFFF">
+        <Process port="54923" path="iqrBug.iqrProcess" hostname="" id="L-21140-1391256391-1268359437" name="iqrBug_01" enableModule="true" color="#FFFFFF">
             <Module name="moduleGazeboBug">
-                <Parameter value="SDIC_Bug" name="device_name"/>
+                <Parameter value="iqrBug_01" name="device_name"/>
                 <Parameter value="25" name="cps"/>
                 <Parameter value="default_com_key_0" name="comkey"/>
                 <Parameter value="false" name="grayscale"/>
@@ -13,7 +13,7 @@
                 <Parameter value="10" name="placeXMax"/>
                 <Parameter value="10" name="placeYMax"/>
                 <Parameter value="0.2" name="placeSigma"/>
-                <Parameter value="0.2" name="headSigma"/>
+                <Parameter value="0.1" name="headSigma"/>
                 <XRefHolder name="InputFromGroup">
                     <XRef target="L-21140-1391256461-1131353522" name="_motor"/>
                     <XRef target="L-7682-1391584902-1579767840" name="_gripper"/>
@@ -199,7 +199,7 @@
             </Group>
             <Group id="L-7682-1391584664-40820444" name="Head Direciton Cells" color="#FFFFFF">
                 <Topology>
-                    <TopologyRect cylinderHor="false" hcount="1" cylinderVert="false" vcount="1"/>
+                    <TopologyRect cylinderHor="false" hcount="16" cylinderVert="false" vcount="1"/>
                 </Topology>
                 <Neuron name="neuronLinearThreshold">
                     <Parameter value="1" name="excGain"/>
@@ -212,7 +212,7 @@
                     <Parameter value="0" name="threshold"/>
                 </Neuron>
                 <Note></Note>
-                <DiagramIcon width="50" x="475" y="16" height="50"/>
+                <DiagramIcon width="50" x="475" y="14" height="50"/>
             </Group>
             <Group id="L-7682-1391584698-1118956004" name="Red - Hue" color="#FFFFFF">
                 <Topology>

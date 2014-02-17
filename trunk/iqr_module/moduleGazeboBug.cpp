@@ -2,10 +2,15 @@
 #include <float.h>
 
 
+#define _USE_MATH_DEFINES
 
 
 #include "moduleGazeboBug.hpp"
 #include <ModuleIcon_bug.h>
+
+#define MIN_3(a, b, c)        MIN(MIN(a, b), c)
+#define MAX_3(a, b, c)        MAX(MAX(a, b), c)
+
 
 MAKE_MODULE_DLL_INTERFACE(iqrcommon::ClsModuleGazeboBug, "Gazebo Bug Module")
 
@@ -181,7 +186,7 @@ void  iqrcommon::ClsModuleGazeboBug::gpsToNavigation(vector<float> gps,
   
   float xpos = (gps[0] - xoffset)/xmax;
   float ypos = (gps[1] - yoffset)/ymax;
-  float rot = gps[2];
+  float rot = (gps[2]+M_PI)/2/M_PI;
   
   float xcell = 0;
   float ycell = 0;
@@ -199,13 +204,14 @@ void  iqrcommon::ClsModuleGazeboBug::gpsToNavigation(vector<float> gps,
  
   placeCell[0]/=placeCell[0].max();
   
-
+  float distance;
   for(int ii=0; ii<headCellWidth; ii++){
-    xcell =((float)ii)/((float)(headCellWidth-1));
-    //  cout<<"Cell "<<ii<<" "<< xcell<<" rot "<<rot<< endl;
-    headCell[0][ii]=exp(-((xcell-rot)/headSigma)*((xcell-rot)/headSigma));
+    xcell =(float)ii/(float)(headCellWidth);
+    distance = MAX(MIN( xcell -rot, 1-(xcell -rot)),MIN(rot-xcell, 1-(rot-xcell)));
+    //cout<<"Cell "<<ii<<" "<< xcell<<" rot "<<rot<< endl;
+    headCell[0][ii]=exp(-((distance)/headSigma)*((distance)/headSigma));
   }
-
+  // cout<<"rot"<<rot<<endl;
   headCell[0]/=headCell[0].max();
 
   
@@ -345,7 +351,11 @@ void iqrcommon::ClsModuleGazeboBug::update(){
        bug.setAudio(groupToVector(emitAudio));
     }
     /* Read gps data */
-    vectorToGroup(bug.readGPS(), gps);
+    vector<float> gpsReading = bug.readGPS();
+    gpsReading[0]+=par_placeXMax->getValue();
+    gpsReading[1]+=par_placeYMax->getValue();
+    gpsReading[2]+=M_PI;
+    vectorToGroup(gpsReading, gps);
 
     /* Set Navigation Cells */
     gpsToNavigation(bug.readGPS(), placeCell, headCell);
@@ -385,8 +395,6 @@ void iqrcommon::ClsModuleGazeboBug::checkSize(ClsStateVariable* var,  int width,
     }
 }
 
-#define MIN_3(a, b, c)        MIN(MIN(a, b), c)
-#define MAX_3(a, b, c)        MAX(MAX(a, b), c)
 
 // Adapted from http://en.wikipedia.org/wiki/HSL_and_HSV#Conversion_from_RGB_to_HSL_or_HSV
 void iqrcommon::ClsModuleGazeboBug::RGBtoHSVPixel(float r, float g, float b, 

@@ -26,6 +26,8 @@ const float MAX_AUDIO_DISTANCE=14.1421;
 const float MIN_AUDIO_DISTANCE=0.1;
 
 
+
+
 const double VEL_FACTOR = 10.0;
 const double GRASP_FORCE = 3;
 //const double UP_SPEED = 1;
