@@ -72,3 +72,4 @@ check_compile
 
 echo -e "\n $GREEN DONE! $CLEAR\n"
 
+cd ../../..
