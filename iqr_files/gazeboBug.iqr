@@ -2,9 +2,9 @@
 <!DOCTYPE System PUBLIC '-//INI/iqr421' 'iqrSystem.dtd'>
 <System syncPlots="false" port="54923" author="Armin Duff" id="L-2960-1390229637-1765900425" cylesPerSecond="25" name="Gazebo System" date="Mon Jan 20 15:53:57 2014&#xa;">
     <Note></Note>
-    <Process port="54923" path="iqrBug.iqrProcess" hostname="" id="L-21140-1391256391-1268359437" name="SDIC_Bug" enableModule="true" color="#FFFFFF">
+    <Process port="54923" path="iqrBug.iqrProcess" hostname="" id="L-21140-1391256391-1268359437" name="iqrBug_01" enableModule="true" color="#FFFFFF">
         <Module name="moduleGazeboBug">
-            <Parameter value="SDIC_Bug" name="device_name"/>
+            <Parameter value="iqrBug_01" name="device_name"/>
             <Parameter value="25" name="cps"/>
             <Parameter value="default_com_key_0" name="comkey"/>
             <Parameter value="false" name="grayscale"/>
@@ -16,7 +16,7 @@
             <Parameter value="10" name="placeXMax"/>
             <Parameter value="10" name="placeYMax"/>
             <Parameter value="0.2" name="placeSigma"/>
-            <Parameter value="0.2" name="headSigma"/>
+            <Parameter value="0.1" name="headSigma"/>
             <XRefHolder name="InputFromGroup">
                 <XRef target="L-21140-1391256461-1131353522" name="_motor"/>
                 <XRef target="L-7682-1391584902-1579767840" name="_gripper"/>
