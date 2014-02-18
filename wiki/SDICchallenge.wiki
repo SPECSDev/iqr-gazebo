@@ -7,8 +7,12 @@ Two teams of robots will compete in the same arena for limited resources. The ar
 ==Configuration==
   * Robots Team A = red, Robots Team B = green 
   * Home corner Team A = black, Home corner Team B = black
-  * Resources  blue=1 point, yellow = -1 point;
   * Obstacles grey
+  * Resources  blue=1 point, yellow = -1 point, when brought to one of the home corners
+  * Resources will be provided at two to four fixed locations
+  * Resources will expire and turn from blue to yellow
+  * Resources disappear when in the home corner
+ 
 
 ==Rules==
   * The competition lasts 5 min.
@@ -19,9 +23,12 @@ Two teams of robots will compete in the same arena for limited resources. The ar
   * Communication between the robots is only allowed over the provided communication system. No direct communication between groups of different robots. 
   * No Cheating! Cheaters will be disqualified.
 
+== Ranking ==
+
+The Winners will be determined in a knock off 
+
 ==Extensions==
   * Battery ?
-  * Resources Expire?
 
 ==Projects==
 Each group is supposed to select a subsystem of their competition system for a more detailed design and analysis following the biomimetic approach. However also the overall system should follow a biomimetic approach. 
