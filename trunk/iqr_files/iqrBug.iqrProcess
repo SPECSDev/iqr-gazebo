@@ -1,7 +1,7 @@
     <iqrEntity type="Process">
-        <Process port="54923" path="iqrBug.iqrProcess" hostname="" id="L-21140-1391256391-1268359437" name="iqrBug_01" enableModule="true" color="#FFFFFF">
+        <Process port="54923" path="iqrBug.iqrProcess" hostname="" id="L-21140-1391256391-1268359437" name="Bug_01" enableModule="true" color="#FFFFFF">
             <Module name="moduleGazeboBug">
-                <Parameter value="iqrBug_01" name="device_name"/>
+                <Parameter value="TeamA_Bug_01" name="device_name"/>
                 <Parameter value="25" name="cps"/>
                 <Parameter value="default_com_key_0" name="comkey"/>
                 <Parameter value="false" name="grayscale"/>

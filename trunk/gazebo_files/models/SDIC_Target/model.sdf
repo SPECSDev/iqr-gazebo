@@ -9,7 +9,7 @@
       <collision name='collsion'>
         <geometry>
           <sphere>
-            <radius>0.06</radius>
+            <radius>0.08</radius>
           </sphere>
         </geometry>
 	<surface>
@@ -26,7 +26,7 @@
       <visual name='visual'>
 	<geometry>
           <sphere>
-             <radius>0.06</radius>
+             <radius>0.08</radius>
           </sphere>
         </geometry>
         <material>

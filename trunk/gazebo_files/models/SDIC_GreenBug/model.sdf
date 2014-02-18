@@ -153,7 +153,7 @@
 
     <include>
       <uri>model://SDIC_Gripper</uri>
-      <pose>0.17 0 0 0 0 0</pose>
+      <pose>0.17 0 .08 0 0 0</pose>
     </include>
 
     <joint name="arm_gripper_joint" type="revolute">

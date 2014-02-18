@@ -78,9 +78,9 @@ Transport::Transport(){
 
 
   Side  side;
-  side.pos_x=6.0;  side.pos_y=-6.0;  side.prob=1.0;  side.radius=0.5;
+  side.pos_x=2.0;  side.pos_y=-2.0;  side.prob=.3;  side.radius=0.5;
   resourceSides.append(side);
-  side.pos_x=-3.0;  side.pos_y=3.0;  side.prob=1.0;  side.radius=1.0;
+  side.pos_x=-2.0;  side.pos_y=2.0;  side.prob=.3;  side.radius=0.5;
   resourceSides.append(side);
 }
 
@@ -115,7 +115,9 @@ void Transport::OnScore(ConstVector3dPtr &msg)
  
   if(index>=0 && index<resources.size()){
     resources[index].id=id;
-    resetResource(index);
+    if(target!=-1){
+      resetResource(index);
+    }
   }else{
     std::cout<<"Transport::OnScore::WrongName"<<std::endl;
   }
@@ -240,7 +242,7 @@ void Transport::spawnResource(){
       math::Pose pose;
       pose.pos.x = side.pos_x;
       pose.pos.y = side.pos_y;
-      pose.pos.z = 10.0;
+      pose.pos.z = 0.0;
       pose = addNoisePose(pose, side.radius);
       
       if(resources.size()==0){
