@@ -47,10 +47,8 @@ svn checkout http://iqr-gazebo.googlecode.com/svn/trunk/ iqr-gazebo
 In case you do not have access to the svn repository you can download the latest source code as a tar file using the following command:
 {{{
 cd $HOME
-wget http://iqr-gazebo.googlecode.com/svn/packages/iqr-gazebo-current.tar.gz
-tar -xf iqr-gazebo-current.tar.gz
-rm iqr-gazebo-current.tar.gz
-
+wget  -r  -np  --cut-dirs=1 --reject "index.htm*" http://iqr-gazebo.googlecode.com/svn/trunk/
+mv trunk iqr-gazebo
 }}}
 
 
