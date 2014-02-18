@@ -184,7 +184,7 @@ void Transport::resetResource(int index){
 }
 
 void Transport::recycleResource(int index, math::Pose pose){
-  setColorResource(index, "Gazebo/Red");
+  setColorResource(index, "Gazebo/Blue");
   resources[index].state=GOOD;
   setPoseResource(index,pose);
 }
@@ -225,7 +225,7 @@ void Transport::spawnResource(){
       resources[i].age++;
     if(resources[i].age==TURN_AGE){
       resources[i].state=BAD;
-      setColorResource(i,"Gazebo/Blue");
+      setColorResource(i,"Gazebo/Yellow");
     }
     if(resources[i].age==MAX_AGE){
       resetResource(i);

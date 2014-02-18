@@ -285,7 +285,7 @@
         <material>
           <script>
             <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Black</name>
+            <name>Gazebo/Turquoise</name>
           </script>
         </material>
       </visual>
@@ -309,7 +309,7 @@
         <material>
           <script>
             <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Black</name>
+            <name>Gazebo/Purple</name>
           </script>
         </material>
       </visual>
