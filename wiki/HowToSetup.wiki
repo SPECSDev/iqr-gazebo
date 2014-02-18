@@ -44,7 +44,7 @@ svn checkout http://iqr-gazebo.googlecode.com/svn/trunk/ iqr-gazebo
 
 }}}
 
-In case you do not have acces to the svn repository you can download the latest sourcecode as a tar file using the following comand:
+In case you do not have access to the svn repository you can download the latest source code as a tar file using the following command:
 {{{
 cd $HOME
 wget http://iqr-gazebo.googlecode.com/svn/packages/iqr-gazebo-current.tar.gz
@@ -52,21 +52,6 @@ tar -xf iqr-gazebo-current.tar.gz
 rm iqr-gazebo-current.tar.gz
 
 }}}
-
-=== Setting environment variables ===
-Append the following lines to your .profile file in the home directory using gedit.
-{{{
-export GAZEBO_MODEL_PATH=$HOME/iqr-gazebo/gazebo_files/models
-export GAZEBO_PLUGIN_PATH=$HOME/iqr-gazebo/gazebo_files/plugins
-}}}
-or use the following commands to add them from the console line
-{{{
-echo 'export GAZEBO_MODEL_PATH=$HOME/iqr-gazebo/gazebo_files/models' >> $HOME/.profile
-echo 'export GAZEBO_PLUGIN_PATH=$HOME/iqr-gazebo/gazebo_files/plugins' >> $HOME/.profile
-
-}}}
-
-Please *logout and login again* to make sure the file is sourced. 
 
 
 
@@ -76,7 +61,7 @@ Please *logout and login again* to make sure the file is sourced.
 To build the necessary iqr moudles and gazebo plugins please run the following script:
 {{{
 cd $HOME/iqr-gazebo
-./update_compile.sh
+source ./update_compile.sh
 }}}
 
 If the script fails please follow the instruction at the end of the document. You can use the same script for updating and compiling the iqr-gazebo project from the svn repository. 
@@ -104,6 +89,23 @@ Press run in iqr. You should see the robot driving around the arena avoiding wal
 
 = In case things go wrong... =
 Build the iqr modules and gazebo plugins without the script. 
+
+=== Setting environment variables ===
+Append the following lines to your .profile file in the home directory using gedit.
+{{{
+export GAZEBO_MODEL_PATH=$HOME/iqr-gazebo/gazebo_files/models
+export GAZEBO_PLUGIN_PATH=$HOME/iqr-gazebo/gazebo_files/plugins
+}}}
+or use the following commands to add them from the console line
+{{{
+echo 'export GAZEBO_MODEL_PATH=$HOME/iqr-gazebo/gazebo_files/models' >> $HOME/.profile
+echo 'export GAZEBO_PLUGIN_PATH=$HOME/iqr-gazebo/gazebo_files/plugins' >> $HOME/.profile
+
+}}}
+
+Please *logout and login again* to make sure the file is sourced. 
+
+
 
 === Build the iqr module ==
 Compile the moduleGazeboBug module.
