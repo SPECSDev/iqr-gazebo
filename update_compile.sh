@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 GREEN="\033[92;5;148m"
 RED="\033[31;5;148m"
 CLEAR="\033[39m"
@@ -13,12 +14,25 @@ function check_compile
 if [ $? -ne 0 ]
 then
     echo -e "\n $RED Compilaltion failed! $CLEAR\n "
-    exit 1
+    return 
 else
     echo -e "\n $GREEN Complilation successful $CLEAR\n"
 fi
 }
 
+if ! [[ $GAZEBO_MODEL_PATH && ${GAZEBO_MODEL_PATH-_} ]]
+then
+    echo -e " $GREEN Setting GAZEBO_MODEL_PATH $CLEAR"
+    echo 'export GAZEBO_MODEL_PATH=$HOME/iqr-gazebo/gazebo_files/models' >> $HOME/.bashrc
+    . $HOME/.bashrc
+fi
+
+if ! [[ $GAZEBO_PLUGIN_PATH && ${GAZEBO_PLUGIN_PATH-_} ]]
+then
+    echo -e " $GREEN Setting GAZEBO_PLUGIN_PATH $CLEAR"
+    echo 'export GAZEBO_PLUGIN_PATH=$HOME/iqr-gazebo/gazebo_files/plugins' >> $HOME/.bashrc
+    . $HOME/.bashrc
+fi
 
 svn update
 
