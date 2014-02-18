@@ -33,7 +33,7 @@
       <name>TeamA_Bug_02</name>
       <uri>model://SDIC_GreenBug</uri>
     </include>
-    
+    <!--
     <include>
       <pose>-8.7 7.8 0 0 0 -1.57079</pose>
       <name>TeamA_Bug_03</name>
@@ -45,8 +45,10 @@
       <name>TeamA_Bug_04</name>
       <uri>model://SDIC_GreenBug</uri>
     </include>
-   
+   -->
+    
     <!-- Robots Team B-->
+    <!--
     <include>
       <pose>9.5 -7 0 0 0  1.57079</pose>
       <name>TeamB_Bug_01</name>
@@ -70,8 +72,9 @@
       <name>TeamB_Bug_04</name>
       <uri>model://SDIC_RedBug</uri>
     </include>
-    
-    
+    -->
+
+
     <!-- Targets -->
     <include>
       <pose>0 3 0 0 0 0</pose>
@@ -98,7 +101,7 @@
       <name>target_4</name>
       <uri>model://SDIC_Target</uri>
     </include>
-
+   
 
     <!-- Wall -->
     <include>
