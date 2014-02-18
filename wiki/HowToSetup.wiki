@@ -44,6 +44,15 @@ svn checkout http://iqr-gazebo.googlecode.com/svn/trunk/ iqr-gazebo
 
 }}}
 
+In case you do not have acces to the svn repository you can download the latest sourcecode as a tar file using the following comand:
+{{{
+cd $HOME
+wget http://iqr-gazebo.googlecode.com/svn/packages/iqr-gazebo-current.tar.gz
+tar -xf iqr-gazebo-current.tar.gz
+rm iqr-gazebo-current.tar.gz
+
+}}}
+
 === Setting environment variables ===
 Append the following lines to your .profile file in the home directory using gedit.
 {{{
