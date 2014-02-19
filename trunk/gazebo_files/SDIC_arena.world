@@ -7,7 +7,7 @@
       <!-- World Camera -->    
     <gui>
         <camera name='camera_view'>
-        <pose>-12 0 3 0 0.2 0</pose>
+        <pose>0 0 35 0 -1.57079632679 0</pose>
         </camera>
     </gui>
     
@@ -73,6 +73,7 @@
     
     
     <!-- Targets -->
+    <!--
     <include>
       <pose>0 3 0 0 0 0</pose>
       <name>target_0</name>
@@ -98,7 +99,7 @@
       <name>target_4</name>
       <uri>model://SDIC_Target</uri>
     </include>
-
+    -->
 
     <!-- Wall -->
     <include>
