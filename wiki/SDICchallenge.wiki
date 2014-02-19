@@ -1,4 +1,4 @@
-#summary Describtion and rules of  SDIC robot challange
+#summary Description and rules of  SDIC robot challenge
 
 =SDIC Robot Challenge=
 
