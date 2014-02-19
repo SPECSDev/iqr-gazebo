@@ -20,19 +20,21 @@ else
 fi
 }
 
-if ! [[ $GAZEBO_MODEL_PATH && ${GAZEBO_MODEL_PATH-_} ]]
-then
+#if ! [[ $GAZEBO_MODEL_PATH && ${GAZEBO_MODEL_PATH-_} ]]
+#then
     echo -e " $GREEN Setting GAZEBO_MODEL_PATH $CLEAR"
+    sed -i '/GAZEBO_MODEL_PATH/d' $HOME/.bashrc
     echo 'export GAZEBO_MODEL_PATH=$HOME/iqr-gazebo/gazebo_files/models' >> $HOME/.bashrc
     . $HOME/.bashrc
-fi
+#fi
 
-if ! [[ $GAZEBO_PLUGIN_PATH && ${GAZEBO_PLUGIN_PATH-_} ]]
-then
+#if ! [[ $GAZEBO_PLUGIN_PATH && ${GAZEBO_PLUGIN_PATH-_} ]]
+#then
     echo -e " $GREEN Setting GAZEBO_PLUGIN_PATH $CLEAR"
+    sed -i '/GAZEBO_PLUGIN_PATH/d' $HOME/.bashrc
     echo 'export GAZEBO_PLUGIN_PATH=$HOME/iqr-gazebo/gazebo_files/plugins' >> $HOME/.bashrc
     . $HOME/.bashrc
-fi
+#fi
 
 svn update
 
