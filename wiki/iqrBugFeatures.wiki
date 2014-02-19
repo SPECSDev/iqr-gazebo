@@ -7,10 +7,10 @@ The iqrBug consists in a compilation of files including the  iqr module called m
 
 
 = Features=
-The iqrBug offers a series of sensors and actuators. Here we describe their properties an proper use. 
+The iqrBug offers a series of sensors and actuators. Here we describe their properties and proper use. 
 
 ==General==
-The iqr module provides the communication between iqr and gazebo. All communication happens over groups of cells. An iqr system can comprise more than one iqrBug. To differentiate what iqrBug is controlled by what module use the *Bug name* parameter. To name needs to correspond to the name given to the bug in the gazebo world by default or in the  .world file. 
+The iqr module provides the communication between iqr and gazebo. All communication happens over groups of cells. An iqr system can comprise more than one iqrBug. To differentiate what iqrBug is controlled by what module use the *Bug name* parameter. The name needs to correspond to the name given to the bug in the gazebo world by default or in the  .world file. 
 
 The modulGazeboBug iqr module is a threaded module. The *Cycles/Second* parameter determines the speed the module is running. This is independent on the speed iqr is running. Make sure that the three process i.e. iqr, gazebo, iqrModule have similar cycles per second. 
 
