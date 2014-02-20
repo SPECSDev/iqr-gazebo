@@ -14,9 +14,10 @@ function check_compile
 if [ $? -ne 0 ]
 then
     echo -e "\n $RED Compilaltion failed! $CLEAR\n "
-    return 
+    return 1
 else
     echo -e "\n $GREEN Complilation successful $CLEAR\n"
+    return 0
 fi
 }
 
@@ -49,7 +50,7 @@ cmake ..
 make install
 
 check_compile
-
+if [ $? -ne 0 ] ; then return; fi
 
 #compile vel_plugin
 
@@ -62,6 +63,7 @@ cmake ..
 make install
 
 check_compile
+if [ $? -ne 0 ] ; then return; fi
 
 #compile target_plugin
 
@@ -74,6 +76,7 @@ cmake ..
 make install
 
 check_compile
+if [ $? -ne 0 ] ; then return; fi
 
 #compile worldcontrol
 echo -e "\n $GREEN Compiling Worldcontrol .... $CLEAR \n"
@@ -85,6 +88,7 @@ cmake ..
 make  
 
 check_compile
+if [ $? -ne 0 ] ; then return; fi
 
 echo -e "\n $GREEN DONE! $CLEAR\n"
 
