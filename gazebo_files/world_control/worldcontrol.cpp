@@ -3,7 +3,7 @@
 #include "worldcontrol.hpp"
 
 
-WorldControl::WorldControl(QWidget *parent)
+WorldControl::WorldControl(bool autostart, QWidget *parent)
   : QWidget(parent)
 {
   QLabel* labelTime = new QLabel("Time");
@@ -71,6 +71,14 @@ WorldControl::WorldControl(QWidget *parent)
   setWindowTitle("World Control");
   
   visibilityReset();
+
+
+  if(autostart){
+    countdown->start();
+    transport->start();
+    visibilityStart();
+  }
+  
 }
 
 void WorldControl::visibilityStart(){

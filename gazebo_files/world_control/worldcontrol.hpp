@@ -10,7 +10,7 @@ class WorldControl : public QWidget
 {
   Q_OBJECT;
 public:
-  WorldControl(QWidget *parent = 0);
+  WorldControl(bool autostart=false, QWidget *parent = 0);
 private:
   QPushButton *start;
   QPushButton *stop;
