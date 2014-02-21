@@ -64,27 +64,7 @@ source ./update_compile.sh
 }}}
 
 If the script fails please follow the instruction at the end of the document. You can use the same script for updating and compiling the iqr-gazebo project from the svn repository. 
-
-===Run gazebo and iqr===
-You are all setup. Run gazebo first and than iqr in two different terminals.
-
-In the first terminal:
-{{{
-cd $HOME/iqr-gazebo/gazebo_files
-gazebo SDIC_arena.world
-
-}}}
-
-In the second terminal:
-{{{
-cd $HOME/iqr-gazebo/iqr_files
-iqr -f  gazeboBug.iqr
-
-}}}
-
-Press run in iqr. You should see the robot driving around the arena avoiding walls. Check out the sensory states of the robot using the space plot tool. 
-
-
+You are all setup. Check out how to run iqr and gazebo [RunnginGazeboIQR here].
 
 = In case things go wrong... =
 Build the iqr modules and gazebo plugins without the script. 
