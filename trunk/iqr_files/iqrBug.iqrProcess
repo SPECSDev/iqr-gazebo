@@ -1,7 +1,7 @@
     <iqrEntity type="Process">
         <Process port="54923" path="iqrBug.iqrProcess" hostname="" id="L-21140-1391256391-1268359437" name="Bug_01" enableModule="true" color="#FFFFFF">
             <Module name="moduleGazeboBug">
-                <Parameter value="TeamA_Bug_01" name="device_name"/>
+                <Parameter value="Bug" name="device_name"/>
                 <Parameter value="25" name="cps"/>
                 <Parameter value="default_com_key_0" name="comkey"/>
                 <Parameter value="false" name="grayscale"/>
@@ -21,6 +21,7 @@
                 </XRefHolder>
                 <XRefHolder name="OutputToGroup">
                     <XRef target="L-21140-1391256483-1795368048" name="_proximity"/>
+                    <XRef target="CB1392985437L-21140-1391256483-1795368048" name="_target"/>
                     <XRef target="L-14827-1391619839-708665346" name="_proximityGripper"/>
                     <XRef target="L-21140-1391256502-559135222" name="_gps"/>
                     <XRef target="L-7682-1391584698-1118956004" name="_image_RH"/>
@@ -38,7 +39,7 @@
                     <TopologyRect cylinderHor="false" hcount="1" cylinderVert="false" vcount="1"/>
                 </Topology>
                 <Neuron name="neuronRandomSpike">
-                    <Parameter value="1" name="probability"/>
+                    <Parameter value="0" name="probability"/>
                     <Parameter value="1" name="spkAmpl"/>
                 </Neuron>
                 <Note></Note>
@@ -78,6 +79,23 @@
                 <Note></Note>
                 <DiagramIcon width="50" x="161" y="117" height="50"/>
             </Group>
+            <Group id="CB1392985437L-21140-1391256483-1795368048" name="Target" color="#FFFFFF">
+                <Topology>
+                    <TopologyRect cylinderHor="false" hcount="32" cylinderVert="false" vcount="1"/>
+                </Topology>
+                <Neuron name="neuronLinearThreshold">
+                    <Parameter value="1" name="excGain"/>
+                    <Parameter value="1" name="inhGain"/>
+                    <Parameter value="0" name="vmPrs"/>
+                    <Parameter value="false" name="clipVm"/>
+                    <Parameter value="0" name="vmMin"/>
+                    <Parameter value="1" name="vmMax"/>
+                    <Parameter value="1" name="probability"/>
+                    <Parameter value="0" name="threshold"/>
+                </Neuron>
+                <Note></Note>
+                <DiagramIcon width="50" x="331" y="395" height="50"/>
+            </Group>
             <Group id="L-14827-1391619839-708665346" name="Sensor Gripper" color="#FFFFFF">
                 <Topology>
                     <TopologyRect cylinderHor="false" hcount="16" cylinderVert="false" vcount="1"/>
@@ -112,7 +130,7 @@
                 <Note></Note>
                 <DiagramIcon width="50" x="163" y="10" height="50"/>
             </Group>
-            <Group id="L-21140-1391256483-1795368048" name="Sensor" color="#FFFFFF">
+            <Group id="L-21140-1391256483-1795368048" name="Proximity" color="#FFFFFF">
                 <Topology>
                     <TopologyRect cylinderHor="false" hcount="32" cylinderVert="false" vcount="1"/>
                 </Topology>
@@ -124,7 +142,7 @@
                     <Parameter value="0" name="vmMin"/>
                     <Parameter value="1" name="vmMax"/>
                     <Parameter value="1" name="probability"/>
-                    <Parameter value="0.4" name="threshold"/>
+                    <Parameter value="1" name="threshold"/>
                 </Neuron>
                 <Note></Note>
                 <DiagramIcon width="50" x="184" y="395" height="50"/>

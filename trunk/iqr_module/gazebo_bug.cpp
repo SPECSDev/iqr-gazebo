@@ -55,6 +55,15 @@ void iqrcommon::GazeboBugInterface::Subscribe(){
 					     &iqrcommon::GazeboBugInterface::onScan, this);
   
   std::cout << "done!"<< std::endl;
+  
+  /*Laser Scan Target*/
+  topic= "/gazebo/default/";
+  topic += this->deviceName + "/bug/laser_target/scan";  // subscribe to the laserscan
+  std::cout << "Subscribing (listening) to: " << topic <<  " ... "<<std::flush;
+  this->laserScanTargetSub = this->node->Subscribe(topic, 
+						    &iqrcommon::GazeboBugInterface::onScanTarget, this);
+  
+  std::cout << "done!"<< std::endl;
 
   /*Laser Scan Gripper*/
   topic= "/gazebo/default/";
@@ -94,6 +103,8 @@ void iqrcommon::GazeboBugInterface::Unsubscribe()
 {
     this->laserScanSub->Unsubscribe();
     this->laserScanSub.reset();
+    this->laserScanTargetSub->Unsubscribe();
+    this->laserScanTargetSub.reset();
     this->laserScanGripperSub->Unsubscribe();
     this->laserScanGripperSub.reset();
     this->scanAudioSub->Unsubscribe();
@@ -289,6 +300,23 @@ void iqrcommon::GazeboBugInterface::onScan(ConstLaserScanStampedPtr &_msg){
   //std::cout << "Range " << i << ": " << current.ranges[i] << endl;   
 }
 
+/* onScanTarget(ConstLaserScanStampedPtr &): listen to the topic */
+void iqrcommon::GazeboBugInterface::onScanTarget(ConstLaserScanStampedPtr &_msg){
+  // std::cout<<deviceName<<": onScanTarget"<<std::endl;
+  
+  int i; 
+  float range_target_max;    
+  scanTarget = _msg->scan();  // scan() returns a LaserScan object that can be accessed to retrieve the data
+  range_target_max = scanTarget.range_max(); 
+  qMutex->lock();
+  for (i = 0; i < MAX_RANGES_TARGET; ++i){   
+    current.rangesTarget[i] = (range_target_max-scanTarget.ranges(i))/range_target_max;
+  }
+  //std::cout << "Range " << i << ": " << current.ranges[i] << endl;   
+  qMutex->unlock();
+}
+
+
 /* onScanGripper(ConstLaserScanStampedPtr &): listen to the topic */
 void iqrcommon::GazeboBugInterface::onScanGripper(ConstLaserScanStampedPtr &_msg){
   // std::cout<<deviceName<<": onScanGripper"<<std::endl;
@@ -401,6 +429,19 @@ vector<float> iqrcommon::GazeboBugInterface::readLaser(){
   qMutex->unlock();
   return readings;
 }
+
+
+/* readLaserTarget(): fill the vector to send to iqr sensors group */
+vector<float> iqrcommon::GazeboBugInterface::readLaserTarget(){ 
+  vector<float> readings;  
+  qMutex->lock();   
+  for(int i = 0; i < MAX_RANGES_TARGET; ++i){
+    readings.push_back(current.rangesTarget[i]);
+  }
+  qMutex->unlock();
+  return readings;
+}
+
 
 /* readLaserGripper(): fill the vector to send to iqr sensors group */
 vector<float> iqrcommon::GazeboBugInterface::readLaserGripper(){ 

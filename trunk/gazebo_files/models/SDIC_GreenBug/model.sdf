@@ -81,7 +81,7 @@
       </sensor>
       
       <!-- Proximity sensor -->
-      <sensor name="laser_goal" type="ray">
+      <sensor name="laser_target" type="ray">
 	<pose>0 0 0.25 0 0 0 </pose>
 	<ray>
 	<scan>

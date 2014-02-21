@@ -110,7 +110,9 @@ namespace iqrcommon{
     
     // Sensors
     ClsStateVariable *var_proximity;
+    ClsStateVariable *var_target;   
     ClsStateVariable *var_proximityGripper;
+    
     
     // Motor
     StateVariablePtr *var_motor;
