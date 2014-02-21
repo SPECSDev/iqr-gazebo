@@ -67,7 +67,8 @@ iqrcommon::ClsModuleGazeboBug::ClsModuleGazeboBug() : ClsThreadModule() {
     var_gripper    = addInputFromGroup("_gripper", "Gripper");
     
     // Sensors to group
-    var_proximity = addOutputToGroup("_proximity", "Proximity sensors (32x1)");
+    var_proximity = addOutputToGroup("_proximity", "Proximity sensors (32x1)"); 
+    var_target = addOutputToGroup("_target", "Target sensors (32x1)");  
     var_proximityGripper = addOutputToGroup("_proximityGripper", "Proximity sensors Gripper(16x1)");
     
     // Sensors to group
@@ -96,6 +97,7 @@ iqrcommon::ClsModuleGazeboBug::ClsModuleGazeboBug() : ClsThreadModule() {
 /* INIT MODULE */
 void iqrcommon::ClsModuleGazeboBug::init(){
   checkSize(var_proximity,MAX_RANGES,1);
+  checkSize(var_target,MAX_RANGES_TARGET,1);
   checkSize(var_proximityGripper,MAX_RANGES_GRIPPER,1);
   checkSize(var_gps, MAX_GPS,1);
   checkSize(var_scanAudio, MAX_RANGES_AUDIO,1);
@@ -307,6 +309,7 @@ void iqrcommon::ClsModuleGazeboBug::update(){
     StateArray& gripper    = var_gripper->getTarget()->getStateArray();
     
     StateArray& proximity = var_proximity->getStateArray(); 
+    StateArray& target = var_target->getStateArray(); 
     StateArray& proximityGripper = var_proximityGripper->getStateArray(); 
     StateArray& scanAudio = var_scanAudio->getStateArray();
     StateArray& emitAudio  = var_emitAudio->getTarget()->getStateArray();
@@ -335,6 +338,7 @@ void iqrcommon::ClsModuleGazeboBug::update(){
     
     /* Read sensor data */
     vectorToGroup(bug.readLaser(), proximity);
+    vectorToGroup(bug.readLaserTarget(), target);
     vectorToGroup(bug.readLaserGripper(), proximityGripper);
   
     /* Read Audio */

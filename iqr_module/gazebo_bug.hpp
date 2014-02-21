@@ -18,6 +18,7 @@ using namespace std;
 
 
 const int MAX_RANGES = 32;
+const int MAX_RANGES_TARGET = 32;
 const int MAX_RANGES_GRIPPER = 16;
 const int MAX_RANGES_AUDIO = 16;
 const int MAX_GPS =3;
@@ -46,6 +47,7 @@ struct current_t{
   // bool lifting;
   int id;
   float ranges[MAX_RANGES];
+  float rangesTarget[MAX_RANGES_TARGET];
   float rangesGripper[MAX_RANGES_GRIPPER];
   float rangesAudio[MAX_RANGES_AUDIO];
   float gps[MAX_GPS];
@@ -88,6 +90,7 @@ namespace iqrcommon{
     //gazebo::msgs::PID* velocityTargetLifter;
 
     gazebo::msgs::LaserScan scan;
+    gazebo::msgs::LaserScan scanTarget;
     gazebo::msgs::LaserScan scanGripper;
     gazebo::msgs::LaserScan scanAudio;
     //gazebo::msgs::LaserScan* emitAudio;
@@ -97,6 +100,7 @@ namespace iqrcommon{
 
     gazebo::transport::NodePtr node;
     gazebo::transport::SubscriberPtr laserScanSub;
+    gazebo::transport::SubscriberPtr laserScanTargetSub;
     gazebo::transport::SubscriberPtr laserScanGripperSub;
     gazebo::transport::SubscriberPtr scanAudioSub;
 
@@ -117,6 +121,7 @@ namespace iqrcommon{
     string  comKey;
     
     void onScan(ConstLaserScanStampedPtr &_msg);
+    void onScanTarget(ConstLaserScanStampedPtr &_msg);		
     void onScanGripper(ConstLaserScanStampedPtr &_msg);		
     void onScanAudio(ConstLaserScanStampedPtr &_msg);		
     void onImage(ConstImageStampedPtr &_msg);
@@ -149,6 +154,7 @@ namespace iqrcommon{
     
     vector<Pixel> readImage();    
     vector<float> readLaser();
+    vector<float> readLaserTarget();
     vector<float> readLaserGripper();
     vector<float> readAudio();
     vector<float> readGPS();
