@@ -1,15 +1,10 @@
 #summary How to run gazebo and iqr.
 
-= Introduction =
-
 Gazebo and iqr can run on one machine or on multiple machines as a server client application. The communication is handled over google proto buffer. 
-
 
 = Running IQR and gazebo on a single machine =
 
-You best run gazebo and iqr in two separate terminals. 
-
-
+You best run gazebo and iqr in two different terminals. 
 Run gazebo in the first terminal:
 {{{
 cd $HOME/iqr-gazebo/gazebo_files
@@ -24,12 +19,12 @@ iqr -f  gazeboBug.iqr
 
 }}}
 
-Press run in iqr.
+Press run in iqr. You should see the robot driving around the arena avoiding walls. Check out the sensory states of the robot using the space plot tool. 
 
 
 = Running IQR and gazebo on multiple machines =
 
-Gazebo itself is a server client application. The command *gazebo* is a script that invokes both the server  application *gzserver*and the client application of *gzclient*.  You can try it out on a single machine by typing *gzserver* in one terminal and *gzclient* in another terminal. If you want to have a dedicated server on one machine (machine A) and a client on another machine (machine B) you need to tell the client on machine B  on what ip the server is hosted. This is done over the environment variable GAZEBO_MASTER_URI. You can use the script *set_server_ip.sh IPofServer*. If no IP is provided the environment variable is unset. So to run *gzserver* and *gzclient* on different machines do as follow:
+Gazebo itself is a server client application. The command *gazebo* is a script that invokes both the server  application *gzserver* and the client application of *gzclient*.  You can try it out on a single machine by typing *gzserver* in one terminal and *gzclient* in another terminal. If you want to have a dedicated server on one machine (machine A) and a client on another machine (machine B) you need to tell the client on machine B  on what ip the server is reachable. This is done over the environment variable GAZEBO_MASTER_URI. You can use the script *set_server_ip.sh IPofServer* to set GAZEBO_MASTER_URI. If no IP is provided the GAZEBO_MASTER_URI variable is unset. To run *gzserver* and *gzclient* on different machines do as follow:
 
 On machine A (the server):
 {{{
@@ -44,7 +39,7 @@ Msg Connected to gazebo master @ http://127.0.0.1:11345
 Msg Publicized address: 192.168.95.180
 }}}
 
-The Publicized address is the ip over which the server is reachable. In this case it is 192.168.95.180. In what follows please substitute this ip with the ip you got from gzserver. 
+The Publicized address is the ip over which the server is reachable. In this case it is 192.168.95.180. In what follows please substitute 192.168.95.180 with the ip you got from gzserver. 
 
 In machine B (the client)
 {{{
@@ -54,13 +49,13 @@ gzclient
 You should now be able to see the graphical user interface with the robot arena. 
 
 
-iqr uses the same communication technology as the gzserver and gzclient. As such iqr is just another client accessing gzserver. So to run iqr on machine B type:
+iqr uses the same communication technology as gzserver and gzclient. As such iqr is just another client accessing the gazebo server. So to run iqr on machine B type:
 {{{
 source $HOME/iqr-gazebo/scripts/set_server_ip.sh 192.168.95.180 
 cd $HOME/iqr-gazebo/iqr_files
 iqr -f  gazeboBug.iqr
 }}}
 
-Please note that the script set_server_ip.sh does set the environment varialbe in the .bashrc file. So it will be set in all the new terminals you open. Thus you only need to set the server ip once per machine. 
+Please note that the script set_server_ip.sh does set the environment varialbe in the .bashrc file. So it will be set or all the new terminals you open. Thus you only need to set the server ip once per machine. 
 
-If you want to again run both gazebo and iqr just on machine B you have to unset the GAZEBO_MASTER_URI variable. You can do this by invoking set_server_ip.sh without any argument. You need to do this in all open terminals. 
+If you want to again run both gazebo and iqr just on machine B you have to unset the GAZEBO_MASTER_URI variable. You can do this by invoking set_server_ip.sh without any arguments. You need to do this in all open terminals. 
