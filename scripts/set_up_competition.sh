@@ -8,4 +8,4 @@ export GAZEBO_MODEL_PATH=$HOME/iqr-gazebo/gazebo_files/models
 export GAZEBO_PLUGIN_PATH=$HOME/iqr-gazebo/gazebo_files/plugins
 export GAZEBO_MASTER_URI=10.200.188.1:11345
 . ./update_compile.sh
-. ./set_server_IP.sh 10.200.188.1
+. ./set_server_ip.sh 10.200.188.1
