@@ -7,7 +7,7 @@
     <!-- World Camera -->    
     <gui>
       <camera name='camera_view'>
-	<pose>0 0 35 0 1.57079632679 0</pose>
+	<pose>0 0 35 0 -1.57079632679 1.57079632679</pose>
       </camera>
     </gui>
     
