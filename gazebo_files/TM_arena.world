@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+    <scene>
+      <shadows>0</shadows>
+    </scene>
+    <!-- World Camera -->    
+    <gui>
+      <camera name='camera_view'>
+	<pose>0 0 35 0 1.57079 1.57079</pose>
+      </camera>
+    </gui>
+    
+    <!-- Ground -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Global light source -->
+     <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Robots Team A-->
+    <include>
+      <pose>-9.5 7 0 0 0  -1.57079</pose>
+      <name>Bug</name>
+      <uri>model://SDIC_GreenBug</uri>
+    </include>
+    
+    <!--
+    <include>
+      <pose>-7 9.5 0 0 0 0</pose>
+      <name>TeamA_Bug_02</name>
+      <uri>model://SDIC_GreenBug</uri>
+    </include>
+ 
+    <include>
+      <pose>-8.7 7.8 0 0 0 -1.57079</pose>
+      <name>TeamA_Bug_03</name>
+      <uri>model://SDIC_GreenBug</uri>
+    </include>
+    
+    <include>
+      <pose>-7.8 8.7 0 0 0 0</pose>
+      <name>TeamA_Bug_04</name>
+      <uri>model://SDIC_GreenBug</uri>
+    </include>
+   -->
+    
+    <!-- Robots Team B-->
+    <!--
+    <include>
+      <pose>9.5 -7 0 0 0  1.57079</pose>
+      <name>TeamB_Bug_01</name>
+      <uri>model://SDIC_RedBug</uri>
+    </include>
+
+    <include>
+      <pose>7 -9.5 0 0 0 3.14159</pose>
+      <name>TeamB_Bug_02</name>
+      <uri>model://SDIC_RedBug</uri>
+    </include>
+    
+    <include>
+      <pose>8.7 -7.8 0 0 0 1.57079</pose>
+      <name>TeamB_Bug_03</name>
+      <uri>model://SDIC_RedBug</uri>
+    </include>
+    
+    <include>
+      <pose>7.8 -8.7 0 0 0 3.14159</pose>
+      <name>TeamB_Bug_04</name>
+      <uri>model://SDIC_RedBug</uri>
+    </include>
+    -->
+
+
+    <!-- Targets 
+    <include>
+      <pose>0 3 0 0 0 0</pose>
+      <name>target_0</name>
+      <uri>model://SDIC_Target</uri>
+    </include>
+     <include>
+      <pose>0.2 3 0 0 0 0</pose>
+      <name>target_1</name>
+      <uri>model://SDIC_Target</uri>
+    </include>
+    <include>
+      <pose>0.1 3.4 0 0 0 0</pose>
+      <name>target_2</name>
+      <uri>model://SDIC_Target</uri>
+    </include>
+    <include>
+      <pose>.2 3.1 0 0 0 0</pose>
+      <name>target_3</name>
+      <uri>model://SDIC_Target</uri>
+    </include>
+    <include>
+      <pose>-0.2 3 0 0 0 0</pose>
+      <name>target_4</name>
+      <uri>model://SDIC_Target</uri>
+    </include>
+   -->
+
+    <!-- Wall -->
+    <include>
+        <uri>model://TM_Wall</uri>
+    </include>
+ 
+  </world>
+</sdf>
+
