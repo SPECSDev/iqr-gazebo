@@ -1,10 +1,7 @@
 #summary How to run gazebo and iqr.
 
-Gazebo and iqr can run on one machine or on multiple machines as a server client application. The communication is handled over google proto buffer. 
-
 = Running IQR and gazebo on a single machine =
-
-You best run gazebo and iqr in two different terminals. 
+Gazebo and iqr work as a server client aplication that can work on a single machine or  on multiple machines. To run gazebo on a single machine you best run gazebo and iqr in two different terminals. 
 Run gazebo in the first terminal:
 {{{
 cd $HOME/iqr-gazebo/gazebo_files
