@@ -320,6 +320,38 @@
       <pose>10 -10 0 0 0 0</pose>
     </link>
    -->
+
+<link name='Wall_9'>
+      <collision name='Wall_9_Collision'>
+        <geometry>
+          <box>
+            <size> 2.828430 0.2 0.24999</size>
+          </box>
+        </geometry>
+        <pose>0 0 0.124999 0 -0 0</pose>
+      </collision>
+      <visual name='Wall_9_Visual'>
+        <pose>0 0 0.124999 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>2.828430 0.2 0.24999</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <pose>-3.5 -4.5 0 0 0 0.78539</pose>
+    </link>
+    
+
     <link name='Obstacle_1'>
       <collision name='Obstacle_1_Collision'>
         <geometry>
@@ -383,6 +415,67 @@
       <pose> -5 5 0 0 0 0</pose>
     </link> 
 
+<link name='Wall_10'>
+      <collision name='Wall_10_Collision'>
+        <geometry>
+          <box>
+            <size> 2.828430 0.2 0.24999</size>
+          </box>
+        </geometry>
+        <pose>0 0 0.124999 0 -0 0</pose>
+      </collision>
+      <visual name='Wall_10_Visual'>
+        <pose>0 0 0.124999 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>2.828430 0.2 0.24999</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <pose> 4.5 3.5 0 0 0 0.78539</pose>
+    </link>
+   
+<link name='Wall_11'>
+      <collision name='Wall_11_Collision'>
+        <geometry>
+          <box>
+            <size> 2.828430 0.2 0.24999</size>
+          </box>
+        </geometry>
+        <pose>0 0 0.124999 0 -0 0</pose>
+      </collision>
+      <visual name='Wall_11_Visual'>
+        <pose>0 0 0.124999 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>2.828430 0.2 0.24999</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <pose>-.5 0.5 0 0 0 0.78539</pose>
+    </link>
+    
+
     <link name='Target_1'>
       <collision name='Target_1_Collision'>
         <geometry>
@@ -412,7 +505,7 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose> 3 5 0 0 0 0</pose>
+      <pose> 4 4 0 0 0 0</pose>
     </link> 
 
  <link name='Target_2'>
@@ -444,9 +537,41 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose> -3 -5 0 0 0 0</pose>
+      <pose> -4 -4 0 0 0 0</pose>
     </link> 
-   
+
+    <link name='Target_3'>
+      <collision name='Target2_Collision'>
+        <geometry>
+          <cylinder>
+            <radius> 0.24999 </radius>
+	    <length> 0.24999 </length>
+          </cylinder>
+        </geometry>
+        <pose>0 0 0.34999 0 0 0</pose>
+      </collision>
+      <visual name='Target_2_Visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+         <cylinder>
+            <radius> 0.24999 </radius>
+	    <length> 0.01 </length>
+          </cylinder>
+	</geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/White</name>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <pose> 0 0 0 0 0 0</pose>
+    </link> 
+
     <static>1</static>
   </model>
 </sdf>
