@@ -1,0 +1,46 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+  <model name='SDIC_Target'>
+    <link name='body'>
+      <pose>0 0 0.06 0 0 0</pose>  
+      <inertial>
+        <mass>0.01</mass>
+      </inertial>
+      <collision name='collsion'>
+        <geometry>
+          <sphere>
+            <radius>0.08</radius>
+          </sphere>
+        </geometry>
+	<surface>
+	  <friction>
+	    <ode>
+	      <mu>0.1</mu>
+	      <mu2>0.1</mu2>
+	      <slip1>0</slip1>
+	      <slip2>0</slip2>
+	    </ode>
+	  </friction>
+	</surface>
+      </collision>
+      <visual name='visual'>
+	<geometry>
+          <sphere>
+             <radius>0.08</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Yellow</name>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+    </link>
+    <plugin name="model_push" filename="libtarget_plugin.so" /> 
+  </model>
+</sdf>
