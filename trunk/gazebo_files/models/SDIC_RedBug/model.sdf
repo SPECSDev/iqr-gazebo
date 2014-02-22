@@ -79,7 +79,34 @@
       <update_rate>25</update_rate>
       <visualize>0</visualize>
       </sensor>
-  
+      
+      <!-- Proximity sensor -->
+      <sensor name="laser_target" type="ray">
+	<pose>0 0 0.25 0 0 0 </pose>
+	<ray>
+	<scan>
+	  <horizontal>
+	    <samples>32</samples>
+	    <resolution>1</resolution>
+	    <min_angle>-3</min_angle>
+	    <max_angle>3</max_angle>
+	  </horizontal>
+	</scan>
+	<range>
+	  <min>0.26</min>
+	  <max>2.5</max>
+	  <resolution>0.01</resolution>
+	</range>
+	<noise>
+	  <type>gaussian</type>
+	  <mean>0.0</mean>
+	  <stddev>0.02</stddev>
+	</noise>
+      </ray>
+      <always_on>1</always_on>
+      <update_rate>25</update_rate>
+      <visualize>0</visualize>
+      </sensor>
       <!-- Proximity sensor Gripper -->
       <sensor name="laser_gripper" type="ray">
 	<pose>0.19 0 -0.02 0 0 0 </pose>
@@ -93,7 +120,7 @@
 	  </horizontal>
 	</scan>
 	<range>
-	  <min>0.04</min>
+	  <min>0.0155</min>
 	  <max>0.2</max>
 	  <resolution>0.01</resolution>
 	</range>
@@ -103,7 +130,7 @@
 	  <stddev>0.005</stddev>
 	</noise>
 	</ray>
-	<always_on>1</always_on>
+	<always_on>0</always_on>
 	<update_rate>25</update_rate>
 	<visualize>0</visualize>
       </sensor>
@@ -153,7 +180,7 @@
 
     <include>
       <uri>model://SDIC_Gripper</uri>
-      <pose>0.17 0 0.08 0 0 0</pose>
+      <pose>0.17 0 .08 0 0 0</pose>
     </include>
 
     <joint name="arm_gripper_joint" type="revolute">

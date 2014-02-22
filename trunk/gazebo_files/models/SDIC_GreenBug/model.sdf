@@ -77,7 +77,7 @@
       </ray>
       <always_on>1</always_on>
       <update_rate>25</update_rate>
-      <visualize>1</visualize>
+      <visualize>0</visualize>
       </sensor>
       
       <!-- Proximity sensor -->
@@ -105,7 +105,7 @@
       </ray>
       <always_on>1</always_on>
       <update_rate>25</update_rate>
-      <visualize>1</visualize>
+      <visualize>0</visualize>
       </sensor>
       <!-- Proximity sensor Gripper -->
       <sensor name="laser_gripper" type="ray">
@@ -120,7 +120,7 @@
 	  </horizontal>
 	</scan>
 	<range>
-	  <min>0.04</min>
+	  <min>0.0155</min>
 	  <max>0.2</max>
 	  <resolution>0.01</resolution>
 	</range>
@@ -130,7 +130,7 @@
 	  <stddev>0.005</stddev>
 	</noise>
 	</ray>
-	<always_on>1</always_on>
+	<always_on>0</always_on>
 	<update_rate>25</update_rate>
 	<visualize>0</visualize>
       </sensor>
