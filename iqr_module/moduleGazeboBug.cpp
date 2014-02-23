@@ -250,7 +250,7 @@ void  iqrcommon::ClsModuleGazeboBug::motorGrpToSpeed(StateArray& motor,
     
   if(valid){
     transSpeed=-(float)(maxIndex/motorWidth-motorWidth/2)/(float)(motorWidth/2)*transSpeedMax;//+tNoise;
-    rotSpeed=(float)(maxIndex%motorWidth-motorHeight/2)/(float)(motorHeight/2)*rotSpeedMax; // +rNoise;
+    rotSpeed=-(float)(maxIndex%motorWidth-motorHeight/2)/(float)(motorHeight/2)*rotSpeedMax; // +rNoise;
   }else{
     transSpeed=0;
     rotSpeed=0;
