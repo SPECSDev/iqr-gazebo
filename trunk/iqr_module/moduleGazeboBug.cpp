@@ -100,7 +100,7 @@ void iqrcommon::ClsModuleGazeboBug::init(){
   checkSize(var_target,MAX_RANGES_TARGET,1);
   checkSize(var_proximityGripper,MAX_RANGES_GRIPPER,1);
   checkSize(var_gps, MAX_GPS,1);
-  checkSize(var_scanAudio, MAX_RANGES_AUDIO,1);
+  checkSize(var_scanAudio, MAX_RANGES_AUDIO,-1);
   checkSize(var_emitAudio->getTarget(), MAX_RANGES_AUDIO,1);
   
   // Check Camera size
@@ -389,7 +389,15 @@ moduleIcon iqrcommon::ClsModuleGazeboBug::getIcon() {
 
 /* CHECK WIDTH CONSISTENCY */
 void iqrcommon::ClsModuleGazeboBug::checkSize(ClsStateVariable* var,  int width, int height){
-  if(var->getNrCellsHorizontal()!=width||var->getNrCellsVertical()!=height){
+  if (height<0){
+     if(var->getNrCellsHorizontal()*var->getNrCellsVertical()!=width){
+        ostringstream w_int;
+        w_int<<width;
+        throw ModuleError(label() + string(": ") + var->getLabel() +
+                          string(" group must be of total size ") + w_int.str()+"x");
+     }
+  }else{
+    if(var->getNrCellsHorizontal()!=width||var->getNrCellsVertical()!=height){
         ostringstream w_int;
         w_int<<width;
 	ostringstream h_int;
@@ -397,6 +405,7 @@ void iqrcommon::ClsModuleGazeboBug::checkSize(ClsStateVariable* var,  int width,
         throw ModuleError(label() + string(": ") + var->getLabel() +
                           string(" group must be of size ") + w_int.str()+"x"+h_int.str());
     }
+  }
 }
 
 
