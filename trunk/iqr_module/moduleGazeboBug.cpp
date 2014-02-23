@@ -101,7 +101,7 @@ void iqrcommon::ClsModuleGazeboBug::init(){
   checkSize(var_proximityGripper,MAX_RANGES_GRIPPER,1);
   checkSize(var_gps, MAX_GPS,1);
   checkSize(var_scanAudio, MAX_RANGES_AUDIO,-1);
-  checkSize(var_emitAudio->getTarget(), MAX_RANGES_AUDIO,1);
+  checkSize(var_emitAudio->getTarget(), MAX_RANGES_AUDIO,-1);
   
   // Check Camera size
   int widthCam = var_image_RH->getNrCellsHorizontal();
