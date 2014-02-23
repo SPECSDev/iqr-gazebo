@@ -20,7 +20,7 @@ using namespace std;
 const int MAX_RANGES = 32;
 const int MAX_RANGES_TARGET = 32;
 const int MAX_RANGES_GRIPPER = 16;
-const int MAX_RANGES_AUDIO = 16;
+const int MAX_RANGES_AUDIO = 36;
 const int MAX_GPS =3;
 
 const float MAX_AUDIO_DISTANCE=14.1421;

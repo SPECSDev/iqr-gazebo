@@ -166,7 +166,7 @@
             </Group>
             <Group id="L-5187-1392113009-698644756" name="Listen" color="#FFFFFF">
                 <Topology>
-                    <TopologyRect cylinderHor="false" hcount="16" cylinderVert="false" vcount="1"/>
+                    <TopologyRect cylinderHor="false" hcount="36" cylinderVert="false" vcount="1"/>
                 </Topology>
                 <Neuron name="neuronLinearThreshold">
                     <Parameter value="1" name="excGain"/>
@@ -183,7 +183,7 @@
             </Group>
             <Group id="L-5187-1392113039-752108502" name="Shout" color="#FFFFFF">
                 <Topology>
-                    <TopologyRect cylinderHor="false" hcount="16" cylinderVert="false" vcount="1"/>
+                    <TopologyRect cylinderHor="false" hcount="36" cylinderVert="false" vcount="1"/>
                 </Topology>
                 <Neuron name="neuronLinearThreshold">
                     <Parameter value="1" name="excGain"/>
