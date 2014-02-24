@@ -8,7 +8,7 @@ Two teams of robots will compete in the same arena for limited resources. The ar
   * Robots Team A = red, Robots Team B = green 
   * Home corner Team A = black, Home corner Team B = black
   * Obstacles grey
-  * Resources  blue=1 point, yellow = -1 point, when brought to one of the home corners
+  * Resources  blue=2 point, yellow = -1 point, when brought to one of the home corners
   * Resources will be provided at two to four fixed locations
   * Resources will expire and turn from blue to yellow
   * Resources disappear when in the home corner
