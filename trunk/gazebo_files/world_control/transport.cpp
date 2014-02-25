@@ -97,7 +97,7 @@ void Transport::OnScore(ConstVector3dPtr &msg)
   int target=(int)msg->z();
   
   int index=nameToIndex(name);
-  std::cout<<name<<id<<target<<std::endl;
+  //std::cout<<name<<id<<target<<std::endl;
   // Not a grasp signal
   if(target<2){
     //Resource at Home Team A
