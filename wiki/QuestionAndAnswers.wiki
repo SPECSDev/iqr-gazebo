@@ -1,6 +1,43 @@
 #summary Solution to all your problems
 
 == Error messages while compiling ==
+*Error:*
+While compiling the iqr_module I get the following error:
+{{{
+ fatal error: Common/Item/threadModule.hpp: No such file or directory
+}}}
+*Possible Solution*
+The compiler can not find the iqr header files. Please download the iqr-devel package from here: http://sourceforge.net/projects/iqr/files/iqr-devel/2.0.0/ and install using:
+{{{
+sudo dpkg -i iqr-dev_2.0-0.ubuntu_debian.i386.deb
+}}}
+
+*Error:*
+While compiling the iqr_module I get the following error:
+{{{
+ CMake Error at cmake_install.cmake:50 (FILE):
+  file cannot create directory: /home/armin/iqr/lib/Modules.  Maybe need
+  administrative privileges.
+}}}
+*Possible Solution*
+The installer does not have write privileges for the $HOME/iqr folder. Please grant the user write privileges for the folder or remove the folder. 
+{{{
+sudo rm -rf $HOME/iqr
+. $HOME/iqr-gazebo/update_compile.sh
+}}}
+
+*Error:*
+While compiling the iqr_module I get the following error:
+{{{
+  fatal error: QMutex: No such file or directory
+ #include <QMutex>
+}}}
+*Possible Solution*
+The installer can not find the qt header files. Please install the libqt4-dev package using.
+{{{
+sudo apt-get install libqt4-dev
+}}}
+
 
 == Error messages on run time ==
 
