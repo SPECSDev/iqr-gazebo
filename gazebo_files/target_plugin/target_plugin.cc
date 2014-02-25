@@ -53,23 +53,41 @@ namespace gazebo
   private: std::string modelName; 
   
   private: int counter;
-  private: int grasping;
+  private: int contacts;
+  private: bool grasped;
   private: event::ConnectionPtr updateConnection;    
-  private: std::string collisionTopic;
+ 
 
   public: void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf)
     {
       counter=0;
+      contacts=0;
+      grasped=false;
       // Store the pointer to the model
       this->model = _parent;
       this->world = this->model->GetWorld();
       modelName = model->GetScopedName();
       
+      // publish ID
+      node = transport::NodePtr(new transport::Node());
+      node->Init();
+      this->targetPub = this->node->Advertise<gazebo::msgs::Vector3d>
+	("/gazebo/default/Score");
+      
+      targetCmd.set_x(atoi( modelName.c_str()));
+      targetCmd.set_y(this->model->GetId());
+      targetCmd.set_z(-1);
+      targetPub->Publish(targetCmd);
+      
+      // subscribe collisions
       uint i =0;
       physics::CollisionPtr collision = model->GetLink("body")->GetCollision(i);
       physics::ContactManager *mgr =
 	this->world->GetPhysicsEngine()->GetContactManager();
-      collisionTopic = mgr->CreateFilter(modelName, collision->GetScopedName());
+      std::string topic = mgr->CreateFilter(modelName, collision->GetScopedName());
+
+      this->contactSub = this->node->Subscribe(topic,
+					       &TargetPlugin::OnContacts, this);
       
       // Listen to the update event. This event is broadcast every
       // simulation iteration.
@@ -77,35 +95,6 @@ namespace gazebo
 	event::Events::ConnectWorldUpdateBegin(boost::bind(&TargetPlugin::OnUpdate, this));
     }
     
-  public: void Init(){
-    counter=0;
-    node = transport::NodePtr(new transport::Node());
-    node->Init();
-    this->targetPub = this->node->Advertise<gazebo::msgs::Vector3d>
-      ("/gazebo/default/Score");
-    
-    targetCmd.set_x(atoi( modelName.c_str()));
-    targetCmd.set_y(this->model->GetId());
-    targetCmd.set_z(-1);
-    targetPub->Publish(targetCmd);
-
-    this->contactSub = this->node->Subscribe(collisionTopic,
-					     &TargetPlugin::OnContacts, this);
-   
-  }
-
-  public: void Reset(){
-    counter=0;
-    targetPub.reset();
-    node->Fini();
-    node = transport::NodePtr(new transport::Node());
-    node->Init();
-    this->targetPub = this->node->Advertise<gazebo::msgs::Vector3d>
-      ("/gazebo/default/Score");
-
-    this->contactSub = this->node->Subscribe(collisionTopic,
-					     &TargetPlugin::OnContacts, this);
-  }
     
     // Called by the world update start event
   public: void OnUpdate()
@@ -131,10 +120,27 @@ namespace gazebo
 	model->Reset();	
 
       }
-      std::cout<<"TargetPlugin::OnUpdate "<<counter<<std::endl;
-	if (grasping>0)
-	  std::cout<<"TargetPlugin::OnUpdate Grasping"<<grasping<<std::endl;
-	grasping =0;
+   
+      if (contacts>UPDATE_RATE){
+	if(!grasped){
+	  //  std::cout<<"TargetPlugin::OnUpdate Grasped "<<modelName<<std::endl;
+	  targetCmd.set_x(atoi( modelName.c_str()));
+	  targetCmd.set_y(this->model->GetId());
+	  targetCmd.set_z(2);
+	  targetPub->Publish(targetCmd);
+	}
+	grasped=true;
+      }else{
+	if(grasped){
+	  //std::cout<<"TargetPlugin::OnUpdate Released"<<modelName<<std::endl;
+	  targetCmd.set_x(atoi( modelName.c_str()));
+	  targetCmd.set_y(this->model->GetId());
+	  targetCmd.set_z(3);
+	  targetPub->Publish(targetCmd);
+	}
+	grasped=false;
+      }
+      contacts =0;
     }
 
   public: void OnContacts(ConstContactsPtr &_msg)
@@ -152,9 +158,7 @@ namespace gazebo
 	    {
 	      if (collision1->GetModel()->GetLink("bug")||collision2->GetModel()->GetLink("bug"))
 		{
-		  //  std::cout<<"TargetPlugin::OnContacts"<<std::endl;
-		  grasping++;
-		  //  std::cout<<"TargetPlugin::OnContacts"<< grasping<<std::endl;
+		  contacts++;
 		}
 	    }
 	}

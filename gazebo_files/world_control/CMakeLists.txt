@@ -59,3 +59,11 @@ TARGET_LINK_LIBRARIES(
   protobuf
   sdformat
   )
+
+
+INSTALL(TARGETS 
+  worldcontrol
+  LIBRARY DESTINATION $ENV{HOME}/iqr-gazebo/gazebo_files
+  ARCHIVE DESTINATION $ENV{HOME}/iqr-gazebo/gazebo_files
+  RUNTIME DESTINATION $ENV{HOME}/iqr-gazebo/gazebo_files
+)
