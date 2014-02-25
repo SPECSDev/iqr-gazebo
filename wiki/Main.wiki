@@ -1,6 +1,6 @@
-#summary iqr-gazebo side bar
-[HowToSetup  1. How to set up iqr and gazebo]
-[RunnginGazeboIQR 2. How to run iqr and gazebo]
-[iqrBugFeatures 3. Features, Sensors and Actions of the Robot Bug]
-[SDICchallenge 4. Robot Challenge]
-[QuestionAndAnswers 5. Questions and Answers]
+#sidebar Content
+  * [HowToSetup  1. How to set up iqr and gazebo]
+  * [RunnginGazeboIQR 2. How to run iqr and gazebo]
+  * [iqrBugFeatures 3. Features, Sensors and Actions of the Robot Bug]
+  * [SDICchallenge 4. Robot Challenge]
+  * [QuestionAndAnswers 5. Questions and Answers]
