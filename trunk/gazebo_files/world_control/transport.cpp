@@ -97,32 +97,54 @@ void Transport::OnScore(ConstVector3dPtr &msg)
   int target=(int)msg->z();
   
   int index=nameToIndex(name);
-  //add points TODO plus minus
-  if(target==0){
-    if(resources[index].state==GOOD)
-      emit plusPointA();
-    else
-      emit minusPointA();
-  }
-
-  if(target==1){
-    if(resources[index].state==GOOD)
-      emit plusPointB();   
-    else
-      emit minusPointB();
-  }
-  //Make resource available
- 
-  if(index>=0 && index<resources.size()){
-    resources[index].id=id;
-    if(target!=-1){
-      resetResource(index);
+  std::cout<<name<<id<<target<<std::endl;
+  // Not a grasp signal
+  if(target<2){
+    //Resource at Home Team A
+    if(target==0){
+      if(resources[index].state==GOOD){
+	emit plusPointA();
+	emit plusPointA();
+      }
+      else
+	emit minusPointA();
     }
+    
+    //Resource at Home Team B
+    if(target==1){
+      if(resources[index].state==GOOD){
+      emit plusPointB();   
+      emit plusPointB();   
+      }
+      else
+	emit minusPointB();
+    }
+    
+    //Make resource available
+    if(index>=0 && index<resources.size()){
+      resources[index].id=id;
+      if(target!=-1){
+	resetResource(index);
+      }
+    }else{
+      std::cout<<"Transport::OnScore::WrongName"<<std::endl;
+    }
+    //Grasp signal
   }else{
-    std::cout<<"Transport::OnScore::WrongName"<<std::endl;
-  }
+    if(index>=0 && index<resources.size()){
+      if(target==2){
+	resources[index].grasped=true;
+	//std::cout<<"Resource Grasped"<<std::endl;
+      }
+      if(target==3){
+	resources[index].grasped=false;
+	//std::cout<<"Resource Released"<<std::endl;	
+      }
+    }else{
+      std::cout<<"Transport::OnScore::WrongName"<<std::endl;
+    }
+  } 
 }
-
 void Transport::start(){
   std::cout<<"Transport::Start"<<std::endl;
   timer->start(1000);
@@ -182,6 +204,7 @@ void Transport::setPoseResource(int  index, gazebo::math::Pose pose){
 
 void Transport::resetResource(int index){
   resources[index].age=0;
+  resources[index].grasped=false;
   resources[index].state=AVAILABLE;
 }
 
@@ -211,6 +234,7 @@ void Transport::createResource(math::Pose pose){
   Resource resource;
   resource.state=GOOD;
   resource.age=0;
+  resource.grasped=false;
   resource.id=-1;
   resources.push_back(resource);
   int index=resources.size()-1;
@@ -229,9 +253,11 @@ void Transport::spawnResource(){
       resources[i].state=BAD;
       setColorResource(i,"Gazebo/Yellow");
     }
-    if(resources[i].age==MAX_AGE){
-      resetResource(i);
-      setPoseResource(i,addNoisePose(DEFAULT_POSE,0.2));
+    if(!resources[i].grasped){    
+      if(resources[i].age>=MAX_AGE){
+	resetResource(i);
+	setPoseResource(i,addNoisePose(DEFAULT_POSE,0.2));
+      }
     }
   }
   

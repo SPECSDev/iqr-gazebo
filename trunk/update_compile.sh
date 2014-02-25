@@ -85,7 +85,7 @@ cd $HOME/iqr-gazebo/gazebo_files/world_control
 mkdir -p build
 cd build
 cmake ..
-make  
+make install
 
 check_compile
 if [ $? -ne 0 ] ; then return; fi

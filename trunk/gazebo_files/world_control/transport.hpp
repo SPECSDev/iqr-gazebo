@@ -32,6 +32,7 @@ namespace gazebo
     int id;
     State state;
     int age;
+    bool grasped;
   };
   
   
