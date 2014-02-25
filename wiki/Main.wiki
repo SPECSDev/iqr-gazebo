@@ -1,4 +1,6 @@
 #summary Content
+The iqr-gazebo project provides all necessary modules, plugins and models for simulating a small swarm of robot controlled by iqr in gazebo.
+
   * [HowToSetup  1. How to set up iqr and gazebo]
   * [RunnginGazeboIQR 2. How to run iqr and gazebo]
   * [iqrBugFeatures 3. Features, Sensors and Actions of the Robot Bug]
