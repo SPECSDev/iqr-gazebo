@@ -7,7 +7,7 @@ iqr-gazebo is an interface between the lager scale neuronal simulator iqr and th
 
 = Content =
 == [HowToSetup  1. How to set up iqr and gazebo] ==
-== [unnginGazeboIQR 2. How to run iqr and gazebo] ==
+== [RunnginGazeboIQR 2. How to run iqr and gazebo] ==
 == [iqrBugFeatures 3. Features, Sensors and Motor of Robot] ==
 == [SDICchallenge 4. Robot Challenge] ==
 == [QuestionAndAnswers 5. Questions and Answers] ==
