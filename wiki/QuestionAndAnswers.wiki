@@ -1,7 +1,7 @@
 #summary Solution to all your problems
 
 == Error messages while compiling ==
-*Error:*
+===Error (iqr-devel):===
 While compiling the iqr_module I get the following error:
 {{{
  fatal error: Common/Item/threadModule.hpp: No such file or directory
@@ -12,7 +12,7 @@ The compiler can not find the iqr header files. Please download the iqr-devel pa
 sudo dpkg -i iqr-dev_2.0-0.ubuntu_debian.i386.deb
 }}}
 
-*Error:*
+===Error (iqr root):===
 While compiling the iqr_module I get the following error:
 {{{
  CMake Error at cmake_install.cmake:50 (FILE):
@@ -26,7 +26,7 @@ sudo rm -rf $HOME/iqr
 . $HOME/iqr-gazebo/update_compile.sh
 }}}
 
-*Error:*
+===Error (libqt4-dev):===
 While compiling the iqr_module I get the following error:
 {{{
   fatal error: QMutex: No such file or directory
@@ -40,7 +40,7 @@ sudo apt-get install libqt4-dev
 
 
 == Error messages on run time ==
-*Error*
+===Error (gzserver)===
 When running the iqr system, iqr stalls and stops at around 68% with the following output in the console:
 {{{
 INIT Gazebo Transport !
@@ -51,7 +51,7 @@ Msg Waiting for master..............
 iqr can not find the gazebo server. Please run the gazebo server first as explained [RunningGazeboIQR here]
 
 
-*Error*
+===Error (bug name)===
 When running the iqr system, iqr stalls and stops at around 68% with the following output in the console:
 {{{
 Publishing to: /gazebo/default/TeamA_Bug_01/vel_cmd ....
