@@ -21,6 +21,11 @@
 	      <slip2>0</slip2>
 	    </ode>
 	  </friction>
+	  <contact>
+            <ode>
+              <max_vel>0.0</max_vel>
+            </ode>
+          </contact>
 	</surface>
       </collision>
       <visual name='visual'>
