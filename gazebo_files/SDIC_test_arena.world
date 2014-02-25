@@ -76,6 +76,7 @@
 
 
     <!-- Targets -->
+    <!--
     <include>
       <pose>0 3 0 0 0 0</pose>
       <name>target_0</name>
@@ -101,7 +102,7 @@
       <name>target_4</name>
       <uri>model://SDIC_Target</uri>
     </include>
-   
+   -->
 
     <!-- Wall -->
     <include>

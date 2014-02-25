@@ -327,17 +327,17 @@
         <geometry>
           <cylinder>
             <radius> 1 </radius>
-	    <length> 0.25 </length>
+	    <length> .5 </length>
           </cylinder>
         </geometry>
-        <pose>0 0 0.125 0 -0 0</pose>
+        <pose>0 0 0.25 0 -0 0</pose>
       </collision>
       <visual name='Obstacle_0_Visual'>
-        <pose>0 0 0.125 0 -0 0</pose>
+        <pose>0 0 0.25 0 -0 0</pose>
         <geometry>
          <cylinder>
             <radius> 1 </radius>
-	    <length> 0.25 </length>
+	    <length> .5 </length>
           </cylinder>
 	</geometry>
         <material>
