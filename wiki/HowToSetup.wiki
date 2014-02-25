@@ -64,4 +64,4 @@ source ./update_compile.sh
 }}}
 
 If the script fails please follow the instruction at the end of the document. You can use the same script for updating and compiling the iqr-gazebo project from the svn repository. 
-You are all setup. Check out how to run iqr and gazebo [RunnginGazeboIQR here].
+You are all setup. Check out how to run iqr and gazebo [RunnginGazeboIQR here]. In case thinks go wrong please check the [QuestionsAndAnswers Q&A wiki]
