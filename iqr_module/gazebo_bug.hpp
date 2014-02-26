@@ -136,6 +136,7 @@ namespace iqrcommon{
     
   public:
     GazeboBugInterface();
+    ~GazeboBugInterface();
     bool Open(const string& device); // subscribe to topics
     void Close();
    
