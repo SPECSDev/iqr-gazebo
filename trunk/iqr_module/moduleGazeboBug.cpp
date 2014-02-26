@@ -375,8 +375,6 @@ void iqrcommon::ClsModuleGazeboBug::update(){
 void iqrcommon::ClsModuleGazeboBug::cleanup(){
   // Make sure to shut everything down.
     std::cout << "iqrcommon::ClsModuleGazeboBug::cleanup() \n";
-    
-   
     bug.Close();  
     
 }

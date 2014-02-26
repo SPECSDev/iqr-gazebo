@@ -101,16 +101,20 @@ void iqrcommon::GazeboBugInterface::Subscribe(){
 /* Unsubscribe(): unsubscribe from a topic */
 void iqrcommon::GazeboBugInterface::Unsubscribe()
 {
-    this->laserScanSub->Unsubscribe();
-    this->laserScanSub.reset();
-    this->laserScanTargetSub->Unsubscribe();
-    this->laserScanTargetSub.reset();
-    this->laserScanGripperSub->Unsubscribe();
-    this->laserScanGripperSub.reset();
-    this->scanAudioSub->Unsubscribe();
-    this->scanAudioSub.reset();
-    this->cameraSub->Unsubscribe();
-    this->cameraSub.reset();
+  this->laserScanSub->Unsubscribe();
+  this->laserScanSub.reset();
+  this->laserScanTargetSub->Unsubscribe();
+  this->laserScanTargetSub.reset();
+  this->laserScanGripperSub->Unsubscribe();
+  this->laserScanGripperSub.reset();
+  this->scanAudioSub->Unsubscribe();
+  this->scanAudioSub.reset();
+  this->cameraSub->Unsubscribe();
+  this->cameraSub.reset();
+  
+  motorPub.reset();
+  jointPub.reset();
+  audioPub.reset();
 }
 
 /* Publish(): opens a publisher to a topic */
@@ -147,26 +151,20 @@ void iqrcommon::GazeboBugInterface::Close(){
   setSpeed(0, 0);
   sleep(1);
   
- 
   
-  if (this->node)
+  
+  if (this->node){
     this->node->Fini();
-  this->node.reset();
-  
-  laserScanSub.reset();
-  laserScanTargetSub.reset();
-  laserScanGripperSub.reset();
-  scanAudioSub.reset();
-  motorPub.reset();
-  jointPub.reset();
-  audioPub.reset();
+    this->node.reset();
+  }
+  Unsubscribe();
   
   
   if(--NumberOfBugs<=0){
-    gazebo::transport::fini();
-    std::cout<<"Closing communication"<<std::endl;
+  //  gazebo::transport::fini();
+  //  std::cout<<"Closing communication"<<std::endl;
   }
-   cout<<"number of bugs ="<<NumberOfBugs<<endl;
+  cout<<"number of bugs ="<<NumberOfBugs<<endl;
 }
 
 /* setSpeed(float left, float right): set the velocity of the wheels */
