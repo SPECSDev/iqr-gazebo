@@ -20,10 +20,7 @@ iqrcommon::ClsModuleGazeboBug::ClsModuleGazeboBug() : ClsThreadModule() {
                                      "iqrGazebo", true, false,
                                      "Name of the bug to subscribe", "General");
     
-    bugNumber=moduleGazeboBugNumber;
-    moduleGazeboBugNumber++;
-    cout<<"bugNumber: "<<bugNumber<<endl;
-
+    
     par_cps = addIntParameter("cps", "Cycles/Second", 25, 0, 1000, 
                               "Bug update cycles per second", "General");   
     
@@ -118,11 +115,6 @@ void iqrcommon::ClsModuleGazeboBug::init(){
   checkSize(var_image_GS, widthCam, heightCam);
   checkSize(var_image_BV, widthCam, heightCam);
   
-  // ostringstream bugNumber_int;
-  // bugNumber_int<<bugNumber;
-  // if(!bug.Open(device_name->getValue()+bugNumber_int.str()))
- 
-
   //Navigation
   placeCellWidth=var_placeCell->getNrCellsHorizontal();
   placeCellHeight=var_placeCell->getNrCellsVertical();

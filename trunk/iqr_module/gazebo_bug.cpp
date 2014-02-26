@@ -4,7 +4,7 @@
 #include <gazebo/math/MathTypes.hh>
 #include <gazebo_bug.hpp>
 
-int iqrcommon::GazeboBugInterface::NumberOfBugs=0;      
+
 /* Gazebo bug interface */
 iqrcommon::GazeboBugInterface::GazeboBugInterface(){
   qMutex = new QMutex(); 
@@ -12,8 +12,17 @@ iqrcommon::GazeboBugInterface::GazeboBugInterface(){
   current.closing=true;
   imageWidth=MAX_WIDTH_CAM;
   imageHeight=MAX_HEIGHT_CAM;
-
   comKey=DEFAULT_COM_KEY;
+  
+ 
+}
+
+iqrcommon::GazeboBugInterface::~GazeboBugInterface(){
+  Unsubscribe();
+  if(!gazebo::transport::is_stopped()){
+    gazebo::transport::fini();
+    std::cout<<"FINI Gazebo Transport"<<std::endl;
+  }
 }
 
 /*Open(const string& device): Opens the connection to Gazebo server */
@@ -21,26 +30,24 @@ bool iqrcommon::GazeboBugInterface::Open(const string& device){
     this->deviceName = device;	
     std::cout << device << std::endl;
     
+    
     if(gazebo::transport::is_stopped()){
       cout<<"INIT Gazebo Transport !"<<endl;
       if(!gazebo::transport::init()){
 	error_message = "Cannot initialize gazebo server";
-	return false;
+	return 0;
       }
+      gazebo::transport::run();
     }else{
       cout<<"Gazebo Transport ALREADY running!"<<endl;
     }
-
    
     this->node = gazebo::transport::NodePtr(new gazebo::transport::Node());
     this->node->Init();
     iqrcommon::GazeboBugInterface::Subscribe();
-    gazebo::transport::run();
+   
     iqrcommon::GazeboBugInterface::Publish();
     
- 
-    NumberOfBugs++;
-    cout<<"number of bugs ="<<NumberOfBugs<<endl;
     return true;
 }
 
@@ -101,20 +108,25 @@ void iqrcommon::GazeboBugInterface::Subscribe(){
 /* Unsubscribe(): unsubscribe from a topic */
 void iqrcommon::GazeboBugInterface::Unsubscribe()
 {
-  this->laserScanSub->Unsubscribe();
+  if(this->laserScanSub)
+    this->laserScanSub->Unsubscribe();
   this->laserScanSub.reset();
-  this->laserScanTargetSub->Unsubscribe();
+  if(this->laserScanTargetSub)
+    this->laserScanTargetSub->Unsubscribe();
   this->laserScanTargetSub.reset();
-  this->laserScanGripperSub->Unsubscribe();
+  if(this->laserScanGripperSub)
+    this->laserScanGripperSub->Unsubscribe();
   this->laserScanGripperSub.reset();
-  this->scanAudioSub->Unsubscribe();
+  if(this->scanAudioSub)
+    this->scanAudioSub->Unsubscribe();
   this->scanAudioSub.reset();
-  this->cameraSub->Unsubscribe();
+  if(this->cameraSub)
+    this->cameraSub->Unsubscribe();
   this->cameraSub.reset();
   
-  motorPub.reset();
-  jointPub.reset();
-  audioPub.reset();
+  this->motorPub.reset();
+  this->jointPub.reset();
+  this->audioPub.reset();
 }
 
 /* Publish(): opens a publisher to a topic */
@@ -149,7 +161,7 @@ void iqrcommon::GazeboBugInterface::Publish(){
 /* CLose(): Close the communication with Gazebo and clean */
 void iqrcommon::GazeboBugInterface::Close(){
   setSpeed(0, 0);
-  sleep(1);
+  sleep(.1);
   
   
   
@@ -159,12 +171,6 @@ void iqrcommon::GazeboBugInterface::Close(){
   }
   Unsubscribe();
   
-  
-  if(--NumberOfBugs<=0){
-  //  gazebo::transport::fini();
-  //  std::cout<<"Closing communication"<<std::endl;
-  }
-  cout<<"number of bugs ="<<NumberOfBugs<<endl;
 }
 
 /* setSpeed(float left, float right): set the velocity of the wheels */
@@ -295,7 +301,7 @@ void iqrcommon::GazeboBugInterface::setGripper(bool close, bool up){
 
 /* onScan(ConstLaserScanStampedPtr &): listen to the topic */
 void iqrcommon::GazeboBugInterface::onScan(ConstLaserScanStampedPtr &_msg){
-  // std::cout<<deviceName<<": onScan"<<std::endl;
+  //std::cout<<deviceName<<": onScan"<<std::endl;
   
   int i; 
   float range_max;    

@@ -19,8 +19,7 @@ using std::ofstream;
 #include <vector>
 
 namespace iqrcommon{
-  static int moduleGazeboBugNumber =-1;
-
+  
   class ClsModuleGazeboBug : public ClsThreadModule{
   public:
     ClsModuleGazeboBug();
@@ -31,7 +30,6 @@ namespace iqrcommon{
     moduleIcon getIcon();
     
   private:
-    int bugNumber;
     ClsModuleGazeboBug(const ClsModuleGazeboBug&);
     void relax();
     
