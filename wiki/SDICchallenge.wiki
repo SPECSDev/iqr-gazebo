@@ -2,7 +2,7 @@
 
 =SDIC Robot Challenge=
 
-Two teams of robots will compete in the same arena for limited resources. The arena is surrounded by walls and comprises, resources i.e. small spheres of different colors,  obstacles and two home corners for each team. The goal of the competition is to search for resources and bring them back to the home corner. Different resources will be associated to different number of points. [GroupsSDICchallenge  Gropus] for the SDIC robot challenge 2014. 
+Two teams of robots will compete in the same arena for limited resources. The arena is surrounded by walls and comprises, resources i.e. small spheres of different colours,  obstacles and two home corners for each team. The goal of the competition is to search for resources and bring them back to the home corner. Different resources will be associated to different number of points. [GroupsSDICchallenge  Groups] for the SDIC robot challenge 2014. 
 
 ==Configuration==
   * Robots Team A = red, Robots Team B = green 
@@ -74,19 +74,19 @@ This section should include all the necessary background information, the motiva
 This should include a description of the overall architecture of the system, hardware platforms required, functional breakdown of the system into processes and how data is exchange among them. The relevant data exchange format should be properly explained if required. Explain and justify all the assumptions in your design of the system.
  
 ===b. Validation experiments===
-This section should explain the criteria used for evaluation (dependent on whether it is an engineered system, modeling of a natural system, etc). Testing paradigms and experiments should be defined for evaluation of the functional role and/or modeling work of the system.
+This section should explain the criteria used for evaluation (dependent on whether it is an engineered system, modelling of a natural system, etc). Testing paradigms and experiments should be defined for evaluation of the functional role and/or modelling work of the system.
  
 ==3. Results==
 This section contains the results of the system validation. Please apply the rules and methods you learned in the research methods class.
  
 ==4.  Conclusions==
-This section summarizes your results and discusses them in a wider context.
+This section summarises your results and discusses them in a wider context.
 
 ==5. References==
  
  
  
-Please save the file in pdf format and with a meaningful name including some keywords describing you rproject.
+Please save the file in pdf format and with a meaningful name including some keywords describing your project.
 {{{
 Example: PlaceCellNavigation_SDIC2014.pdf
 }}}
