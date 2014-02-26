@@ -2,7 +2,7 @@
 
 =SDIC Robot Challenge=
 
-Two teams of robots will compete in the same arena for limited resources. The arena is surrounded by walls and comprises, resources i.e. small spheres of different colors,  obstacles and two home corners for each team. The goal of the competition is to search for resources and bring them back to the home corner. Different resources will be associated to different number of points.
+Two teams of robots will compete in the same arena for limited resources. The arena is surrounded by walls and comprises, resources i.e. small spheres of different colors,  obstacles and two home corners for each team. The goal of the competition is to search for resources and bring them back to the home corner. Different resources will be associated to different number of points. [GroupsSDICchallenge  Gropus] for the SDIC robot challenge 2014. 
 
 ==Configuration==
   * Robots Team A = red, Robots Team B = green 
