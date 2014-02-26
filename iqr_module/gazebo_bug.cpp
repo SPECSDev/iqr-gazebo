@@ -144,7 +144,24 @@ void iqrcommon::GazeboBugInterface::Publish(){
 
 /* CLose(): Close the communication with Gazebo and clean */
 void iqrcommon::GazeboBugInterface::Close(){
-  this->node->Fini(); 
+  setSpeed(0, 0);
+  sleep(1);
+  
+ 
+  
+  if (this->node)
+    this->node->Fini();
+  this->node.reset();
+  
+  laserScanSub.reset();
+  laserScanTargetSub.reset();
+  laserScanGripperSub.reset();
+  scanAudioSub.reset();
+  motorPub.reset();
+  jointPub.reset();
+  audioPub.reset();
+  
+  
   if(--NumberOfBugs<=0){
     gazebo::transport::fini();
     std::cout<<"Closing communication"<<std::endl;
