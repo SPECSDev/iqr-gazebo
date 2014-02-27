@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <QVector>
 #include <QList>
+#include <QMutex>
 #include <boost/bind.hpp>
 #include <boost/program_options.hpp>
 
@@ -90,6 +91,8 @@ namespace gazebo
     void OnScore(ConstVector3dPtr &msg);
     QTimer *timer;
     
+    QMutex *mutex;
+
  		  
     QList<Side> resourceSides; // x,y,prob,spread
     QList<Resource> resources;
