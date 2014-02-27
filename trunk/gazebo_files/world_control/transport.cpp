@@ -76,6 +76,8 @@ Transport::Transport(){
   createPub->Publish(createMsg, true);
 
 
+  mutex = new QMutex();
+
 
   Side  side;
   side.pos_x=2.0;  side.pos_y=-2.0;  side.prob=.3;  side.radius=0.5;
@@ -99,6 +101,7 @@ void Transport::OnScore(ConstVector3dPtr &msg)
   int index=nameToIndex(name);
   //std::cout<<name<<id<<target<<std::endl;
   // Not a grasp signal
+  mutex->lock();
   if(target<2){
     //Resource at Home Team A
     if(target==0){
@@ -144,6 +147,7 @@ void Transport::OnScore(ConstVector3dPtr &msg)
       std::cout<<"Transport::OnScore::WrongName"<<std::endl;
     }
   } 
+  mutex->unlock();
 }
 void Transport::start(){
   std::cout<<"Transport::Start"<<std::endl;
@@ -154,12 +158,13 @@ void Transport::reset(){
   std::cout<<"Transport::Reset"<<std::endl;
   
   timer->stop();
+  mutex->lock();
   for(int i=0;i<resources.size();i++){
-    if (resources[i].state>0){
-      resetResource(i);
+    if (resources[i].state>0){      resetResource(i);
       setPoseResource(i,addNoisePose(DEFAULT_POSE,0.2));
     }
   }
+  mutex->unlock();
   msgs::WorldControl worldMsg;
   msgs::WorldReset *resetMsg = worldMsg.mutable_reset();
   resetMsg->set_all(true);
@@ -177,6 +182,7 @@ void Transport::close(){
   deleteMsg = *msgs::CreateRequest("entity_delete", "dummy");
   deletePub->Publish(deleteMsg);  
   
+
   for(int i=0;i<resources.size();i++){
     deleteMsg = *msgs::CreateRequest("entity_delete", indexToName(i));
     deletePub->Publish(deleteMsg);
@@ -238,14 +244,17 @@ void Transport::createResource(math::Pose pose){
   resource.id=-1;
   resources.push_back(resource);
   int index=resources.size()-1;
+  mutex->unlock();
   while(resources[index].id<0)
     usleep(100000);
+  mutex->lock();
   setPoseResource(index,pose);
 }
 
 
 void Transport::spawnResource(){
   //age resources
+  mutex->lock();
   for(int i=0;i<resources.size();i++){
     if(resources[i].state>0)
       resources[i].age++;
@@ -285,6 +294,7 @@ void Transport::spawnResource(){
       }    
     }
   }
+  mutex->unlock();
 }
 
 int Transport::findAvailableResource(){
