@@ -443,8 +443,9 @@ vector<Pixel> iqrcommon::GazeboBugInterface::readImage(){
 /* readLaser(): fill the vector to send to iqr sensors group */
 vector<float> iqrcommon::GazeboBugInterface::readLaser(){ 
   vector<float> readings;  
-  qMutex->lock();   
-  for(int i = 0; i < MAX_RANGES; ++i){
+  qMutex->lock();
+   
+  for(int i = MAX_RANGES-1; i >= 0; --i){
     readings.push_back(current.ranges[i]);
   }
   qMutex->unlock();
@@ -456,7 +457,7 @@ vector<float> iqrcommon::GazeboBugInterface::readLaser(){
 vector<float> iqrcommon::GazeboBugInterface::readLaserTarget(){ 
   vector<float> readings;  
   qMutex->lock();   
-  for(int i = 0; i < MAX_RANGES_TARGET; ++i){
+  for(int i = MAX_RANGES_TARGET-1; i >= 0; --i){
     readings.push_back(current.rangesTarget[i]);
   }
   qMutex->unlock();
@@ -468,7 +469,7 @@ vector<float> iqrcommon::GazeboBugInterface::readLaserTarget(){
 vector<float> iqrcommon::GazeboBugInterface::readLaserGripper(){ 
   vector<float> readings;  
   qMutex->lock();   
-  for(int i = 0; i < MAX_RANGES_GRIPPER; ++i){
+  for(int i = MAX_RANGES_GRIPPER-1; i >= 0; --i){ 
     readings.push_back(current.rangesGripper[i]);
   }
   qMutex->unlock();
