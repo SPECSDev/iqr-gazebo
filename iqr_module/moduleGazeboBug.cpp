@@ -98,7 +98,8 @@ void iqrcommon::ClsModuleGazeboBug::init(){
   checkSize(var_proximityGripper,MAX_RANGES_GRIPPER,1);
   checkSize(var_gps, MAX_GPS,1);
   checkSize(var_scanAudio, MAX_RANGES_AUDIO,-1);
-  checkSize(var_emitAudio->getTarget(), MAX_RANGES_AUDIO,-1);
+  checkSize(var_emitAudio->getTarget(), MAX_RANGES_AUDIO,-1, "Emit Audio");
+  checkSize(var_gripper->getTarget(), 1,1,"Gripper");
   
   // Check Camera size
   int widthCam = var_image_RH->getNrCellsHorizontal();
@@ -378,13 +379,18 @@ moduleIcon iqrcommon::ClsModuleGazeboBug::getIcon() {
 } 
 
 /* CHECK WIDTH CONSISTENCY */
-void iqrcommon::ClsModuleGazeboBug::checkSize(ClsStateVariable* var,  int width, int height){
+void iqrcommon::ClsModuleGazeboBug::checkSize(ClsStateVariable* var, 
+					      int width, int height, string name){
+  
+  if (name.empty())
+    name =  var->getLabel();
+  
   if (height<0){
      if(var->getNrCellsHorizontal()*var->getNrCellsVertical()!=width){
         ostringstream w_int;
         w_int<<width;
-        throw ModuleError(label() + string(": ") + var->getLabel() +
-                          string(" group must be of total size ") + w_int.str()+"x");
+        throw ModuleError(label() + string(": ") + name  +
+                          string(" group must be of total size ") + w_int.str());
      }
   }else{
     if(var->getNrCellsHorizontal()!=width||var->getNrCellsVertical()!=height){
@@ -392,7 +398,7 @@ void iqrcommon::ClsModuleGazeboBug::checkSize(ClsStateVariable* var,  int width,
         w_int<<width;
 	ostringstream h_int;
         h_int<<height;
-        throw ModuleError(label() + string(": ") + var->getLabel() +
+        throw ModuleError(label() + string(": ") + name +
                           string(" group must be of size ") + w_int.str()+"x"+h_int.str());
     }
   }

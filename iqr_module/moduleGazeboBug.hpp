@@ -54,7 +54,7 @@ namespace iqrcommon{
     vector<Pixel> RGBtoHSV(vector<Pixel> rgb_image);
     vector<Pixel> RGBtoBW(vector<Pixel> rgb_image);
     
-    void checkSize(ClsStateVariable* var, int width, int height);
+    void checkSize(ClsStateVariable* var, int width, int height, string name = "");
     
     
     iqrcommon::GazeboBugInterface bug;
