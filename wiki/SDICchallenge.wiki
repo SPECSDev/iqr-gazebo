@@ -30,7 +30,9 @@ Two teams of robots will compete in the same arena for limited resources. The ar
 The Winners will be determined in a knock off 
 
 ==Extensions==
-  * Battery ?
+  * Battery 
+  * Pheromone trace
+  * Ballistic gripper able to throw resource
 
 ==Projects==
 Each group is supposed to select a subsystem of their competition system for a more detailed design and analysis following the biomimetic approach. However also the overall system should follow a biomimetic approach. 
