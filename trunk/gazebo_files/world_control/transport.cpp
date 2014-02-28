@@ -255,14 +255,17 @@ void Transport::createResource(math::Pose pose){
 void Transport::spawnResource(){
   //age resources
   mutex->lock();
+ 
+  
   for(int i=0;i<resources.size();i++){
-    if(resources[i].state>0)
-      resources[i].age++;
-    if(resources[i].age==TURN_AGE){
-      resources[i].state=BAD;
-      setColorResource(i,"Gazebo/Yellow");
-    }
-    if(!resources[i].grasped){    
+    if(!resources[i].grasped){      
+      if(resources[i].state>0)
+	resources[i].age++;
+      if(resources[i].age==TURN_AGE){
+	resources[i].state=BAD;
+	setColorResource(i,"Gazebo/Yellow");
+      }
+      
       if(resources[i].age>=MAX_AGE){
 	resetResource(i);
 	setPoseResource(i,addNoisePose(DEFAULT_POSE,0.2));
