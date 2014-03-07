@@ -25,9 +25,10 @@ Two teams of robots will compete in the same arena for limited resources. The ar
   * Communication between the robots is only allowed over the provided communication system. No direct communication between groups of different robots. 
   * No Cheating! Cheaters will be disqualified.
 
-== Ranking ==
+== Preparation ==
 
-The Winners will be determined in a knock off 
+For preparing the Robot Challenge you can use the rooms 54.030 or 54.031. On Monday 17th of March to Thursday 20th of March from 10:00 to 20:00 the room is reserved for SDIC students. 
+
 
 ==Extensions==
   * Battery 
