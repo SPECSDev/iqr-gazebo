@@ -1,0 +1,15 @@
+material DAC/Plane
+{
+  receive_shadows off
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture DAC_arena.png
+      }
+    }
+  }
+}
+
