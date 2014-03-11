@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+    <scene>
+      <shadows>0</shadows>
+    </scene>
+    <!-- World Camera -->    
+    <gui>
+      <camera name='camera_view'>
+	<pose>0 0 35 0 1.57079 1.57079</pose>
+      </camera>
+    </gui>
+    
+    <!-- Ground -->
+    <include>
+      <uri>model://DAC_plane</uri>
+    </include>
+
+    <!-- Global light source -->
+     <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Robots Team A-->
+    <include>
+      <pose>-9.5 7 0 0 0  -1.57079</pose>
+      <name>Bug</name>
+      <uri>model://SDIC_GreenBug</uri>
+    </include>
+
+    <!-- Wall -->
+    <include>
+        <uri>model://DAC_Wall</uri>
+    </include>
+ 
+  </world>
+</sdf>
+
