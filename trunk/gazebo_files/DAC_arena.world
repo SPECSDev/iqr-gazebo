@@ -23,7 +23,7 @@
 
     <!-- Robots Team A-->
     <include>
-      <pose>-9.5 7 0 0 0  -1.57079</pose>
+      <pose>0 0 0 0 0  -1.57079</pose>
       <name>Bug</name>
       <uri>model://SDIC_GreenBug</uri>
     </include>
