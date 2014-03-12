@@ -43,7 +43,7 @@ svn update
 
 echo -e "\n $GREEN Compiling iqr_module .... $CLEAR \n"
 
-cd $HOME/iqr-gazebo/iqr_module
+cd $HOME/iqr-gazebo/iqr_modules/gazeboModule
 mkdir -p  build
 cd build
 cmake ..
@@ -51,6 +51,34 @@ make install
 
 check_compile
 if [ $? -ne 0 ] ; then return; fi
+
+
+#compile module 
+
+echo -e "\n $GREEN Compiling iqr_module .... $CLEAR \n"
+
+cd $HOME/iqr-gazebo/iqr_modules/differenceModule
+mkdir -p  build
+cd build
+cmake ..
+make install
+
+check_compile
+if [ $? -ne 0 ] ; then return; fi
+
+#compile neurons 
+
+echo -e "\n $GREEN Compiling iqr_module .... $CLEAR \n"
+
+cd $HOME/iqr-gazebo/iqr_neurons
+mkdir -p  build
+cd build
+cmake ..
+make install
+
+check_compile
+if [ $? -ne 0 ] ; then return; fi
+
 
 #compile vel_plugin
 

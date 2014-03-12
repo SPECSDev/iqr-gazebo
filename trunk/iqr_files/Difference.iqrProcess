@@ -1,0 +1,67 @@
+    <iqrEntity type="Process">
+        <Process port="54923" path="" hostname="" id="L-32252-1394659303-535832422" name="Difference" enableModule="true" color="#FFFFFF">
+            <Module name="differenceModule">
+                <XRefHolder name="InputFromGroup">
+                    <XRef target="L-32252-1394659323-228661345" name="_location"/>
+                    <XRef target="L-32252-1394659343-510758010" name="_goal"/>
+                </XRefHolder>
+                <XRefHolder name="OutputToGroup">
+                    <XRef target="L-32252-1394659353-82497179" name="_diff"/>
+                </XRefHolder>
+            </Module>
+            <Note></Note>
+            <DiagramIcon width="50" x="174" y="163" height="50"/>
+            <Group id="L-32252-1394659323-228661345" name="Current" color="#FFFFFF">
+                <Topology>
+                    <TopologyRect cylinderHor="false" hcount="9" cylinderVert="false" vcount="9"/>
+                </Topology>
+                <Neuron name="neuronLinearThreshold">
+                    <Parameter value="1" name="excGain"/>
+                    <Parameter value="1" name="inhGain"/>
+                    <Parameter value="0" name="vmPrs"/>
+                    <Parameter value="false" name="clipVm"/>
+                    <Parameter value="0" name="vmMin"/>
+                    <Parameter value="1" name="vmMax"/>
+                    <Parameter value="1" name="probability"/>
+                    <Parameter value="0" name="threshold"/>
+                </Neuron>
+                <Note></Note>
+                <DiagramIcon width="50" x="83" y="112" height="50"/>
+            </Group>
+            <Group id="L-32252-1394659343-510758010" name="Goal" color="#FFFFFF">
+                <Topology>
+                    <TopologyRect cylinderHor="false" hcount="9" cylinderVert="false" vcount="9"/>
+                </Topology>
+                <Neuron name="neuronLinearThreshold">
+                    <Parameter value="1" name="excGain"/>
+                    <Parameter value="1" name="inhGain"/>
+                    <Parameter value="0" name="vmPrs"/>
+                    <Parameter value="false" name="clipVm"/>
+                    <Parameter value="0" name="vmMin"/>
+                    <Parameter value="1" name="vmMax"/>
+                    <Parameter value="1" name="probability"/>
+                    <Parameter value="0" name="threshold"/>
+                </Neuron>
+                <Note></Note>
+                <DiagramIcon width="50" x="229" y="118" height="50"/>
+            </Group>
+            <Group id="L-32252-1394659353-82497179" name="Difference" color="#FFFFFF">
+                <Topology>
+                    <TopologyRect cylinderHor="false" hcount="17" cylinderVert="false" vcount="17"/>
+                </Topology>
+                <Neuron name="neuronLinearThreshold">
+                    <Parameter value="1" name="excGain"/>
+                    <Parameter value="1" name="inhGain"/>
+                    <Parameter value="0" name="vmPrs"/>
+                    <Parameter value="false" name="clipVm"/>
+                    <Parameter value="0" name="vmMin"/>
+                    <Parameter value="1" name="vmMax"/>
+                    <Parameter value="1" name="probability"/>
+                    <Parameter value="0" name="threshold"/>
+                </Neuron>
+                <Note></Note>
+                <DiagramIcon width="50" x="160" y="226" height="50"/>
+            </Group>
+        </Process>
+    </iqrEntity>
+
