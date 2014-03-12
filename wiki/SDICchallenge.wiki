@@ -59,35 +59,7 @@ The more detailed design and analysis should contain:
 Before the competition the different groups will present their system in a 5 min presentation. The emphasis of the presentation should be on the subsystem you selected for the more detailed biomimetic design and analysis. 
 
 ==Report==
-Same as for the presentation the report should focus on the subsystem for which you have followed the more detailed biomimetic design and analysis. However the whole system has to be described in the report. [https://iqr-gazebo.googlecode.com/svn/wiki/ProjectReportTemplate.doc Template] 
-
-=Template for the report:=
-
-===Project title:===
- 
-===Group members:===
- 
- 
-==1. Introduction ==
-This section should include all the necessary background information, the motivation and the objectives of the projects.
- 
-== 2. Methods ==
- 
-===a. System description ===
-This should include a description of the overall architecture of the system, hardware platforms required, functional breakdown of the system into processes and how data is exchange among them. The relevant data exchange format should be properly explained if required. Explain and justify all the assumptions in your design of the system.
- 
-===b. Validation experiments===
-This section should explain the criteria used for evaluation (dependent on whether it is an engineered system, modelling of a natural system, etc). Testing paradigms and experiments should be defined for evaluation of the functional role and/or modelling work of the system.
- 
-==3. Results==
-This section contains the results of the system validation. Please apply the rules and methods you learned in the research methods class.
- 
-==4.  Conclusions==
-This section summarises your results and discusses them in a wider context.
-
-==5. References==
- 
- 
+Same as for the presentation the report should focus on the subsystem for which you have followed the more detailed biomimetic design and analysis. However the whole system has to be described in the report. You can downlaoad a template for the projcet report here [https://iqr-gazebo.googlecode.com/svn/wiki/ProjectReportTemplate.doc (doc)] 
  
 Please save the file in pdf format and with a meaningful name including some keywords describing your project.
 {{{
