@@ -59,7 +59,7 @@ The more detailed design and analysis should contain:
 Before the competition the different groups will present their system in a 5 min presentation. The emphasis of the presentation should be on the subsystem you selected for the more detailed biomimetic design and analysis. 
 
 ==Report==
-Same as for the presentation the report should focus on the subsystem for which you have followed the more detailed biomimetic design and analysis. However the whole system has to be described in the report. You can downlaoad a template for the projcet report here [https://iqr-gazebo.googlecode.com/svn/wiki/ProjectReportTemplate.doc (doc).] 
+Same as for the presentation the report should focus on the subsystem for which you have followed the more detailed biomimetic design and analysis. However the whole system has to be described in the report. You can downlaoad a template for the projcet report here ([https://iqr-gazebo.googlecode.com/svn/wiki/ProjectReportTemplate.doc doc]). 
 
 
 
