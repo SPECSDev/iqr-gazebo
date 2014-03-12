@@ -99,6 +99,17 @@
             <Note></Note>
             <DiagramIcon width="50" x="331" y="395" height="50"/>
         </Group>
+        <Group id="CB1394643512L-5187-1392113039-752108502" name="Rand  Input Shout" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="36" cylinderVert="false" vcount="1"/>
+            </Topology>
+            <Neuron name="neuronRandomSpike">
+                <Parameter value="0.3" name="probability"/>
+                <Parameter value="1" name="spkAmpl"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="493" y="197" height="50"/>
+        </Group>
         <Group id="L-14827-1391619839-708665346" name="Sensor Gripper" color="#FFFFFF">
             <Topology>
                 <TopologyRect cylinderHor="false" hcount="16" cylinderVert="false" vcount="1"/>
@@ -567,6 +578,28 @@
         </Synapse>
         <Note></Note>
         <DiagramLine APTarget="9" APSource="1"/>
+    </Connection>
+    <Connection target="L-5187-1392113039-752108502" type="excitatory" id="L-30110-1394643524-206493873" source="CB1394643512L-5187-1392113039-752108502" name="Connection Copy of Shout->Shout">
+        <Pattern>
+            <PatternMapped type="center">
+                <All/>
+                <All/>
+            </PatternMapped>
+        </Pattern>
+        <Arborization>
+            <ArbRect width="1" direction="RF" height="1" initialization_probability="1"/>
+        </Arborization>
+        <AttenuationFunction>
+            <FunUniform value="0"/>
+        </AttenuationFunction>
+        <DelayFunction>
+            <FunUniform value="0"/>
+        </DelayFunction>
+        <Synapse name="synapseFixedWeight">
+            <Parameter value="1" name="weight"/>
+        </Synapse>
+        <Note></Note>
+        <DiagramLine APTarget="5" APSource="13"/>
     </Connection>
 </System>
 
