@@ -1,0 +1,97 @@
+    <iqrEntity type="Process">
+        <Process port="54923" path="" hostname="" id="L-31409-1394654969-1972546561" name="TD Value" enableModule="true" color="#FFFFFF">
+            <Note></Note>
+            <DiagramIcon width="50" x="85" y="122" height="50"/>
+            <Group id="CB1394655003L-31409-1394654987-132041979" name="Value" color="#FFFFFF">
+                <Topology>
+                    <TopologyRect cylinderHor="false" hcount="10" cylinderVert="false" vcount="10"/>
+                </Topology>
+                <Neuron name="neuronTDValue">
+                    <Parameter value="0.5" name="alphaPlus"/>
+                    <Parameter value="0.1" name="alphaMinus"/>
+                    <Parameter value="1" name="gamma"/>
+                </Neuron>
+                <Note></Note>
+                <DiagramIcon width="50" x="177" y="202" height="50"/>
+            </Group>
+            <Group id="L-31409-1394654987-132041979" name="State" color="#FFFFFF">
+                <Topology>
+                    <TopologyRect cylinderHor="false" hcount="10" cylinderVert="false" vcount="10"/>
+                </Topology>
+                <Neuron name="neuronLinearThreshold">
+                    <Parameter value="1" name="excGain"/>
+                    <Parameter value="1" name="inhGain"/>
+                    <Parameter value="0" name="vmPrs"/>
+                    <Parameter value="false" name="clipVm"/>
+                    <Parameter value="0" name="vmMin"/>
+                    <Parameter value="1" name="vmMax"/>
+                    <Parameter value="1" name="probability"/>
+                    <Parameter value="0" name="threshold"/>
+                </Neuron>
+                <Note></Note>
+                <DiagramIcon width="50" x="94" y="111" height="50"/>
+            </Group>
+            <Group id="L-31409-1394655031-891855513" name="Reward" color="#FFFFFF">
+                <Topology>
+                    <TopologyRect cylinderHor="false" hcount="1" cylinderVert="false" vcount="1"/>
+                </Topology>
+                <Neuron name="neuronLinearThreshold">
+                    <Parameter value="1" name="excGain"/>
+                    <Parameter value="1" name="inhGain"/>
+                    <Parameter value="0" name="vmPrs"/>
+                    <Parameter value="false" name="clipVm"/>
+                    <Parameter value="0" name="vmMin"/>
+                    <Parameter value="1" name="vmMax"/>
+                    <Parameter value="1" name="probability"/>
+                    <Parameter value="0" name="threshold"/>
+                </Neuron>
+                <Note></Note>
+                <DiagramIcon width="50" x="250" y="106" height="50"/>
+            </Group>
+        </Process>
+        <Connection target="CB1394655003L-31409-1394654987-132041979" type="excitatory" id="L-31409-1394655022-1925093383" source="L-31409-1394654987-132041979" name="Connection State->Value">
+            <Pattern>
+                <PatternMapped type="center">
+                    <All/>
+                    <All/>
+                </PatternMapped>
+            </Pattern>
+            <Arborization>
+                <ArbRect width="1" direction="RF" height="1" initialization_probability="1"/>
+            </Arborization>
+            <AttenuationFunction>
+                <FunUniform value="0"/>
+            </AttenuationFunction>
+            <DelayFunction>
+                <FunUniform value="0"/>
+            </DelayFunction>
+            <Synapse name="synapseFixedWeight">
+                <Parameter value="1" name="weight"/>
+            </Synapse>
+            <Note></Note>
+            <DiagramLine APTarget="0" APSource="9"/>
+        </Connection>
+        <Connection target="CB1394655003L-31409-1394654987-132041979" type="modulatory" id="L-31409-1394655079-1936691773" source="L-31409-1394655031-891855513" name="Connection Reward->Value">
+            <Pattern>
+                <PatternMapped type="all">
+                    <All/>
+                    <All/>
+                </PatternMapped>
+            </Pattern>
+            <Arborization>
+                <ArbRect width="1" direction="RF" height="1" initialization_probability="1"/>
+            </Arborization>
+            <AttenuationFunction>
+                <FunUniform value="0"/>
+            </AttenuationFunction>
+            <DelayFunction>
+                <FunUniform value="0"/>
+            </DelayFunction>
+            <Synapse name="synapseFixedWeight">
+                <Parameter value="1" name="weight"/>
+            </Synapse>
+            <Note></Note>
+            <DiagramLine APTarget="2" APSource="8"/>
+        </Connection>
+    </iqrEntity>
+
