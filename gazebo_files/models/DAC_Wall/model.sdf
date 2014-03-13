@@ -301,7 +301,7 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose> 3 2 0 0 0 0</pose>
+      <pose> 3.5 0 0 0 0 0</pose>
     </link> 
 
  <link name='Target_2'>
@@ -333,7 +333,7 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose> -3 -2 0 0 0 0</pose>
+      <pose> -3.5 0 0 0 0 0</pose>
     </link> 
 
     <static>1</static>
