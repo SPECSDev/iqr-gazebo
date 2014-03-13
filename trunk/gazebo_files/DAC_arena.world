@@ -4,6 +4,14 @@
     <scene>
       <shadows>0</shadows>
     </scene>
+    <physics type='ode'>
+      <max_step_size>0.0015</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>10000</real_time_update_rate>
+      <gravity>0 0 -9.8</gravity>
+    </physics>
+
+
     <!-- World Camera -->    
     <gui>
       <camera name='camera_view'>
