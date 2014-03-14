@@ -123,9 +123,23 @@ if [ $? -ne 0 ] ; then return; fi
 #install dac_libs
 
 mkdir -p $HOME/iqr/lib/Modules
-cp $HOME/iqr-gazebo/iqr_modules/dac_libs/* $HOME/iqr/lib/Modules/.
+arch=`uname -m`
+
+if [ "$arch" == "x86_64" ]
+then
+    echo -e "\n $GREEN Installing dac_libs for x86_64... $CLEAR"
+    cp $HOME/iqr-gazebo/iqr_modules/dac_libs/moduleColor_64.so $HOME/iqr/lib/Modules/moduleColor.so
+    cp $HOME/iqr-gazebo/iqr_modules/dac_libs/moduleAL_64.so $HOME/iqr/lib/Modules/moduleAL.so
+    cp $HOME/iqr-gazebo/iqr_modules/dac_libs/moduleCL_64.so $HOME/iqr/lib/Modules/moduleCL.so
+else
+    echo -e "\n $GREEN Installing dac_libs for i686... $CLEAR"
+    cp $HOME/iqr-gazebo/iqr_modules/dac_libs/moduleColor_32.so $HOME/iqr/lib/Modules/moduleColor.so
+    cp $HOME/iqr-gazebo/iqr_modules/dac_libs/moduleAL_32.so $HOME/iqr/lib/Modules/moduleAL.so
+    cp $HOME/iqr-gazebo/iqr_modules/dac_libs/moduleCL_32.so $HOME/iqr/lib/Modules/moduleCL.so
+fi
+echo -e " $GREEN DONE! $CLEAR\n"
 
 
-echo -e "\n $GREEN DONE! $CLEAR\n"
+echo -e "\n $GREEN Update and Compile successful  $CLEAR\n"
 
 cd ../../..
