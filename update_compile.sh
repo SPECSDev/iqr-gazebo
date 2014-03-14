@@ -118,6 +118,14 @@ make install
 check_compile
 if [ $? -ne 0 ] ; then return; fi
 
+
+
+#install dac_libs
+
+mkdir -p $HOME/iqr/lib/Modules
+cp $HOME/iqr-gazebo/iqr_modules/dac_libs/* $HOME/iqr/lib/Modules/.
+
+
 echo -e "\n $GREEN DONE! $CLEAR\n"
 
 cd ../../..
