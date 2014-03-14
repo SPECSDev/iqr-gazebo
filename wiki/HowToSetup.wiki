@@ -47,7 +47,7 @@ svn checkout http://iqr-gazebo.googlecode.com/svn/trunk/ iqr-gazebo
 In case you do not have access to the svn repository you can download the latest source code using wget. Attention this overwrites the current iqr-gazebo folder:
 {{{
 cd $HOME
-rm iqr-gazebo
+rm -rf iqr-gazebo
 wget  -r  -np  -nH --cut-dirs=1 --reject "index.htm*" http://iqr-gazebo.googlecode.com/svn/trunk/
 mv trunk iqr-gazebo
 }}}
