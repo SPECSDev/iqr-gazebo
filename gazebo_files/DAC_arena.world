@@ -21,7 +21,7 @@
     
     <!-- Ground -->
     <include>
-      <uri>model://DAC_plane</uri>
+      <uri>model://DAC_Plane</uri>
     </include>
 
     <!-- Global light source -->
@@ -29,7 +29,7 @@
       <uri>model://sun</uri>
     </include>
 
-    <!-- Robots Team A-->
+    <!-- Robot -->
     <include>
       <pose>0 0 0 0 0  -1.57079</pose>
       <name>Bug</name>
