@@ -1,0 +1,219 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+  <!-- Robot model -->
+  <model name="SDIC_Bug">
+  <!--  <static>true</static> -->
+    <!-- Body elements -->
+    <link name='bug'>
+      <pose>0 0 .1 0 0 0</pose>
+      <inertial>
+	<mass>5</mass>
+	<inertia>
+	  <ixx>1</ixx>
+	  <ixy>0</ixy>
+	  <ixz>0</ixz>
+	  <iyy>1</iyy>
+	  <iyz>0</iyz>
+	  <izz>1</izz>
+	</inertia>
+      </inertial>
+      <collision name='collision'>
+	<geometry>
+	  <cylinder>
+	    <radius>.2</radius>
+	    <length>.2</length>
+	  </cylinder>
+	</geometry>
+	<surface>
+	  <friction>
+	    <ode>
+	      <mu>0.1</mu>
+	      <mu2>0</mu2>
+	      <slip1>0.0</slip1>
+	      <slip2>0.0</slip2>
+	    </ode>
+	  </friction>
+	</surface>
+      </collision>
+      
+      <visual name='visual'>
+	<geometry>
+	  <cylinder>
+	    <radius>.2</radius>
+	    <length>.2</length>
+	  </cylinder>
+	</geometry>
+	<material>
+	  <script>
+	    <uri>file://media/materials/scripts/gazebo.material</uri>
+	    <name>Gazebo/Red</name>
+	  </script>
+	</material>
+      </visual>
+     
+      <visual name='visualCamera'>
+	<pose>0.15 0 .125 0 0 0</pose>
+	<geometry>
+	  <cylinder>
+	    <radius>.05</radius>
+	    <length>.05</length>
+	  </cylinder>
+	</geometry>
+	<material>
+	  <script>
+	    <uri>file://media/materials/scripts/gazebo.material</uri>
+	    <name>Gazebo/Grey</name>
+	  </script>
+	</material>
+      </visual>
+
+      <!-- Sensors -->
+      <!-- Proximity sensor -->
+      <sensor name="laser" type="ray">
+	<pose>0 0 0.075 0 0 0 </pose>
+	<ray>
+	<scan>
+	  <horizontal>
+	    <samples>32</samples>
+	    <resolution>1</resolution>
+	    <min_angle>-3</min_angle>
+	    <max_angle>3</max_angle>
+	  </horizontal>
+	</scan>
+	<range>
+	  <min>0.205</min>
+	  <max>2.0</max>
+	  <resolution>0.01</resolution>
+	</range>
+	<noise>
+	  <type>gaussian</type>
+	  <mean>0.0</mean>
+	  <stddev>0.02</stddev>
+	</noise>
+      </ray>
+      <always_on>1</always_on>
+      <update_rate>25</update_rate>
+      <visualize>0</visualize>
+      </sensor>
+      
+      <!-- Proximity sensor -->
+      <sensor name="laser_target" type="ray">
+	<pose>0 0 0.25 0 0 0 </pose>
+	<ray>
+	<scan>
+	  <horizontal>
+	    <samples>32</samples>
+	    <resolution>1</resolution>
+	    <min_angle>-3</min_angle>
+	    <max_angle>3</max_angle>
+	  </horizontal>
+	</scan>
+	<range>
+	  <min>0.26</min>
+	  <max>2.5</max>
+	  <resolution>0.01</resolution>
+	</range>
+	<noise>
+	  <type>gaussian</type>
+	  <mean>0.0</mean>
+	  <stddev>0.02</stddev>
+	</noise>
+      </ray>
+      <always_on>1</always_on>
+      <update_rate>25</update_rate>
+      <visualize>0</visualize>
+      </sensor>
+      <!-- Proximity sensor Gripper -->
+      <sensor name="laser_gripper" type="ray">
+	<pose>0.19 0 -0.02 0 0 0 </pose>
+	<ray>
+	<scan>
+	  <horizontal>
+	    <samples>16</samples>
+	    <resolution>1</resolution>
+	    <min_angle>-1</min_angle>
+	    <max_angle>1</max_angle>
+	  </horizontal>
+	</scan>
+	<range>
+	  <min>0.0155</min>
+	  <max>0.2</max>
+	  <resolution>0.01</resolution>
+	</range>
+	<noise>
+	  <type>gaussian</type>
+	  <mean>0.0</mean>
+	  <stddev>0.005</stddev>
+	</noise>
+	</ray>
+	<always_on>0</always_on>
+	<update_rate>25</update_rate>
+	<visualize>0</visualize>
+      </sensor>
+    
+    <!-- Camera 
+    <sensor name="camera" type="camera">
+    <pose>0 0 1 0 1.57079 0</pose>
+      <camera>
+      <horizontal_fov>2</horizontal_fov>
+	<image>
+	  <width>128</width>
+	  <height>96</height>
+	</image>
+	<clip>
+	  <near>0.1</near>
+	  <far>100</far>
+	</clip>
+      </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>true</visualize>
+    </sensor>
+    -->
+    <sensor name="camera" type="camera">
+      <pose>0.2 0 0.25 0 0.8 0</pose>
+      <camera>
+	<horizontal_fov>1.0047</horizontal_fov>
+          <image>
+            <width>32</width>
+            <height>28</height>
+          </image>
+          <clip>
+            <near>0.15</near>
+            <far>20</far>
+          </clip>
+	  <!--
+	  <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.001</stddev>
+          </noise>
+	  -->
+   </camera>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <visualize>0</visualize>
+    </sensor>
+    </link>
+`
+    <include>
+      <uri>model://SDIC_Gripper</uri>
+      <pose>-0.15 0 .08 0 0 0</pose>
+    </include>
+
+    <joint name="arm_gripper_joint" type="revolute">
+      <parent>bug</parent>
+      <child>SDIC_Gripper::palm</child>
+      <axis>
+	<limit>
+	  <lower>0</lower>
+	  <upper>0</upper>
+	</limit>
+	<xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+
+    <plugin name="model_push" filename="libvel_plugin.so" />  
+</model>
+</sdf>
