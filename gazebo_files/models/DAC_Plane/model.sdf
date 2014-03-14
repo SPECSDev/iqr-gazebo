@@ -29,9 +29,8 @@
         </geometry>
         <material>
           <script>
-	    <uri>model://DAC_Plane/materials/scripts</uri>
-            <uri>model://DAC_Plane/materials/textures</uri>
-            <name>DAC/Plane</name>
+	    <uri>model://DAC_Plane/materials</uri>
+	    <name>DAC/Plane</name>
           </script>
         </material>
       </visual>
