@@ -94,6 +94,8 @@ void iqrcommon::GazeboBugInterface::Subscribe(){
   topic= "/gazebo/default/";
 
   topic += this->deviceName + "/bug/camera/image";  // subscribe to the camera
+  //topic += this->deviceName + "/SDIC_Camera/link/camera/image";  // subscribe to the camera
+  
   std::cout << "Subscribing (listening) to: " << topic <<  " ... "<<std::flush;
   this->cameraSub = this->node->Subscribe(topic, 
 					  &iqrcommon::GazeboBugInterface::onImage, this);
