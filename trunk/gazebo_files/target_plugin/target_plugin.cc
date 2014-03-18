@@ -32,8 +32,8 @@
 
 namespace gazebo
 {
-  const math::Vector3 TARGET_A(-10,10,0);
-  const math::Vector3 TARGET_B(10,-10,0);
+  const math::Vector3 HOME_A_DEFAULT(-10,10,0);
+  const math::Vector3 HOME_B_DEFAULT(10,-10,0);
   const float RADIUS =3;
 
   const float UPDATE_RATE =100;
@@ -57,6 +57,8 @@ namespace gazebo
   private: bool grasped;
   private: event::ConnectionPtr updateConnection;    
  
+  private: math::Vector3 homeA;
+  private: math::Vector3 homeB;
 
   public: void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf)
     {
@@ -89,6 +91,22 @@ namespace gazebo
       this->contactSub = this->node->Subscribe(topic,
 					       &TargetPlugin::OnContacts, this);
       
+      physics::ModelPtr modelHomeA = this->world->GetModel("Home_A");
+      homeA=HOME_A_DEFAULT;
+      if(modelHomeA!=NULL){
+	homeA= modelHomeA-> GetWorldPose().pos;
+      }
+      // std::cout<<"Pose Team A :"<<homeA<<std::endl;
+      
+      physics::ModelPtr modelHomeB = this->world->GetModel("Home_B");
+      homeB=HOME_B_DEFAULT;
+      if(modelHomeB!=NULL){
+	homeB= modelHomeB-> GetWorldPose().pos;
+      }
+      // std::cout<<"Pose Team B :"<<homeB<<std::endl;
+      
+      
+      
       // Listen to the update event. This event is broadcast every
       // simulation iteration.
       this->updateConnection = 
@@ -105,20 +123,18 @@ namespace gazebo
       }
       counter =0;
       math::Vector3 pos = this->model->GetWorldPose().pos;
-      if (pos.Distance(TARGET_A)<RADIUS||pos.Distance(TARGET_B)<RADIUS){
+      if (pos.Distance(homeA)<RADIUS||pos.Distance(homeB)<RADIUS){
 	targetCmd.set_x(atoi( modelName.c_str()));
 	targetCmd.set_y(this->model->GetId());	 
-	if (pos.Distance(TARGET_A)<RADIUS){
+	if (pos.Distance(homeA)<RADIUS){
 	  targetCmd.set_z(0);
 	}
-	if (pos.Distance(TARGET_B)<RADIUS){
+	if (pos.Distance(homeB)<RADIUS){
 	  targetCmd.set_z(1);
 	}
 	
 	targetPub->Publish(targetCmd);
-	//model->SetWorldPose(model->GetInitialRelativePose());
 	model->Reset();	
-
       }
    
       if (contacts>UPDATE_RATE){

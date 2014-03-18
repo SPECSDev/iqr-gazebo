@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+    <scene>
+      <shadows>0</shadows>
+      <grid>0</grid>
+    </scene>
+      <!-- World Camera -->    
+    <gui>
+        <camera name='camera_view'>
+        <pose>0 0 50 0 1.57079 1.57079</pose>
+        </camera>
+    </gui>
+    
+    <!-- Ground -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Global light source -->
+     <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Robots Team A-->
+    <include>
+      <pose>-14.25 12.25 0 0 0  -1.57079 </pose>
+      <name>TeamA_Bug_01</name>
+      <uri>model://SDIC_GreenBug</uri>
+    </include>
+
+    <include>
+      <pose>-12.25 14.25 0 0 0 0</pose>
+      <name>TeamA_Bug_02</name>
+      <uri>model://SDIC_GreenBug</uri>
+    </include>
+    
+    <include>
+      <pose>-13.3 12.6 0 0 0 -1.57079</pose>
+      <name>TeamA_Bug_03</name>
+      <uri>model://SDIC_GreenBug</uri>
+    </include>
+    
+    <include>
+      <pose>-12.6 13.3 0 0 0 0</pose>
+      <name>TeamA_Bug_04</name>
+      <uri>model://SDIC_GreenBug</uri>
+    </include>
+   
+    <!-- Robots Team B-->
+    <include>
+      <pose>14.25 -12.25 0 0 0  1.57079</pose>
+      <name>TeamB_Bug_01</name>
+      <uri>model://SDIC_RedBug</uri>
+    </include>
+
+    <include>
+      <pose>12.25 -14.25 0 0 0 3.14159</pose>
+      <name>TeamB_Bug_02</name>
+      <uri>model://SDIC_RedBug</uri>
+    </include>
+    
+    <include>
+      <pose>13.3 -12.6 0 0 0 1.57079</pose>
+      <name>TeamB_Bug_03</name>
+      <uri>model://SDIC_RedBug</uri>
+    </include>
+    
+    <include>
+      <pose>12.6 -13.3 0 0 0 3.14159</pose>
+      <name>TeamB_Bug_04</name>
+      <uri>model://SDIC_RedBug</uri>
+    </include>
+    
+    <!-- Wall -->
+    <include>
+        <uri>model://SDIC_WallHuge</uri>
+    </include>
+    
+    <!-- Home_A -->
+    <include>
+      <pose>-15 15 0.001 0 0 0</pose>
+      <name>Home_A</name>
+      <uri>model://SDIC_Home</uri>
+    </include>
+ 
+  <!-- Home_B -->
+    <include>
+      <pose>15 -15 0.001 0 0 0</pose>
+      <name>Home_B</name>
+      <uri>model://SDIC_Home</uri>
+    </include>
+ 
+  </world>
+</sdf>
+

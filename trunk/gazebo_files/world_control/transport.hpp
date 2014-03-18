@@ -38,7 +38,7 @@ namespace gazebo
   
   
   
-  const int MAX_RESOURCES=10;
+  const int MAX_RESOURCES=100;
   const math::Pose DEFAULT_POSE = math::Pose(0,0,0,0,0,0);
   const int NAME_KEY = 19299;
   const int MAX_AGE =50;

@@ -5,7 +5,7 @@
       <collision name='Wall_1_Collision'>
         <geometry>
           <box>
-            <size>17 0.2 0.25</size>
+            <size>25.5 0.2 0.25</size>
           </box>
         </geometry>
         <pose>0 0 0.125 0 -0 0</pose>
@@ -14,7 +14,7 @@
         <pose>0 0 0.125 0 -0 0</pose>
         <geometry>
           <box>
-            <size>17 0.2 0.25</size>
+            <size>25.5 0.2 0.25</size>
           </box>
         </geometry>
         <material>
@@ -28,7 +28,7 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose>-10 0.5 0 0 0 -1.5708</pose>
+      <pose>-15 0.75 0 0 0 -1.5708</pose>
     </link>
 
     
@@ -36,7 +36,7 @@
       <collision name='Wall_2_Collision'>
         <geometry>
           <box>
-            <size>17 0.2 0.25</size>
+            <size>25.5 0.2 0.25</size>
           </box>
         </geometry>
         <pose>0 0 0.125 0 -0 0</pose>
@@ -45,7 +45,7 @@
         <pose>0 0 0.125 0 -0 0</pose>
         <geometry>
           <box>
-            <size>17 0.2 0.25</size>
+            <size>25.5 0.2 0.25</size>
           </box>
          </geometry>
         <material>
@@ -59,14 +59,14 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose>0.5 -10 0 0 0 0</pose>
+      <pose>0.75 -15 0 0 0 0</pose>
     </link>
 
  <link name='Wall_3'>
       <collision name='Wall_3_Collision'>
         <geometry>
           <box>
-            <size>17 0.2 0.25</size>
+            <size>25.5 0.2 0.25</size>
           </box>
         </geometry>
         <pose>0 0 0.125 0 -0 0</pose>
@@ -75,7 +75,7 @@
         <pose>0 0 0.125 0 -0 0</pose>
         <geometry>
           <box>
-            <size>17 0.2 0.25</size>
+            <size>25.5 0.2 0.25</size>
           </box>
         </geometry>
         <material>
@@ -89,7 +89,7 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose>10 -0.5 0 0 0 -1.5708</pose>
+      <pose>15 -0.75 0 0 0 -1.5708</pose>
     </link>
 
     
@@ -97,7 +97,7 @@
       <collision name='Wall_4_Collision'>
         <geometry>
           <box>
-            <size>17 0.2 0.25</size>
+            <size>25.5 0.2 0.25</size>
           </box>
         </geometry>
         <pose>0 0 0.125 0 -0 0</pose>
@@ -106,7 +106,7 @@
         <pose>0 0 0.125 0 -0 0</pose>
         <geometry>
           <box>
-            <size>17 0.2 0.25</size>
+            <size>25.5 0.2 0.25</size>
           </box>
         </geometry>
         <material>
@@ -120,14 +120,14 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose>-0.5 10 0 0 0 0</pose>
+      <pose>-0.75 15 0 0 0 0</pose>
     </link>
 
     <link name='Wall_5'>
       <collision name='Wall_5_Collision'>
         <geometry>
           <box>
-            <size> 2.828427 0.2 0.25</size>
+            <size> 4.2426405 0.2 0.25</size>
           </box>
         </geometry>
         <pose>0 0 0.125 0 -0 0</pose>
@@ -136,7 +136,7 @@
         <pose>0 0 0.125 0 -0 0</pose>
         <geometry>
           <box>
-            <size>2.828427 0.2 0.25</size>
+            <size>4.2426405 0.2 0.25</size>
           </box>
         </geometry>
         <material>
@@ -150,14 +150,14 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose>9 9 0 0 0 -0.78539</pose>
+      <pose>13.5 13.5 0 0 0 -0.78539</pose>
     </link>
     
     <link name='Wall_6'>
       <collision name='Wall_6_Collision'>
         <geometry>
           <box>
-            <size> 2.828427 0.2 0.25</size>
+            <size> 4.2426405 0.2 0.25</size>
           </box>
         </geometry>
         <pose>0 0 0.125 0 -0 0</pose>
@@ -166,7 +166,7 @@
         <pose>0 0 0.125 0 -0 0</pose>
         <geometry>
           <box>
-            <size>2.828427 0.2 0.25</size>
+            <size>4.2426405 0.2 0.25</size>
           </box>
         </geometry>
         <material>
@@ -180,14 +180,14 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose>-9 -9 0 0 0 -0.78539</pose>
+      <pose>-13.5 -13.5 0 0 0 -0.78539</pose>
     </link>
 
     <link name='Wall_7'>
       <collision name='Wall_7_Collision'>
         <geometry>
           <box>
-            <size> 1.414215 0.2 0.25</size>
+            <size> 2.1213225 0.2 0.25</size>
           </box>
         </geometry>
         <pose>0 0 0.125 0 -0 0</pose>
@@ -196,7 +196,7 @@
         <pose>0 0 0.125 0 -0 0</pose>
         <geometry>
           <box>
-            <size>1.414215 0.2 0.25</size>
+            <size> 2.1213225 0.2 0.25</size>
           </box>
         </geometry>
         <material>
@@ -210,14 +210,14 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose>-9.5 9.5 0 0 0 0.78539</pose>
+      <pose>-14.25 14.25 0 0 0 0.78539</pose>
     </link>
     
     <link name='Wall_8'>
       <collision name='Wall_8_Collision'>
         <geometry>
           <box>
-            <size> 1.414215 0.2 0.25</size>
+            <size>  2.1213225 0.2 0.25</size>
           </box>
         </geometry>
         <pose>0 0 0.125 0 -0 0</pose>
@@ -226,7 +226,7 @@
         <pose>0 0 0.125 0 -0 0</pose>
         <geometry>
           <box>
-            <size>1.414215 0.2 0.25</size>
+            <size> 2.1213225 0.2 0.25</size>
           </box>
         </geometry>
         <material>
@@ -240,64 +240,14 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose> 9.5 -9.5 0 0 0 0.78539</pose>
-    </link>
-
-
- <link name='Home_A'>
-   <visual name='Home_A_Visual'>
-        <pose>0 0 0.002 0 0 0</pose>
-        <geometry>
-         <cylinder>
-            <radius> 3 </radius>
-	    <length> 0.0001 </length>
-          </cylinder>
-        </geometry>
-        <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-           <!--  <name>Gazebo/Turquoise</name> -->
-	   <name>Gazebo/Black</name> 
-          </script>
-        </material>
-      </visual>
-      <velocity_decay>
-        <linear>0</linear>
-        <angular>0</angular>
-      </velocity_decay>
-      <pose>-10 10 0 0 0 0</pose>
-    </link>
-
-
-    <link name='Home_B'>
-      <visual name='Home_B_Visual'>
-        <pose>0 0 0.002 0 0 0</pose>
-        <geometry>
-	  <cylinder>
-            <radius> 3 </radius>
-	    <length> 0.0001 </length>
-          </cylinder>
-        </geometry>
-        <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          <!--  <name>Gazebo/Purple</name> -->
-	  <name>Gazebo/Black</name> 
-          </script>
-        </material>
-      </visual>
-      <velocity_decay>
-        <linear>0</linear>
-        <angular>0</angular>
-      </velocity_decay>
-      <pose>10 -10 0 0 0 0</pose>
+      <pose> 14.25 -14.25 0 0 0 0.78539</pose>
     </link>
    
     <link name='Obstacle_0'>
       <collision name='Obstacle_0_Collision'>
         <geometry>
           <cylinder>
-            <radius> 1 </radius>
+            <radius> 1.5 </radius>
 	    <length> .5 </length>
           </cylinder>
         </geometry>
@@ -307,7 +257,7 @@
         <pose>0 0 0.25 0 -0 0</pose>
         <geometry>
          <cylinder>
-            <radius> 1 </radius>
+            <radius> 1.5 </radius>
 	    <length> .5 </length>
           </cylinder>
 	</geometry>
@@ -329,7 +279,7 @@
       <collision name='Obstacle_1_Collision'>
         <geometry>
           <cylinder>
-            <radius> 1.5 </radius>
+            <radius> 2 </radius>
 	    <length> 0.25 </length>
           </cylinder>
         </geometry>
@@ -339,7 +289,7 @@
         <pose>0 0 0.125 0 -0 0</pose>
         <geometry>
          <cylinder>
-            <radius> 1.5 </radius>
+            <radius> 2 </radius>
 	    <length> 0.25 </length>
           </cylinder>
 	</geometry>
@@ -354,13 +304,13 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose> 6.75 -6.75 0 0 0 0</pose>
+      <pose> 11 -11 0 0 0 0</pose>
     </link> 
    <link name='Obstacle_2'>
       <collision name='Obstacle_2_Collision'>
         <geometry>
           <cylinder>
-            <radius> 1.5 </radius>
+            <radius> 2 </radius>
 	    <length> 0.25 </length>
           </cylinder>
         </geometry>
@@ -370,6 +320,38 @@
         <pose>0 0 0.125 0 -0 0</pose>
         <geometry>
          <cylinder>
+            <radius> 2 </radius>
+	    <length> 0.25 </length>
+          </cylinder>
+	</geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <pose> -11 11 0 0 0 0</pose>
+    </link> 
+
+    <link name='Obstacle_3'>
+      <collision name='Obstacle_3_Collision'>
+        <geometry>
+          <cylinder>
+            <radius> 1.5 </radius>
+	    <length> 0.25 </length>
+          </cylinder>
+        </geometry>
+        <pose>0 0 0.125 0 -0 0</pose>
+      </collision>
+      <visual name='Obstacle_3_Visual'>
+        <pose>0 0 0.125 0 -0 0</pose>
+        <geometry>
+         <cylinder>
             <radius> 1.5 </radius>
 	    <length> 0.25 </length>
           </cylinder>
@@ -385,46 +367,14 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose> -6.75 6.75 0 0 0 0</pose>
-    </link> 
-
-    <link name='Obstacle_3'>
-      <collision name='Obstacle_3_Collision'>
-        <geometry>
-          <cylinder>
-            <radius> 1 </radius>
-	    <length> 0.25 </length>
-          </cylinder>
-        </geometry>
-        <pose>0 0 0.125 0 -0 0</pose>
-      </collision>
-      <visual name='Obstacle_3_Visual'>
-        <pose>0 0 0.125 0 -0 0</pose>
-        <geometry>
-         <cylinder>
-            <radius> 1 </radius>
-	    <length> 0.25 </length>
-          </cylinder>
-	</geometry>
-        <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Grey</name>
-          </script>
-        </material>
-      </visual>
-      <velocity_decay>
-        <linear>0</linear>
-        <angular>0</angular>
-      </velocity_decay>
-      <pose> 3 7 0 0 0 0</pose>
+      <pose> 4.5 10.5 0 0 0 0</pose>
     </link> 
 
  <link name='Obstacle_4'>
       <collision name='Obstacle_4_Collision'>
         <geometry>
           <cylinder>
-            <radius> 1 </radius>
+            <radius> 1.5 </radius>
 	    <length> 0.25 </length>
           </cylinder>
         </geometry>
@@ -434,6 +384,38 @@
         <pose>0 0 0.125 0 -0 0</pose>
         <geometry>
          <cylinder>
+            <radius> 1.5 </radius>
+	    <length> 0.25 </length>
+          </cylinder>
+	</geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <pose> -4.5 -10.5 0 0 0 0</pose>
+    </link> 
+   
+    <link name='Obstacle_5'>
+      <collision name='Obstacle_5_Collision'>
+        <geometry>
+          <cylinder>
+            <radius> 1 </radius>
+	    <length> 0.25 </length>
+          </cylinder>
+        </geometry>
+        <pose>0 0 0.125 0 -0 0</pose>
+      </collision>
+      <visual name='Obstacle_5_Visual'>
+        <pose>0 0 0.125 0 -0 0</pose>
+        <geometry>
+         <cylinder>
             <radius> 1 </radius>
 	    <length> 0.25 </length>
           </cylinder>
@@ -449,46 +431,14 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose> -3 -7 0 0 0 0</pose>
-    </link> 
-   
-    <link name='Obstacle_5'>
-      <collision name='Obstacle_5_Collision'>
-        <geometry>
-          <cylinder>
-            <radius> .75 </radius>
-	    <length> 0.25 </length>
-          </cylinder>
-        </geometry>
-        <pose>0 0 0.125 0 -0 0</pose>
-      </collision>
-      <visual name='Obstacle_5_Visual'>
-        <pose>0 0 0.125 0 -0 0</pose>
-        <geometry>
-         <cylinder>
-            <radius> .75 </radius>
-	    <length> 0.25 </length>
-          </cylinder>
-	</geometry>
-        <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Grey</name>
-          </script>
-        </material>
-      </visual>
-      <velocity_decay>
-        <linear>0</linear>
-        <angular>0</angular>
-      </velocity_decay>
-      <pose> 6 1 0 0 0 0</pose>
+      <pose> 9 1.5 0 0 0 0</pose>
     </link> 
 
  <link name='Obstacle_6'>
       <collision name='Obstacle_6_Collision'>
         <geometry>
           <cylinder>
-            <radius> .75 </radius>
+            <radius> 1 </radius>
 	    <length> 0.25 </length>
           </cylinder>
         </geometry>
@@ -498,7 +448,7 @@
         <pose>0 0 0.125 0 -0 0</pose>
         <geometry>
          <cylinder>
-            <radius> .75 </radius>
+            <radius> 1 </radius>
 	    <length> 0.25 </length>
           </cylinder>
 	</geometry>
@@ -513,7 +463,7 @@
         <linear>0</linear>
         <angular>0</angular>
       </velocity_decay>
-      <pose> -6 -1 0 0 0 0</pose>
+      <pose> -9 -1.5 0 0 0 0</pose>
     </link> 
    
 
