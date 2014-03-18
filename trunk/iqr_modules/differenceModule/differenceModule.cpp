@@ -84,25 +84,25 @@ void iqrcommon::ClsDifferenceModule::update(){
   if (xLocation<0)
     valid=false;
   
-  //cout<<"location: "<<xLocation<<" "<<yLocation<<endl;
+  cout<<"location: "<<xLocation<<" "<<yLocation<<endl;
 
   int xGoal =-1;
   int yGoal =-1;
   getMaxXY(goal,width,xGoal, yGoal);
   if (xGoal<0)
     valid=false;
-  //cout<<"goal: "<<xGoal<<" "<<yGoal<<endl;
+  cout<<"goal: "<<xGoal<<" "<<yGoal<<endl;
   
   int diffX = xGoal-xLocation+width-1;
   int diffY = yGoal-yLocation+height-1;
-  
+  cout<<"valid "<<valid<<" diffX "<<diffX<<" diffY "<<diffY<<endl;
   
   diff[0]=0;
   
   if(valid)
-    diff[0][diffX*(2*width-1)+diffY]=1;
+    diff[0][diffY*(2*width-1)+diffX]=1;
   
-  //  cout<<goalAngle<<" "<<oriAngle<<" "<<difference<<" "<<angleDistance<<" "<<dirIndex<<endl;
+  
   
 }
 
