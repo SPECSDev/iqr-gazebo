@@ -78,12 +78,23 @@ Transport::Transport(){
 
   mutex = new QMutex();
 
+  float  sideLocations[7][2] = 
+    {{10.5,10.5},
+     {0,7.5},
+     {-6,6},
+     {7.5,4},
+     {-3,3},
+     {3,3},
+     {12,4.5}};
 
-  Side  side;
-  side.pos_x=2.0;  side.pos_y=-2.0;  side.prob=.3;  side.radius=0.5;
-  resourceSides.append(side);
-  side.pos_x=-2.0;  side.pos_y=2.0;  side.prob=.3;  side.radius=0.5;
-  resourceSides.append(side);
+  Side  side;   
+  for(int i=0;i<7;i++){
+    side.pos_x=sideLocations[i][0];  side.pos_y=sideLocations[i][1];  
+    side.prob=1;  side.radius=0.5;
+    resourceSides.append(side);
+    side.pos_x*=-1;  side.pos_y*=-1;  
+    resourceSides.append(side);
+  }
 }
 
 Transport::~Transport(){
