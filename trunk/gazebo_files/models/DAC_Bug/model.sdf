@@ -123,7 +123,10 @@
       <update_rate>25</update_rate>
       <visualize>0</visualize>
       </sensor>
+      
+
       <!-- Proximity sensor Gripper -->
+      <!--
       <sensor name="laser_gripper" type="ray">
 	<pose>0.19 0 -0.02 0 0 0 </pose>
 	<ray>
@@ -150,30 +153,11 @@
 	<update_rate>25</update_rate>
 	<visualize>0</visualize>
       </sensor>
-    
-    <!-- Camera 
-    <sensor name="camera" type="camera">
-    <pose>0 0 1 0 1.57079 0</pose>
-      <camera>
-      <horizontal_fov>2</horizontal_fov>
-	<image>
-	  <width>128</width>
-	  <height>96</height>
-	</image>
-	<clip>
-	  <near>0.1</near>
-	  <far>100</far>
-	</clip>
-      </camera>
-      <always_on>1</always_on>
-      <update_rate>30</update_rate>
-      <visualize>true</visualize>
-    </sensor>
-    -->
-    <sensor name="camera" type="camera">
-      <pose>0.2 0 0.25 0 0.8 0</pose>
-      <camera>
-	<horizontal_fov>1.0047</horizontal_fov>
+      -->
+      <sensor name="camera" type="camera">
+	<pose>0.2 0 0.25 0 0.6 0</pose>
+	<camera>
+	  <horizontal_fov>0.8047</horizontal_fov>
           <image>
             <width>32</width>
             <height>28</height>
@@ -183,19 +167,20 @@
             <far>20</far>
           </clip>
 	  <!--
-	  <noise>
-            <type>gaussian</type>
-            <mean>0.0</mean>
-            <stddev>0.001</stddev>
-          </noise>
+	      <noise>
+	      <type>gaussian</type>
+	      <mean>0.0</mean>
+	      <stddev>0.001</stddev>
+	    </noise>
 	  -->
-   </camera>
-      <always_on>1</always_on>
-      <update_rate>30</update_rate>
-      <visualize>0</visualize>
-    </sensor>
+	</camera>
+	<always_on>1</always_on>
+	<update_rate>30</update_rate>
+	<visualize>0</visualize>
+      </sensor>
     </link>
-`
+    `
+    <!--
     <include>
       <uri>model://SDIC_Gripper</uri>
       <pose>-0.15 0 .08 0 0 0</pose>
@@ -213,7 +198,7 @@
       </axis>
     </joint>
 
-
+    -->
     <plugin name="model_push" filename="libvel_plugin.so" />  
 </model>
 </sdf>

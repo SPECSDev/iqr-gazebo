@@ -118,13 +118,13 @@
             <Parameter value="1.9" name="Trigger Reset"/>
             <Parameter value="0.05" name="Trigger Decay"/>
             <XRefHolder name="InputFromGroup">
-                <XRef target="L-14675-1395148167-895407754" name="action"/>
+                <XRef target="L-14675-1395147985-738092673" name="action"/>
                 <XRef target="L-14675-1395148221-695219843" name="prototype"/>
                 <XRef target="L-14675-1395147540-1542863998" name="stats"/>
                 <XRef target="L-14675-1395148116-915190474" name="discrepancy"/>
             </XRefHolder>
             <XRefHolder name="OutputToGroup">
-                <XRef target="L-14675-1395147985-738092673" name="action"/>
+                <XRef target="L-14675-1395148167-895407754" name="action"/>
                 <XRef target="L-14675-1395147860-1680186200" name="empty"/>
                 <XRef target="L-14675-1395147929-2058119258" name="collector"/>
                 <XRef target="L-14675-1395147944-1662817610" name="distance"/>
@@ -133,7 +133,7 @@
             </XRefHolder>
         </Module>
         <Note></Note>
-        <DiagramIcon width="50" x="501" y="175" height="50"/>
+        <DiagramIcon width="50" x="503" y="175" height="50"/>
         <Group id="L-14675-1395147389-1445350236" name="Pre-stats sensor" color="#FFFFFF">
             <Topology>
                 <TopologyRect cylinderHor="false" hcount="7" cylinderVert="false" vcount="1"/>
@@ -200,7 +200,7 @@
                 <Parameter value="0" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="666" y="165" height="50"/>
+            <DiagramIcon width="50" x="665" y="165" height="50"/>
         </Group>
         <Group id="L-14675-1395147897-507371297" name="Selected" color="#FFFFFF">
             <Topology>
@@ -323,7 +323,7 @@
         </Group>
         <Group id="L-14675-1395148221-695219843" name="Prototype" color="#FFFFFF">
             <Topology>
-                <TopologyRect cylinderHor="false" hcount="2" cylinderVert="false" vcount="24"/>
+                <TopologyRect cylinderHor="false" hcount="48" cylinderVert="false" vcount="1"/>
             </Topology>
             <Neuron name="neuronLinearThreshold">
                 <Parameter value="1" name="excGain"/>
@@ -344,6 +344,7 @@
             <Parameter value="Bug" name="device_name"/>
             <Parameter value="60" name="cps"/>
             <Parameter value="default_com_key_0" name="comkey"/>
+            <Parameter value="false" name="gripper"/>
             <Parameter value="false" name="grayscale"/>
             <Parameter value="true" name="hsv"/>
             <Parameter value="1" name="transSpeed"/>
@@ -869,6 +870,17 @@
             <Note></Note>
             <DiagramIcon width="50" x="306" y="158" height="50"/>
         </Group>
+        <Group id="L-7363-1395177787-354536256" name="Const" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="1" cylinderVert="false" vcount="1"/>
+            </Topology>
+            <Neuron name="neuronRandomSpike">
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0.85" name="spkAmpl"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="419" y="274" height="50"/>
+        </Group>
     </Process>
     <Process port="54923" path="" hostname="" id="L-31658-1394538192-1340320429" name="Vision" enableModule="true" color="#FFFFFF">
         <Module name="moduleColor">
@@ -1183,10 +1195,200 @@
     </Connection>
     <Connection target="L-14675-1395148221-695219843" type="excitatory" id="L-14675-1395148246-1661865588" source="L-14034-1299602747-838924210" name="Connection prototype->Prototype">
         <Pattern>
-            <PatternMapped type="center">
-                <All/>
-                <All/>
-            </PatternMapped>
+            <PatternTuples>
+                <Tuple>
+                    <SourceList>
+                        <Point x="1" y="1"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="1" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="1" y="2"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="2" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="1" y="3"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="3" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="1" y="4"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="4" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="1" y="5"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="5" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="1" y="6"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="6" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="1" y="7"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="7" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="1" y="8"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="8" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="1" y="9"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="9" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="1" y="10"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="10" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="1" y="11"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="11" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="1" y="12"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="12" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="2" y="1"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="13" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="2" y="2"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="14" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="2" y="3"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="15" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="2" y="4"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="16" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="2" y="5"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="17" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="2" y="6"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="18" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="2" y="7"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="19" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="2" y="8"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="20" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="2" y="9"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="21" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="2" y="10"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="22" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="2" y="11"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="23" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="2" y="12"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="24" y="1"/>
+                    </TargetList>
+                </Tuple>
+            </PatternTuples>
         </Pattern>
         <Arborization>
             <ArbRect width="1" direction="RF" height="1" initialization_probability="1"/>
@@ -2057,6 +2259,35 @@
         </Synapse>
         <Note></Note>
         <DiagramLine APTarget="3" APSource="1"/>
+    </Connection>
+    <Connection target="CB1394547921L-4442-1394547906-108884632" type="inhibitory" id="L-7363-1395177807-952049688" source="L-7363-1395177787-354536256" name="Connection Const->Approach">
+        <Pattern>
+            <PatternTuples>
+                <Tuple>
+                    <SourceList>
+                        <Point x="1" y="1"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="1" y="1"/>
+                        <Point x="7" y="1"/>
+                    </TargetList>
+                </Tuple>
+            </PatternTuples>
+        </Pattern>
+        <Arborization>
+            <ArbRect width="1" direction="RF" height="1" initialization_probability="1"/>
+        </Arborization>
+        <AttenuationFunction>
+            <FunUniform value="0"/>
+        </AttenuationFunction>
+        <DelayFunction>
+            <FunUniform value="0"/>
+        </DelayFunction>
+        <Synapse name="synapseFixedWeight">
+            <Parameter value="1" name="weight"/>
+        </Synapse>
+        <Note></Note>
+        <DiagramLine APTarget="9" APSource="1"/>
     </Connection>
     <Connection target="CB1305322454L-14034-1299602779-667734589" type="excitatory" id="L-8299-1305322482-971515027" source="L-14034-1299602779-667734589" name="Connection CR->Threshold CR">
         <Pattern>

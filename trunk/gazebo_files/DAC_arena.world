@@ -15,7 +15,7 @@
     <!-- World Camera -->    
     <gui>
       <camera name='camera_view'>
-	<pose>0 0 35 0 1.57079 1.57079</pose>
+	<pose>0 0 25 0 1.57079 1.57079</pose>
       </camera>
     </gui>
     
@@ -33,7 +33,7 @@
     <include>
       <pose>0 0 0 0 0  -1.57079</pose>
       <name>Bug</name>
-      <uri>model://SDIC_GreenBug</uri>
+      <uri>model://DAC_Bug</uri>
     </include>
 
     <!-- Wall -->
