@@ -128,7 +128,8 @@ namespace iqrcommon{
     
     QMutex *qMutex;
     
-    string deviceName;        
+    string deviceName; 
+    bool hasGripper;
     int scanId;
     
   
@@ -137,7 +138,7 @@ namespace iqrcommon{
   public:
     GazeboBugInterface();
     ~GazeboBugInterface();
-    bool Open(const string& device); // subscribe to topics
+    bool Open(const string& device, bool hasGripper=true); // subscribe to topics
     void Close();
    
     

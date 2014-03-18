@@ -27,7 +27,7 @@ iqrcommon::ClsModuleGazeboBug::ClsModuleGazeboBug() : ClsThreadModule() {
     par_comKey = addStringParameter("comkey", "Communication Key","default_com_key",
 				    true,false,"Key used for comunication", "General");   
 
-    
+    par_hasGripper       = addBoolParameter("gripper", "Has Gripper", true, "Has Gripper", "General");
     // Camera parameters
     par_grayscale = addBoolParameter("grayscale", "Grayscale", false, 
 				     "Capture grayscale images","Image");
@@ -41,23 +41,23 @@ iqrcommon::ClsModuleGazeboBug::ClsModuleGazeboBug() : ClsThreadModule() {
     par_rotSpeed    = addDoubleParameter("rotSpeed", "Rotational Speed", 0.1, 0, 1000, 2, 
 					 "Rotationals Speed", "Motor");
     // Navigation Parameters
- 
+    
     par_placeXOffset = addDoubleParameter("placeXOffset", "Place X Offset", 0, 0, 1000, 2, 
-					    "Offset Coordinate System X", "Navigation");
+					  "Offset Coordinate System X", "Navigation");
     par_placeYOffset = addDoubleParameter("placeYOffset", "Place Y Offset", 0, 0, 1000, 2, 
-					    "Offset Coordinate System Y", "Navigation");
+					  "Offset Coordinate System Y", "Navigation");
     
     par_placeXMax = addDoubleParameter("placeXMax", "Place X Max", 10, 0, 1000, 2, 
 				       "Max Coordinate System X", "Navigation");
     par_placeYMax =  addDoubleParameter("placeYMax", "Place Y Max", 10, 0, 1000, 2, 
-					    "Max Coordinate System Y", "Navigation");
+					"Max Coordinate System Y", "Navigation");
     
     par_placeSigma= addDoubleParameter("placeSigma", "Place Cells Sigma", 0.2, 0, 100, 2, 
 				       "Sigma of Place Cells", "Navigation");
     
     par_headSigma=addDoubleParameter("headSigma", "HD Cells Sigma", 0.2, 0, 100, 2, 
 				     "Sigma of Head Direction  Cells", "Navigation");
-
+    
     // Group to motors
     var_motor     = addInputFromGroup("_motor", "Motor (square)");
     // Group to gripper
@@ -93,14 +93,18 @@ iqrcommon::ClsModuleGazeboBug::ClsModuleGazeboBug() : ClsThreadModule() {
 
 /* INIT MODULE */
 void iqrcommon::ClsModuleGazeboBug::init(){
+  bool hasGripper = par_hasGripper->getValue();
+
   checkSize(var_proximity,MAX_RANGES,1);
   checkSize(var_target,MAX_RANGES_TARGET,1);
-  checkSize(var_proximityGripper,MAX_RANGES_GRIPPER,1);
   checkSize(var_gps, MAX_GPS,1);
   checkSize(var_scanAudio, MAX_RANGES_AUDIO,-1);
   checkSize(var_emitAudio->getTarget(), MAX_RANGES_AUDIO,-1, "Emit Audio");
-  checkSize(var_gripper->getTarget(), 1,1,"Gripper");
-  
+
+  if(hasGripper){
+    checkSize(var_gripper->getTarget(), 1,1,"Gripper");
+    checkSize(var_proximityGripper,MAX_RANGES_GRIPPER,1);  
+  }
   // Check Camera size
   int widthCam = var_image_RH->getNrCellsHorizontal();
   int heightCam = var_image_RH->getNrCellsVertical();
@@ -128,7 +132,7 @@ void iqrcommon::ClsModuleGazeboBug::init(){
   bug.setComKey(par_comKey->getValue());
   bug.setImageFormat(widthCam,heightCam);
 
-  if(!bug.Open(device_name->getValue()))
+  if(!bug.Open(device_name->getValue(),hasGripper))
     throw ModuleError(string("Module ")+label()+string(":")+bug.error());
   
   
@@ -298,11 +302,15 @@ void iqrcommon::ClsModuleGazeboBug::imageToGroups(vector<Pixel> image,
 
 void iqrcommon::ClsModuleGazeboBug::update(){
     relax(); 
-    StateArray& motor     = var_motor->getTarget()->getStateArray();
-    StateArray& gripper    = var_gripper->getTarget()->getStateArray();
+    bool hasGripper = par_hasGripper->getValue();
     
+    StateArray& motor     = var_motor->getTarget()->getStateArray();
     StateArray& proximity = var_proximity->getStateArray(); 
+    
+  
+    StateArray& gripper    = var_gripper->getTarget()->getStateArray();
     StateArray& target = var_target->getStateArray(); 
+
     StateArray& proximityGripper = var_proximityGripper->getStateArray(); 
     StateArray& scanAudio = var_scanAudio->getStateArray();
     StateArray& emitAudio  = var_emitAudio->getTarget()->getStateArray();
@@ -326,13 +334,15 @@ void iqrcommon::ClsModuleGazeboBug::update(){
     
     /* Set gripper*/
     //    bug.setGripper(gripper[0][0]>0.5,gripper[0][1]>.5);
-      
-    bug.setGripperClose(gripper[0][0]>0.5);
+    if(hasGripper) 
+      bug.setGripperClose(gripper[0][0]>0.5);
     
     /* Read sensor data */
     vectorToGroup(bug.readLaser(), proximity);
     vectorToGroup(bug.readLaserTarget(), target);
-    vectorToGroup(bug.readLaserGripper(), proximityGripper);
+    
+    if(hasGripper) 
+      vectorToGroup(bug.readLaserGripper(), proximityGripper);
   
     /* Read Audio */
     vectorToGroup(bug.readAudio(), scanAudio);

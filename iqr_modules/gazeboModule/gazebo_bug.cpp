@@ -13,6 +13,7 @@ iqrcommon::GazeboBugInterface::GazeboBugInterface(){
   imageWidth=MAX_WIDTH_CAM;
   imageHeight=MAX_HEIGHT_CAM;
   comKey=DEFAULT_COM_KEY;
+  hasGripper=true;
   
  
 }
@@ -26,8 +27,9 @@ iqrcommon::GazeboBugInterface::~GazeboBugInterface(){
 }
 
 /*Open(const string& device): Opens the connection to Gazebo server */
-bool iqrcommon::GazeboBugInterface::Open(const string& device){
+bool iqrcommon::GazeboBugInterface::Open(const string& device, bool hasGripper){
     this->deviceName = device;	
+    this->hasGripper = hasGripper;
     std::cout << device << std::endl;
     
     
@@ -72,15 +74,16 @@ void iqrcommon::GazeboBugInterface::Subscribe(){
   
   std::cout << "done!"<< std::endl;
 
-  /*Laser Scan Gripper*/
-  topic= "/gazebo/default/";
-  topic += this->deviceName + "/bug/laser_gripper/scan";  // subscribe to the laserscan
-  std::cout << "Subscribing (listening) to: " << topic <<  " ... "<<std::flush;
-  this->laserScanGripperSub = this->node->Subscribe(topic, 
-						    &iqrcommon::GazeboBugInterface::onScanGripper, this);
-  
-  std::cout << "done!"<< std::endl;
-
+  if(hasGripper){
+    /*Laser Scan Gripper*/
+    topic= "/gazebo/default/";
+    topic += this->deviceName + "/bug/laser_gripper/scan";  // subscribe to the laserscan
+    std::cout << "Subscribing (listening) to: " << topic <<  " ... "<<std::flush;
+    this->laserScanGripperSub = this->node->Subscribe(topic, 
+						      &iqrcommon::GazeboBugInterface::onScanGripper, this);
+    
+    std::cout << "done!"<< std::endl;
+  }
   /* Scan AUDIO*/
   topic= "/gazebo/default/";
   topic += this->comKey + "/bug/audio/scan";  // subscribe to the laserscan
@@ -116,9 +119,12 @@ void iqrcommon::GazeboBugInterface::Unsubscribe()
   if(this->laserScanTargetSub)
     this->laserScanTargetSub->Unsubscribe();
   this->laserScanTargetSub.reset();
-  if(this->laserScanGripperSub)
-    this->laserScanGripperSub->Unsubscribe();
-  this->laserScanGripperSub.reset();
+  
+  if(this->hasGripper){
+    if(this->laserScanGripperSub)
+      this->laserScanGripperSub->Unsubscribe();
+    this->laserScanGripperSub.reset();
+  }
   if(this->scanAudioSub)
     this->scanAudioSub->Unsubscribe();
   this->scanAudioSub.reset();
@@ -127,7 +133,10 @@ void iqrcommon::GazeboBugInterface::Unsubscribe()
   this->cameraSub.reset();
   
   this->motorPub.reset();
-  this->jointPub.reset();
+  
+  if(this->hasGripper)
+    this->jointPub.reset();
+  
   this->audioPub.reset();
 }
 
@@ -142,13 +151,15 @@ void iqrcommon::GazeboBugInterface::Publish(){
   this->motorPub->WaitForConnection();
   std::cout << "done!"<< std::endl;
 
-  /*Grasp*/
-  topic = "/gazebo/default/";
-  topic += this->deviceName + "/joint_cmd";  // publish to the joints of the bugs
-  std::cout << "Publishing to: " << topic << " ...."<<std::flush;
-  this->jointPub = this->node->Advertise<gazebo::msgs::JointCmd>(topic);
-  this->jointPub->WaitForConnection();
-  std::cout << "done!"<< std::endl;
+  if(this->hasGripper){
+    /*Grasp*/
+    topic = "/gazebo/default/";
+    topic += this->deviceName + "/joint_cmd";  // publish to the joints of the bugs
+    std::cout << "Publishing to: " << topic << " ...."<<std::flush;
+    this->jointPub = this->node->Advertise<gazebo::msgs::JointCmd>(topic);
+    this->jointPub->WaitForConnection();
+    std::cout << "done!"<< std::endl;
+  }
 
   /*Audio*/
   topic = "/gazebo/default/";

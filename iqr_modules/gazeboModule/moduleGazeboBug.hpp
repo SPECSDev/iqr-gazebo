@@ -93,6 +93,7 @@ namespace iqrcommon{
     
     ClsDoubleParameter *par_headSigma;
         
+    ClsBoolParameter *par_hasGripper;
     
 
     // System Parameters
