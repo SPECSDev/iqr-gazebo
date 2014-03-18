@@ -13,8 +13,8 @@
             <Parameter value="1" name="rotSpeed"/>
             <Parameter value="0" name="placeXOffset"/>
             <Parameter value="0" name="placeYOffset"/>
-            <Parameter value="10" name="placeXMax"/>
-            <Parameter value="10" name="placeYMax"/>
+            <Parameter value="15" name="placeXMax"/>
+            <Parameter value="15" name="placeYMax"/>
             <Parameter value="0.2" name="placeSigma"/>
             <Parameter value="0.1" name="headSigma"/>
             <XRefHolder name="InputFromGroup">

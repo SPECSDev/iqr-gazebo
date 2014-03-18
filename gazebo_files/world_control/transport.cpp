@@ -77,24 +77,8 @@ Transport::Transport(){
 
 
   mutex = new QMutex();
-
-  float  sideLocations[7][2] = 
-    {{10.5,10.5},
-     {0,7.5},
-     {-6,6},
-     {7.5,4},
-     {-3,3},
-     {3,3},
-     {12,4.5}};
-
-  Side  side;   
-  for(int i=0;i<7;i++){
-    side.pos_x=sideLocations[i][0];  side.pos_y=sideLocations[i][1];  
-    side.prob=1;  side.radius=0.5;
-    resourceSides.append(side);
-    side.pos_x*=-1;  side.pos_y*=-1;  
-    resourceSides.append(side);
-  }
+  
+  initResourceSides();
 }
 
 Transport::~Transport(){
@@ -166,6 +150,9 @@ void Transport::start(){
 }
 
 void Transport::reset(){
+  //initialize sides
+  initResourceSides();
+  
   std::cout<<"Transport::Reset"<<std::endl;
   
   timer->stop();
@@ -191,12 +178,14 @@ void Transport::stop(){
 void Transport::close(){
   std::cout<<"Transport::Close"<<std::endl;
   deleteMsg = *msgs::CreateRequest("entity_delete", "dummy");
-  deletePub->Publish(deleteMsg);  
+  deletePub->Publish(deleteMsg); 
+  usleep(1000); 
   
 
   for(int i=0;i<resources.size();i++){
     deleteMsg = *msgs::CreateRequest("entity_delete", indexToName(i));
     deletePub->Publish(deleteMsg);
+    usleep(1000); 
   }  
 
 
@@ -240,6 +229,31 @@ void Transport::setColorResource(int index, std::string color){
     ->mutable_script()->add_uri("file://media/materials/scripts/gazebo.material");
   visualMsg.mutable_material()->mutable_script()->set_name(color);
   visualPub->Publish(visualMsg);
+}
+
+void Transport::initResourceSides(){
+  int randA = rand()%(N_SIDES/2+1);
+  int randB = rand()%(N_SIDES/2+1)+N_SIDES/2;
+  
+  int randProb = rand()%2;
+  
+  resourceSides.clear();
+   
+  Side  side;   
+  
+  side.pos_x=LOCATIONS_SIDE[randA][0];  side.pos_y=LOCATIONS_SIDE[randA][1];  
+  side.prob=PROBABILITY_SIDE[randProb];  side.radius=0.5;
+  resourceSides.append(side);
+  side.pos_x*=-1;  side.pos_y*=-1;  
+  resourceSides.append(side);
+
+  side.pos_x=LOCATIONS_SIDE[randB][0];  side.pos_y=LOCATIONS_SIDE[randB][1];  
+  randProb=(randProb+1)%2;
+  side.prob=PROBABILITY_SIDE[randProb];  side.radius=0.5;
+  resourceSides.append(side);
+  side.pos_x*=-1;  side.pos_y*=-1;  
+  resourceSides.append(side);
+  
 }
 
 void Transport::createResource(math::Pose pose){

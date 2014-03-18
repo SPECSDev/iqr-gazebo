@@ -38,11 +38,23 @@ namespace gazebo
   
   
   
-  const int MAX_RESOURCES=100;
+  const int MAX_RESOURCES=16;
   const math::Pose DEFAULT_POSE = math::Pose(0,0,0,0,0,0);
   const int NAME_KEY = 19299;
   const int MAX_AGE =50;
   const int TURN_AGE =30;
+
+  const int N_SIDES = 6;
+  
+  const float  LOCATIONS_SIDE[N_SIDES][2] = 
+    {{-3,3},    
+     {0,7.5},
+     {-6,6},
+     {7.5,4},
+     {10.5,10.5},
+     {12,4.5}};
+  
+  const float PROBABILITY_SIDE [2] = {0.15, 0.1};
 
   class Transport : public QObject
   {
@@ -81,6 +93,7 @@ namespace gazebo
     void createResource(math::Pose pose);
     void recycleResource(int index, math::Pose pose);
     void setColorResource(int index, std::string color);
+    void initResourceSides();
     int findAvailableResource();
     
     std::string indexToName(int index);
