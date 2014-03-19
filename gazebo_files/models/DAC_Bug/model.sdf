@@ -166,20 +166,18 @@
             <near>0.15</near>
             <far>20</far>
           </clip>
-	  <!--
-	      <noise>
-	      <type>gaussian</type>
-	      <mean>0.0</mean>
-	      <stddev>0.001</stddev>
-	    </noise>
-	  -->
+	  <noise>
+	    <type>gaussian</type>
+	    <mean>0.0</mean>
+	    <stddev>0.001</stddev>
+	  </noise>
 	</camera>
 	<always_on>1</always_on>
 	<update_rate>30</update_rate>
 	<visualize>0</visualize>
       </sensor>
     </link>
-    `
+
     <!--
     <include>
       <uri>model://SDIC_Gripper</uri>
