@@ -16,7 +16,7 @@ then
     echo -e "\n $RED Compilaltion failed! $CLEAR\n "
     return 1
 else
-    echo -e "\n $GREEN Complilation successful $CLEAR\n"
+    echo -e "\n $GREEN Compilation successful $CLEAR\n"
     return 0
 fi
 }
@@ -132,7 +132,7 @@ then
     echo -e "\n $GREEN Installing dac_libs for x86_64... $CLEAR"
     cp $HOME/iqr-gazebo/iqr_modules/dac_libs/moduleColor_64.so $HOME/iqr/lib/Modules/moduleColor.so
     cp $HOME/iqr-gazebo/iqr_modules/dac_libs/moduleAL_64.so $HOME/iqr/lib/Modules/moduleAL.so
-    cp $HOME/iqr-gazebo/iqr_modules/dac_libs/moduleCL_64.so $HOME/iqr/lib/Modules/moduleCL.s
+    cp $HOME/iqr-gazebo/iqr_modules/dac_libs/moduleCL_64.so $HOME/iqr/lib/Modules/moduleCL.so
     cp $HOME/iqr-gazebo/iqr_modules/dac_libs/neuronNumeric_64.so $HOME/iqr/lib/Neurons/neuronNumeric.so
 else
     echo -e "\n $GREEN Installing dac_libs for i686... $CLEAR"
