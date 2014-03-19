@@ -93,14 +93,15 @@ void iqrcommon::ClsDifferenceModule::update(){
     valid=false;
   //cout<<"goal: "<<xGoal<<" "<<yGoal<<endl;
   
-  int diffX = (2*width-1)-(xGoal-xLocation+width-1);
-  int diffY = (2*height-1)-(yGoal-yLocation+height-1);
+  int diffX = xGoal-xLocation+height-1;
+  int diffY = yGoal-yLocation+width-1;
+  
   //cout<<"valid "<<valid<<" diffX "<<diffX<<" diffY "<<diffY<<endl;
   
   diff[0]=0;
   
   if(valid)
-    diff[0][diffY*(2*width-1)+diffX]=1;
+    diff[0][diffX*(2*width-1)+diffY]=1;
   
   
   
