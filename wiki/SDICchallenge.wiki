@@ -25,7 +25,6 @@ Two teams of robots will compete in the same arena for limited resources. The ar
   * Communication between the robots is only allowed over the provided communication system. No direct communication between groups of different robots. 
   * No Cheating! Cheaters will be disqualified.
 
-<iframe src="http://challonge.com/sdic_robot/module" width="100%" height="500" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
 
 
 == Preparation ==
