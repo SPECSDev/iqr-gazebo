@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+    <scene>
+      <shadows>0</shadows>
+    </scene>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>2000</real_time_update_rate>
+      <gravity>0 0 -9.8</gravity>
+    </physics>
+
+
+    <!-- World Camera -->    
+    <gui>
+      <camera name='camera_view'>
+	<pose>0 0 10 0 1.57079 1.57079</pose>
+      </camera>
+    </gui>
+    
+    <!-- Ground -->
+    <include>
+      <name>GroundPlane</name>
+      <uri>model://DAC_BasicPlane</uri>
+    </include>
+
+    <!-- Global light source -->
+     <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Robot -->
+    <include>
+      <pose>0 -2 0 0 0  1.57079</pose>
+      <name>Bug</name>
+      <uri>model://DAC_Bug</uri>
+    </include>
+
+    <!-- Reset Points -->
+    <include>
+      <pose>-1.5 -2 0 0 0  1.57079</pose>
+      <name>Reset_0</name>
+      <uri>model://DAC_Reset</uri>
+    </include>
+
+    <include>
+      <pose>0 -2 0 0 0  1.57079</pose>
+      <name>Reset_1</name>
+      <uri>model://DAC_Reset</uri>
+    </include>
+    
+    <include>
+      <pose>1.5 -2 0 0 0  1.57079</pose>
+      <name>Reset_2</name>
+      <uri>model://DAC_Reset</uri>
+    </include>
+
+    <!-- Target  -->
+    <include>
+      <pose> 0 2.5 0 0 0 0</pose>
+      <uri>model://DAC_Target</uri>
+    </include>
+    
+  </world>
+</sdf>
+
