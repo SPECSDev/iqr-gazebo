@@ -1,0 +1,38 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+  <model name='Wall'>
+    <link name='Target_1'>
+      <collision name='Target_1_Collision'>
+        <geometry>
+          <cylinder>
+	    <radius> 0.24999 </radius>
+	    <length> 0.24999 </length>
+	  </cylinder>
+        </geometry>
+        <pose>0 0 0.34999 0 -0 0</pose>
+      </collision>
+      <visual name='Target_1_Visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+         <cylinder>
+            <radius> 0.24999 </radius>
+	    <length> 0.01 </length>
+          </cylinder>
+	</geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/White</name>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay>
+        <linear>0</linear>
+        <angular>0</angular>
+      </velocity_decay>
+      <pose> 0 0 0 0 0 0</pose>
+    </link> 
+
+    <static>1</static>
+  </model>
+</sdf>

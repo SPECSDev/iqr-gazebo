@@ -195,8 +195,9 @@
 	<xyz>0 0 1</xyz>
       </axis>
     </joint>
-
     -->
-    <plugin name="model_push" filename="libvel_plugin.so" />  
-</model>
+    
+    <plugin name="model_vel" filename="libvel_plugin.so" />  
+    <plugin name="model_reset" filename="libreset_plugin.so" />  
+  </model>
 </sdf>
