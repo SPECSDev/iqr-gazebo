@@ -39,7 +39,10 @@ fi
 
 
     if [[ -n $(svn update |grep update_compile.sh) ]]; then
-	echo -e "\n $RED Script update_compile.sh has been updated please run update_compile.sh again"
+	echo -e "\n $RED Script update_compile.sh has been updated please run update_compile.sh again! $CLEAR"
+	return
+    else
+	echo -e "\n $GREEN Script update_compile.sh up to date! $CLEAR"
     fi
     
 # compile 
