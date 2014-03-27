@@ -47,7 +47,6 @@ INSTALL(TARGETS
   moduleGazeboBug
   LIBRARY DESTINATION ~/iqr/lib/Modules/
   ARCHIVE DESTINATION ~/iqr/lib/Modules/
-  RUNTIME DESTINATION bin 
 )
 
 

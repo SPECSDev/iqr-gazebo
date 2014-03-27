@@ -37,13 +37,16 @@ fi
     . $HOME/.bashrc
 #fi
 
-svn update
 
-#compile module 
+    if [[ -n $(svn update |grep update_compile.sh) ]]; then
+	echo -e "\n $RED Script update_compile.sh has been updated please run update_compile.sh again"
+    fi
+    
+# compile 
 
-echo -e "\n $GREEN Compiling iqr_module .... $CLEAR \n"
+echo -e "\n $GREEN Compiling  .... $CLEAR \n"
 
-cd $HOME/iqr-gazebo/iqr_modules/gazeboModule
+cd $HOME/iqr-gazebo
 mkdir -p  build
 cd build
 cmake ..
@@ -51,74 +54,6 @@ make install
 
 check_compile
 if [ $? -ne 0 ] ; then return; fi
-
-
-#compile module 
-
-echo -e "\n $GREEN Compiling iqr_module .... $CLEAR \n"
-
-cd $HOME/iqr-gazebo/iqr_modules/differenceModule
-mkdir -p  build
-cd build
-cmake ..
-make install
-
-check_compile
-if [ $? -ne 0 ] ; then return; fi
-
-#compile neurons 
-
-echo -e "\n $GREEN Compiling iqr_module .... $CLEAR \n"
-
-cd $HOME/iqr-gazebo/iqr_neurons
-mkdir -p  build
-cd build
-cmake ..
-make install
-
-check_compile
-if [ $? -ne 0 ] ; then return; fi
-
-
-#compile vel_plugin
-
-echo -e "\n $GREEN Compiling vel_plugin .... $CLEAR \n"
-
-cd $HOME/iqr-gazebo/gazebo_files/vel_plugin
-mkdir -p build
-cd build
-cmake ..
-make install
-
-check_compile
-if [ $? -ne 0 ] ; then return; fi
-
-#compile target_plugin
-
-echo -e "\n $GREEN Compiling target_plugin .... $CLEAR \n"
-
-cd $HOME/iqr-gazebo/gazebo_files/target_plugin
-mkdir -p build
-cd build
-cmake ..
-make install
-
-check_compile
-if [ $? -ne 0 ] ; then return; fi
-
-#compile worldcontrol
-echo -e "\n $GREEN Compiling Worldcontrol .... $CLEAR \n"
-
-cd $HOME/iqr-gazebo/gazebo_files/world_control
-mkdir -p build
-cd build
-cmake ..
-make install
-
-check_compile
-if [ $? -ne 0 ] ; then return; fi
-
-
 
 #install dac_libs
 
@@ -146,4 +81,4 @@ echo -e " $GREEN DONE! $CLEAR\n"
 
 echo -e "\n $GREEN Update and Compile successful  $CLEAR\n"
 
-cd ../../..
+cd $HOME/iqr-gazebo
