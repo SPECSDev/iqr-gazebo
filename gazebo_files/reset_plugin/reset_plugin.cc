@@ -29,6 +29,7 @@ namespace gazebo
   const float RAND_ROT=0.01;
   const float RAND_POS=0.01; 
   const int MAX_RESET_POSES=10; 
+  const int RESET_STEPS =1000;
   
 
   
@@ -39,6 +40,8 @@ namespace gazebo
     
   private: event::ConnectionPtr updateConnection;    
   private: std::string modelName; 
+    
+  private: int resetSteps;
     
   private: std::vector< math::Pose> resetPoses;
   private: math::Box resetArea;
@@ -70,6 +73,9 @@ namespace gazebo
       }
       // Listen to the update event. This event is broadcast every
       // simulation iteration.
+
+      resetSteps=0;
+
       if(resetPoses.size()>0){
 	this->updateConnection = event::Events::ConnectWorldUpdateBegin(
 			         boost::bind(&ResetPlugin::OnUpdate, this));
@@ -88,7 +94,15 @@ namespace gazebo
       if(pose.pos[0]>resetArea.max[0] ||
 	 pose.pos[1]>resetArea.max[1] ||
 	 pose.pos[0]<resetArea.min[0] ||
-	 pose.pos[1]<resetArea.min[1]){
+	 pose.pos[1]<resetArea.min[1]||
+	 resetSteps>0){
+
+	if(resetSteps==0)
+	  resetSteps=RESET_STEPS;
+	else
+	  resetSteps--;
+	  
+	  
 	int randIndex = rand()%resetPoses.size();
 	math::Pose resetPose = resetPoses[randIndex];
 	
