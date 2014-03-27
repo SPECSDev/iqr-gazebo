@@ -188,11 +188,15 @@ void iqrcommon::GazeboBugInterface::Close(){
 
 /* setSpeed(float left, float right): set the velocity of the wheels */
 void iqrcommon::GazeboBugInterface::setSpeed(float left, float right){
-    if(left > 1) left = 1;   // clip to 1 / -1
-    else if(left < -1) left = -1;
-    if(right > 1) right = 1;
-    else if(right < -1) right = -1;
-    
+  //   Cliping -1 1 might be important for challange. 
+  //
+  //   if(left > 1) left = 1;   // clip to 1 / -1
+  //   else if(left < -1) left = -1;
+  //   if(right > 1) right = 1;
+  //   else if(right < -1) right = -1;
+  
+
+   
     qMutex->lock();
     if(current.speed_left == left && current.speed_right == right){
       qMutex->unlock();      
