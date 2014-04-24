@@ -6,7 +6,7 @@
         <Module name="moduleAL">
             <Parameter value="0.05" name="eta"/>
             <Parameter value="0.98" name="zeta"/>
-            <Parameter value="8" name="rho"/>
+            <Parameter value="4" name="rho"/>
             <Parameter value="0.01" name="init"/>
             <Parameter value="3" name="display"/>
             <Parameter value="0.01" name="discTime"/>
