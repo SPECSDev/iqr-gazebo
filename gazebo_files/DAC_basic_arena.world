@@ -19,6 +19,13 @@
       </camera>
     </gui>
     
+    <!-- Ground 
+    <include>
+      <name>BlackPlane</name>
+      <uri>model://black_plane</uri>
+    </include>
+    -->
+
     <!-- Ground -->
     <include>
       <name>GroundPlane</name>

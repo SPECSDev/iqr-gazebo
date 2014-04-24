@@ -8,7 +8,8 @@
             <Parameter value="0.98" name="zeta"/>
             <Parameter value="8" name="rho"/>
             <Parameter value="0.01" name="init"/>
-            <Parameter value="0" name="display"/>
+            <Parameter value="3" name="display"/>
+            <Parameter value="0.01" name="discTime"/>
             <Parameter value="/home/armin/iqr-dac/sysFiles/adaptiveWeights" name="File Name"/>
             <Parameter value="false" name="write"/>
             <Parameter value="false" name="read"/>
@@ -42,23 +43,6 @@
             <Note></Note>
             <DiagramIcon width="50" x="476" y="178" height="50"/>
         </Group>
-        <Group id="L-11417-1394721468-1245997049" name="Aver Discr" color="#FFFFFF">
-            <Topology>
-                <TopologyRect cylinderHor="false" hcount="1" cylinderVert="false" vcount="1"/>
-            </Topology>
-            <Neuron name="neuronLinearThreshold">
-                <Parameter value="1" name="excGain"/>
-                <Parameter value="1" name="inhGain"/>
-                <Parameter value="0.999" name="vmPrs"/>
-                <Parameter value="false" name="clipVm"/>
-                <Parameter value="0" name="vmMin"/>
-                <Parameter value="1" name="vmMax"/>
-                <Parameter value="1" name="probability"/>
-                <Parameter value="0" name="threshold"/>
-            </Neuron>
-            <Note></Note>
-            <DiagramIcon width="50" x="266" y="350" height="50"/>
-        </Group>
         <Group id="L-14034-1299602716-1791115842" name="CS" color="#FFFFFF">
             <Topology>
                 <TopologyRect cylinderHor="false" hcount="2" cylinderVert="false" vcount="24"/>
@@ -89,7 +73,7 @@
             </Topology>
             <Neuron name="neuronNumeric"/>
             <Note></Note>
-            <DiagramIcon width="50" x="173" y="348" height="50"/>
+            <DiagramIcon width="50" x="245" y="348" height="50"/>
         </Group>
         <Group id="L-14778-1299606101-1566361835" name="Display" color="#FFFFFF">
             <Topology>
@@ -969,28 +953,6 @@
             <DiagramIcon width="50" x="285" y="199" height="50"/>
         </Group>
     </Process>
-    <Connection target="L-11417-1394721468-1245997049" type="excitatory" id="L-11417-1394721505-645228358" source="L-14034-1299602797-848109632" name="Connection descripancy->Aver Discr">
-        <Pattern>
-            <PatternMapped type="center">
-                <All/>
-                <All/>
-            </PatternMapped>
-        </Pattern>
-        <Arborization>
-            <ArbRect width="1" direction="RF" height="1" initialization_probability="1"/>
-        </Arborization>
-        <AttenuationFunction>
-            <FunUniform value="0"/>
-        </AttenuationFunction>
-        <DelayFunction>
-            <FunUniform value="0"/>
-        </DelayFunction>
-        <Synapse name="synapseFixedWeight">
-            <Parameter value="0.001" name="weight"/>
-        </Synapse>
-        <Note></Note>
-        <DiagramLine APTarget="13" APSource="5"/>
-    </Connection>
     <Connection target="CB1394706589CB1392978716CB1392978713CB1392978707L-21140-1391256461-1131353522" type="excitatory" id="L-12908-1393023854-1583512273" source="CB1392978707L-21140-1391256461-1131353522" name="Connection Avoidance->Motor In">
         <Pattern>
             <PatternTuples>
@@ -1199,7 +1161,7 @@
         <Note></Note>
         <DiagramLine APTarget="2" APSource="3"/>
     </Connection>
-    <Connection target="L-14675-1395148116-915190474" type="excitatory" id="L-14675-1395148131-1413500315" source="L-11417-1394721468-1245997049" name="Connection Aver Discr->Discrepancy">
+    <Connection target="L-14675-1395148116-915190474" type="excitatory" id="L-14675-1395148131-1413500315" source="L-14034-1299602797-848109632" name="Connection Aver Discr->Discrepancy">
         <Pattern>
             <PatternMapped type="center">
                 <All/>
@@ -1219,7 +1181,7 @@
             <Parameter value="1" name="weight"/>
         </Synapse>
         <Note></Note>
-        <DiagramLine APTarget="1" APSource="3"/>
+        <DiagramLine APTarget="1" APSource="2"/>
     </Connection>
     <Connection target="L-14675-1395148221-695219843" type="excitatory" id="L-14675-1395148246-1661865588" source="L-14034-1299602747-838924210" name="Connection prototype->Prototype">
         <Pattern>
