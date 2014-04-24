@@ -4,7 +4,7 @@
     <Note></Note>
     <Process port="54923" path="" hostname="" id="L-13629-1299600033-717015361" name="Adaptive" enableModule="true" color="#FFFFFF">
         <Module name="moduleAL">
-            <Parameter value="0.01" name="eta"/>
+            <Parameter value="0.05" name="eta"/>
             <Parameter value="0.98" name="zeta"/>
             <Parameter value="8" name="rho"/>
             <Parameter value="0.01" name="init"/>
@@ -848,7 +848,7 @@
                 <Parameter value="0" name="vmMin"/>
                 <Parameter value="1" name="vmMax"/>
                 <Parameter value="1" name="probability"/>
-                <Parameter value="0.2" name="threshold"/>
+                <Parameter value="0.75" name="threshold"/>
             </Neuron>
             <Note></Note>
             <DiagramIcon width="50" x="477" y="152" height="50"/>
