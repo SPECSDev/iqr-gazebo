@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+    <scene>
+      <shadows>0</shadows>
+    </scene>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>2000</real_time_update_rate>
+      <gravity>0 0 -9.8</gravity>
+    </physics>
+
+
+    <!-- World Camera -->    
+    <gui>
+      <camera name='camera_view'>
+	<pose>0 0 25 0 1.57079 1.57079</pose>
+      </camera>
+    </gui>
+    
+    <!-- Ground -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Global light source -->
+     <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Robot -->
+    <include>
+      <pose>0 0 0 0 0  -1.57079</pose>
+      <name>Bug</name>
+      <uri>model://DAC_Bug</uri>
+    </include>
+
+    <!-- Wall -->
+    <include>
+        <uri>model://DAC_Wall</uri>
+    </include>
+ 
+  </world>
+</sdf>
+

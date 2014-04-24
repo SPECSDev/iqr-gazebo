@@ -163,7 +163,7 @@
             <height>28</height>
           </image>
           <clip>
-            <near>0.15</near>
+            <near>0.02</near>
             <far>20</far>
           </clip>
 	  <noise>
