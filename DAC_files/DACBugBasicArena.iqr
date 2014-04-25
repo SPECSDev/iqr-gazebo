@@ -8,7 +8,6 @@
             <Parameter value="0.98" name="zeta"/>
             <Parameter value="4" name="rho"/>
             <Parameter value="0.01" name="init"/>
-            <Parameter value="3" name="display"/>
             <Parameter value="0.01" name="discTime"/>
             <Parameter value="/home/armin/iqr-dac/sysFiles/adaptiveWeights" name="File Name"/>
             <Parameter value="false" name="write"/>
@@ -77,7 +76,7 @@
         </Group>
         <Group id="L-14778-1299606101-1566361835" name="Display" color="#FFFFFF">
             <Topology>
-                <TopologyRect cylinderHor="false" hcount="2" cylinderVert="false" vcount="24"/>
+                <TopologyRect cylinderHor="false" hcount="18" cylinderVert="false" vcount="24"/>
             </Topology>
             <Neuron name="neuronNumeric"/>
             <Note></Note>
@@ -96,11 +95,10 @@
         <Module name="moduleCL">
             <Parameter value="50" name="Memory Height"/>
             <Parameter value="100" name="Memory Width"/>
-            <Parameter value="0.1" name="Discrepancy Threshold"/>
-            <Parameter value="0.9" name="Selection Threshold"/>
-            <Parameter value="95" name="%-WTA"/>
+            <Parameter value="0" name="Memory Threshold"/>
             <Parameter value="1.9" name="Trigger Reset"/>
             <Parameter value="0.05" name="Trigger Decay"/>
+            <Parameter value="0.1" name="Discrepancy Threshold"/>
             <XRefHolder name="InputFromGroup">
                 <XRef target="L-14675-1395148167-895407754" name="action"/>
                 <XRef target="L-14675-1395148221-695219843" name="prototype"/>
