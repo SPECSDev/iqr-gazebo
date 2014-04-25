@@ -8,7 +8,7 @@
             <Parameter value="0.9" name="zeta"/>
             <Parameter value="0.1" name="rho"/>
             <Parameter value="0.01" name="init"/>
-            <Parameter value="0" name="display"/>
+            <Parameter value="0.001" name="discTime"/>
             <Parameter value="/home/armin/iqr-dac/sysFiles/adaptiveWeights" name="File Name"/>
             <Parameter value="false" name="write"/>
             <Parameter value="false" name="read"/>
@@ -93,7 +93,7 @@
         </Group>
         <Group id="L-14778-1299606101-1566361835" name="Display" color="#FFFFFF">
             <Topology>
-                <TopologyRect cylinderHor="false" hcount="2" cylinderVert="false" vcount="24"/>
+                <TopologyRect cylinderHor="false" hcount="18" cylinderVert="false" vcount="24"/>
             </Topology>
             <Neuron name="neuronNumeric"/>
             <Note></Note>
@@ -113,6 +113,7 @@
             <Parameter value="Bug" name="device_name"/>
             <Parameter value="300" name="cps"/>
             <Parameter value="default_com_key_0" name="comkey"/>
+            <Parameter value="true" name="gripper"/>
             <Parameter value="false" name="grayscale"/>
             <Parameter value="true" name="hsv"/>
             <Parameter value="1" name="transSpeed"/>
