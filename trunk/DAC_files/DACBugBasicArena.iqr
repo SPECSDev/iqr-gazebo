@@ -4,7 +4,7 @@
     <Note></Note>
     <Process port="54923" path="" hostname="" id="L-13629-1299600033-717015361" name="Adaptive" enableModule="true" color="#FFFFFF">
         <Module name="moduleAL">
-            <Parameter value="0.05" name="eta"/>
+            <Parameter value="0.001" name="eta"/>
             <Parameter value="0.98" name="zeta"/>
             <Parameter value="8" name="rho"/>
             <Parameter value="0.01" name="init"/>
@@ -2154,6 +2154,14 @@
                     </SourceList>
                     <TargetList>
                         <Point x="1" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
+                        <Point x="4" y="1"/>
+                    </SourceList>
+                    <TargetList>
+                        <Point x="5" y="1"/>
                     </TargetList>
                 </Tuple>
             </PatternTuples>
