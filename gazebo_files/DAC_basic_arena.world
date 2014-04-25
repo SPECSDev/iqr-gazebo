@@ -37,6 +37,13 @@
       <uri>model://DAC_Bug</uri>
     </include>
 
+    <!-- Wall -->
+    <include>
+      <pose>0 3 0 0 0  0</pose>
+      <name>Wall</name>
+      <uri>model://DAC_SimpleWall</uri>
+    </include>
+
     <!-- Reset Points -->
     <include>
       <pose>-1.5 -2 0 0 0  1.57079</pose>
