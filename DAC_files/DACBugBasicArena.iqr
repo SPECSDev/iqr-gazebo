@@ -4,7 +4,7 @@
     <Note></Note>
     <Process port="54923" path="" hostname="" id="L-13629-1299600033-717015361" name="Adaptive" enableModule="true" color="#FFFFFF">
         <Module name="moduleAL">
-            <Parameter value="0.001" name="eta"/>
+            <Parameter value="0.005" name="eta"/>
             <Parameter value="0.98" name="zeta"/>
             <Parameter value="8" name="rho"/>
             <Parameter value="0.01" name="init"/>
@@ -95,10 +95,11 @@
         <Module name="moduleCL">
             <Parameter value="50" name="Memory Height"/>
             <Parameter value="100" name="Memory Width"/>
-            <Parameter value="0.999" name="Memory Threshold"/>
+            <Parameter value="0.75" name="Memory Threshold"/>
+            <Parameter value="0.95" name="%-WTA"/>
             <Parameter value="1.1" name="Trigger Reset"/>
             <Parameter value="0.005" name="Trigger Decay"/>
-            <Parameter value="0" name="Discrepancy Threshold"/>
+            <Parameter value="0.05" name="Discrepancy Threshold"/>
             <XRefHolder name="InputFromGroup">
                 <XRef target="L-14675-1395148167-895407754" name="action"/>
                 <XRef target="L-14675-1395148221-695219843" name="prototype"/>
@@ -115,7 +116,7 @@
             </XRefHolder>
         </Module>
         <Note></Note>
-        <DiagramIcon width="50" x="504" y="174" height="50"/>
+        <DiagramIcon width="50" x="505" y="174" height="50"/>
         <Group id="L-14675-1395147389-1445350236" name="Pre-stats sensor" color="#FFFFFF">
             <Topology>
                 <TopologyRect cylinderHor="false" hcount="7" cylinderVert="false" vcount="1"/>
@@ -128,7 +129,7 @@
                 <Parameter value="0" name="vmMin"/>
                 <Parameter value="1" name="vmMax"/>
                 <Parameter value="1" name="probability"/>
-                <Parameter value="0.9" name="threshold"/>
+                <Parameter value="0.7" name="threshold"/>
             </Neuron>
             <Note></Note>
             <DiagramIcon width="50" x="69" y="79" height="50"/>
@@ -301,7 +302,7 @@
                 <Parameter value="0" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="416" y="60" height="50"/>
+            <DiagramIcon width="50" x="401" y="63" height="50"/>
         </Group>
         <Group id="L-14675-1395148221-695219843" name="Prototype" color="#FFFFFF">
             <Topology>
@@ -437,7 +438,7 @@
                 <Parameter value="0" name="vmMin"/>
                 <Parameter value="1" name="vmMax"/>
                 <Parameter value="1" name="probability"/>
-                <Parameter value="1" name="threshold"/>
+                <Parameter value="0" name="threshold"/>
             </Neuron>
             <Note></Note>
             <DiagramIcon width="50" x="186" y="167" height="50"/>
@@ -747,7 +748,7 @@
                 <Parameter value="0" name="vmMin"/>
                 <Parameter value="1" name="vmMax"/>
                 <Parameter value="1" name="probability"/>
-                <Parameter value="0.15" name="threshold"/>
+                <Parameter value="0.1" name="threshold"/>
             </Neuron>
             <Note></Note>
             <DiagramIcon width="50" x="319" y="116" height="50"/>
