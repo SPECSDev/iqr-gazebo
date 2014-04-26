@@ -53,7 +53,7 @@
                 <Parameter value="0" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="210" y="161" height="50"/>
+            <DiagramIcon width="50" x="177" y="114" height="50"/>
         </Group>
         <Group id="L-14827-1391619839-708665346" name="Sensor Gripper" color="#FFFFFF">
             <Topology>
@@ -104,7 +104,7 @@
                 <Parameter value="0" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="367" y="31" height="50"/>
+            <DiagramIcon width="50" x="361" y="30" height="50"/>
         </Group>
         <Group id="L-26978-1392987234-217453633" name="Sensor" color="#FFFFFF">
             <Topology>
@@ -223,7 +223,7 @@
                 <Parameter value="0" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="369" y="121" height="50"/>
+            <DiagramIcon width="50" x="368" y="123" height="50"/>
         </Group>
         <Group id="L-7682-1391584747-543418880" name="Green - Saturation" color="#FFFFFF">
             <Topology>
@@ -302,14 +302,14 @@
                 <TopologyRect cylinderHor="false" hcount="7" cylinderVert="false" vcount="1"/>
             </Topology>
             <Neuron name="neuronLinearThreshold">
-                <Parameter value="1" name="excGain"/>
+                <Parameter value="5" name="excGain"/>
                 <Parameter value="1" name="inhGain"/>
                 <Parameter value="0" name="vmPrs"/>
                 <Parameter value="true" name="clipVm"/>
                 <Parameter value="0" name="vmMin"/>
                 <Parameter value="1" name="vmMax"/>
                 <Parameter value="1" name="probability"/>
-                <Parameter value="0" name="threshold"/>
+                <Parameter value="0.01" name="threshold"/>
             </Neuron>
             <Note></Note>
             <DiagramIcon width="50" x="158" y="153" height="50"/>
@@ -384,7 +384,7 @@
                 <Parameter value="0" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="116" y="263" height="50"/>
+            <DiagramIcon width="50" x="114" y="267" height="50"/>
         </Group>
         <Group id="L-6512-1398372142-345570911" name="Explore" color="#FFFFFF">
             <Topology>
