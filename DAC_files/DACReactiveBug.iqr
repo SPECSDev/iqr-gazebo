@@ -38,7 +38,7 @@
         </Module>
         <Note></Note>
         <DiagramIcon width="50" x="90" y="62" height="50"/>
-        <Group id="CB1392985437L-21140-1391256483-1795368048" name="Target" color="#FFFFFF">
+        <Group id="CB1392985437L-21140-1391256483-1795368048" name="Light" color="#FFFFFF">
             <Topology>
                 <TopologyRect cylinderHor="false" hcount="32" cylinderVert="false" vcount="1"/>
             </Topology>
@@ -53,7 +53,7 @@
                 <Parameter value="0" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="211" y="171" height="50"/>
+            <DiagramIcon width="50" x="177" y="114" height="50"/>
         </Group>
         <Group id="L-14827-1391619839-708665346" name="Sensor Gripper" color="#FFFFFF">
             <Topology>
@@ -139,23 +139,6 @@
             </Neuron>
             <Note></Note>
             <DiagramIcon width="50" x="474" y="369" height="50"/>
-        </Group>
-        <Group id="L-26978-1392987335-413702926" name="Low Res. Target" color="#FFFFFF">
-            <Topology>
-                <TopologyRect cylinderHor="false" hcount="7" cylinderVert="false" vcount="1"/>
-            </Topology>
-            <Neuron name="neuronLinearThreshold">
-                <Parameter value="1" name="excGain"/>
-                <Parameter value="1" name="inhGain"/>
-                <Parameter value="0" name="vmPrs"/>
-                <Parameter value="true" name="clipVm"/>
-                <Parameter value="0" name="vmMin"/>
-                <Parameter value="1" name="vmMax"/>
-                <Parameter value="1" name="probability"/>
-                <Parameter value="0" name="threshold"/>
-            </Neuron>
-            <Note></Note>
-            <DiagramIcon width="50" x="212" y="52" height="50"/>
         </Group>
         <Group id="L-5187-1392113009-698644756" name="Listen" color="#FFFFFF">
             <Topology>
@@ -296,7 +279,7 @@
     </Process>
     <Process port="54923" path="" hostname="" id="L-28492-1392994734-740050371" name="Reactive Layer" enableModule="true" color="#FFFFFF">
         <Note></Note>
-        <DiagramIcon width="50" x="224" y="67" height="50"/>
+        <DiagramIcon width="50" x="246" y="92" height="50"/>
         <Group id="CB1398371403CB1394547921L-4442-1394547906-108884632" name="Approach" color="#FFFFFF">
             <Topology>
                 <TopologyRect cylinderHor="false" hcount="9" cylinderVert="false" vcount="1"/>
@@ -312,7 +295,24 @@
                 <Parameter value="0.7" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="298" y="152" height="50"/>
+            <DiagramIcon width="50" x="260" y="154" height="50"/>
+        </Group>
+        <Group id="CB1398511040L-26978-1392987335-413702926" name="US" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="7" cylinderVert="false" vcount="1"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="5" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="true" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0.01" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="158" y="153" height="50"/>
         </Group>
     </Process>
     <Process port="54923" path="" hostname="" id="L-6512-1398371544-866974907" name="Selection" enableModule="true" color="#FFFFFF">
@@ -333,7 +333,7 @@
                 <Parameter value="0" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="118" y="165" height="50"/>
+            <DiagramIcon width="50" x="116" y="166" height="50"/>
         </Group>
         <Group id="CB1398371638CB1394706589CB1392978716CB1392978713CB1392978707L-21140-1391256461-1131353522" name="UR" color="#FFFFFF">
             <Topology>
@@ -412,10 +412,10 @@
                 <Parameter value="1" name="spkAmpl"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="164" y="463" height="50"/>
+            <DiagramIcon width="50" x="166" y="465" height="50"/>
         </Group>
     </Process>
-    <Connection target="L-26978-1392987335-413702926" type="excitatory" id="L-26978-1392987351-1912704325" source="CB1392985437L-21140-1391256483-1795368048" name="Connection Target->Low Res. Target">
+    <Connection target="CB1398511040L-26978-1392987335-413702926" type="excitatory" id="L-26978-1392987351-1912704325" source="CB1392985437L-21140-1391256483-1795368048" name="Connection Target->Low Res. Target">
         <Pattern>
             <PatternMapped type="center">
                 <All/>
@@ -435,7 +435,7 @@
             <Parameter value="1" name="weight"/>
         </Synapse>
         <Note></Note>
-        <DiagramLine APTarget="11" APSource="3"/>
+        <DiagramLine APTarget="0" APSource="3"/>
     </Connection>
     <Connection target="CB1398371598CB1393107208CB1392978707L-21140-1391256461-1131353522" type="excitatory" id="L-6512-1398371588-2050485589" source="CB1398371403CB1394547921L-4442-1394547906-108884632" name="Connection Avoid->Avoid">
         <Pattern>
@@ -553,16 +553,10 @@
     </Connection>
     <Connection target="L-6512-1398372142-345570911" type="excitatory" id="L-6512-1398372327-207918322" source="L-6512-1398372286-1021164398" name="Connection Const Speed->Explore">
         <Pattern>
-            <PatternTuples>
-                <Tuple>
-                    <SourceList>
-                        <Point x="1" y="1"/>
-                    </SourceList>
-                    <TargetList>
-                        <Point x="5" y="1"/>
-                    </TargetList>
-                </Tuple>
-            </PatternTuples>
+            <PatternMapped type="center">
+                <All/>
+                <All/>
+            </PatternMapped>
         </Pattern>
         <Arborization>
             <ArbRect width="1" direction="RF" height="1" initialization_probability="1"/>
@@ -697,17 +691,9 @@
         <Note></Note>
         <DiagramLine APTarget="0" APSource="3"/>
     </Connection>
-    <Connection target="CB1398371403CB1394547921L-4442-1394547906-108884632" type="excitatory" id="L-7708-1398375324-1509331904" source="L-26978-1392987335-413702926" name="Connection Low Res. Target->Avoid">
+    <Connection target="CB1398371403CB1394547921L-4442-1394547906-108884632" type="excitatory" id="L-8338-1398511091-1597131149" source="CB1398511040L-26978-1392987335-413702926" name="Connection US->Approach">
         <Pattern>
             <PatternTuples>
-                <Tuple>
-                    <SourceList>
-                        <Point x="3" y="1"/>
-                    </SourceList>
-                    <TargetList>
-                        <Point x="1" y="1"/>
-                    </TargetList>
-                </Tuple>
                 <Tuple>
                     <SourceList>
                         <Point x="5" y="1"/>
@@ -718,9 +704,15 @@
                 </Tuple>
                 <Tuple>
                     <SourceList>
+                        <Point x="3" y="1"/>
+                    </SourceList>
+                    <TargetList>
                         <Point x="1" y="1"/>
+                    </TargetList>
+                </Tuple>
+                <Tuple>
+                    <SourceList>
                         <Point x="4" y="1"/>
-                        <Point x="7" y="1"/>
                     </SourceList>
                     <TargetList>
                         <Point x="5" y="1"/>
@@ -741,7 +733,7 @@
             <Parameter value="1" name="weight"/>
         </Synapse>
         <Note></Note>
-        <DiagramLine APTarget="0" APSource="0"/>
+        <DiagramLine APTarget="12" APSource="4"/>
     </Connection>
 </System>
 
