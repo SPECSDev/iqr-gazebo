@@ -40,9 +40,11 @@ y = (y-7.5)/5*size(arena,1);
 
 for ii=1:length(indexT)
 	plotIndex=indexT(ii,1):indexT(ii,2);    	
-    plot(x(plotIndex),y(plotIndex),'Color',[239, 205, 205]/255)
+    plot(x(plotIndex),y(plotIndex),'Color',[239, 205, 205]/255, 'Linestyle', ':')
 end
    
+box off
+grid off
 axis off
 
 end
