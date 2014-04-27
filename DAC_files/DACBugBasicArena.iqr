@@ -72,7 +72,7 @@
             </Topology>
             <Neuron name="neuronNumeric"/>
             <Note></Note>
-            <DiagramIcon width="50" x="245" y="348" height="50"/>
+            <DiagramIcon width="50" x="255" y="238" height="50"/>
         </Group>
         <Group id="L-14778-1299606101-1566361835" name="Display" color="#FFFFFF">
             <Topology>
@@ -80,7 +80,7 @@
             </Topology>
             <Neuron name="neuronNumeric"/>
             <Note></Note>
-            <DiagramIcon width="50" x="88" y="344" height="50"/>
+            <DiagramIcon width="50" x="106" y="249" height="50"/>
         </Group>
         <Group id="L-2775-1300100212-1818371176" name="UR" color="#FFFFFF">
             <Topology>
@@ -268,7 +268,7 @@
                 <Parameter value="0.5" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="334" y="260" height="50"/>
+            <DiagramIcon width="50" x="367" y="204" height="50"/>
         </Group>
         <Group id="L-14675-1395148116-915190474" name="Discrepancy" color="#FFFFFF">
             <Topology>
@@ -285,7 +285,7 @@
                 <Parameter value="0" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="274" y="57" height="50"/>
+            <DiagramIcon width="50" x="274" y="102" height="50"/>
         </Group>
         <Group id="L-14675-1395148167-895407754" name="Executed action" color="#FFFFFF">
             <Topology>
@@ -1050,28 +1050,6 @@
         <Note></Note>
         <DiagramLine APTarget="2" APSource="10"/>
     </Connection>
-    <Connection target="L-14675-1395148116-915190474" type="excitatory" id="L-14675-1395148131-1413500315" source="L-22836-1398544124-466397396" name="Connection Aver Discr->Discrepancy">
-        <Pattern>
-            <PatternMapped type="center">
-                <All/>
-                <All/>
-            </PatternMapped>
-        </Pattern>
-        <Arborization>
-            <ArbRect width="1" direction="RF" height="1" initialization_probability="1"/>
-        </Arborization>
-        <AttenuationFunction>
-            <FunUniform value="0"/>
-        </AttenuationFunction>
-        <DelayFunction>
-            <FunUniform value="0"/>
-        </DelayFunction>
-        <Synapse name="synapseFixedWeight">
-            <Parameter value="1" name="weight"/>
-        </Synapse>
-        <Note></Note>
-        <DiagramLine APTarget="1" APSource="2"/>
-    </Connection>
     <Connection target="L-14675-1395148221-695219843" type="excitatory" id="L-14675-1395148246-1661865588" source="L-14034-1299602747-838924210" name="Connection prototype->Prototype">
         <Pattern>
             <PatternMapped type="center">
@@ -1679,6 +1657,28 @@
         </Synapse>
         <Note></Note>
         <DiagramLine APTarget="1" APSource="1"/>
+    </Connection>
+    <Connection target="L-14675-1395148116-915190474" type="excitatory" id="L-3910-1398586584-1739638831" source="L-14034-1299602797-848109632" name="Connection descripancy->Discrepancy">
+        <Pattern>
+            <PatternMapped type="center">
+                <All/>
+                <All/>
+            </PatternMapped>
+        </Pattern>
+        <Arborization>
+            <ArbRect width="1" direction="RF" height="1" initialization_probability="1"/>
+        </Arborization>
+        <AttenuationFunction>
+            <FunUniform value="0"/>
+        </AttenuationFunction>
+        <DelayFunction>
+            <FunUniform value="0"/>
+        </DelayFunction>
+        <Synapse name="synapseFixedWeight">
+            <Parameter value="1" name="weight"/>
+        </Synapse>
+        <Note></Note>
+        <DiagramLine APTarget="1" APSource="2"/>
     </Connection>
     <Connection target="CB1393107208CB1392978707L-21140-1391256461-1131353522" type="excitatory" id="L-4442-1394548124-1192362603" source="CB1394547921L-4442-1394547906-108884632" name="Connection Approach->Approach">
         <Pattern>
