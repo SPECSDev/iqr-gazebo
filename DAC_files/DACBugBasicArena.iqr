@@ -5,8 +5,8 @@
     <Process port="54923" path="" hostname="" id="L-13629-1299600033-717015361" name="Adaptive" enableModule="true" color="#FFFFFF">
         <Module name="moduleAL">
             <Parameter value="0.005" name="eta"/>
-            <Parameter value="0.98" name="zeta"/>
-            <Parameter value="8" name="rho"/>
+            <Parameter value="0.97" name="zeta"/>
+            <Parameter value="6" name="rho"/>
             <Parameter value="0.01" name="init"/>
             <Parameter value="0.01" name="discTime"/>
             <Parameter value="/home/armin/iqr-dac/sysFiles/adaptiveWeights" name="File Name"/>
@@ -40,7 +40,7 @@
                 <Parameter value="0.2" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="476" y="178" height="50"/>
+            <DiagramIcon width="50" x="464" y="178" height="50"/>
         </Group>
         <Group id="L-14034-1299602716-1791115842" name="CS" color="#FFFFFF">
             <Topology>
@@ -48,7 +48,7 @@
             </Topology>
             <Neuron name="neuronNumeric"/>
             <Note></Note>
-            <DiagramIcon width="50" x="132" y="112" height="50"/>
+            <DiagramIcon width="50" x="111" y="79" height="50"/>
         </Group>
         <Group id="L-14034-1299602747-838924210" name="prototype" color="#FFFFFF">
             <Topology>
@@ -56,7 +56,7 @@
             </Topology>
             <Neuron name="neuronNumeric"/>
             <Note></Note>
-            <DiagramIcon width="50" x="53" y="115" height="50"/>
+            <DiagramIcon width="50" x="109" y="163" height="50"/>
         </Group>
         <Group id="L-14034-1299602779-667734589" name="CR" color="#FFFFFF">
             <Topology>
@@ -64,7 +64,7 @@
             </Topology>
             <Neuron name="neuronNumeric"/>
             <Note></Note>
-            <DiagramIcon width="50" x="354" y="177" height="50"/>
+            <DiagramIcon width="50" x="352" y="176" height="50"/>
         </Group>
         <Group id="L-14034-1299602797-848109632" name="descripancy" color="#FFFFFF">
             <Topology>
@@ -72,15 +72,15 @@
             </Topology>
             <Neuron name="neuronNumeric"/>
             <Note></Note>
-            <DiagramIcon width="50" x="255" y="238" height="50"/>
+            <DiagramIcon width="50" x="263" y="202" height="50"/>
         </Group>
-        <Group id="L-14778-1299606101-1566361835" name="Display" color="#FFFFFF">
+        <Group id="L-14778-1299606101-1566361835" name="Weights Display" color="#FFFFFF">
             <Topology>
                 <TopologyRect cylinderHor="false" hcount="18" cylinderVert="false" vcount="24"/>
             </Topology>
             <Neuron name="neuronNumeric"/>
             <Note></Note>
-            <DiagramIcon width="50" x="106" y="249" height="50"/>
+            <DiagramIcon width="50" x="211" y="312" height="50"/>
         </Group>
         <Group id="L-2775-1300100212-1818371176" name="UR" color="#FFFFFF">
             <Topology>
@@ -88,18 +88,18 @@
             </Topology>
             <Neuron name="neuronNumeric"/>
             <Note></Note>
-            <DiagramIcon width="50" x="356" y="86" height="50"/>
+            <DiagramIcon width="50" x="347" y="84" height="50"/>
         </Group>
     </Process>
-    <Process port="54923" path="" hostname="" id="L-14675-1395146894-503547541" name="Contextual" enableModule="true" color="#FFFFFF">
+    <Process port="54923" path="" hostname="" id="L-14675-1395146894-503547541" name="Contextual" enableModule="false" color="#FFFFFF">
         <Module name="moduleCL">
             <Parameter value="50" name="Memory Height"/>
             <Parameter value="100" name="Memory Width"/>
-            <Parameter value="0.75" name="Memory Threshold"/>
+            <Parameter value="0.9" name="Memory Threshold"/>
             <Parameter value="0.95" name="%-WTA"/>
             <Parameter value="1.1" name="Trigger Reset"/>
             <Parameter value="0.005" name="Trigger Decay"/>
-            <Parameter value="0.05" name="Discrepancy Threshold"/>
+            <Parameter value="0.1" name="Discrepancy Threshold"/>
             <XRefHolder name="InputFromGroup">
                 <XRef target="L-14675-1395148167-895407754" name="action"/>
                 <XRef target="L-14675-1395148221-695219843" name="prototype"/>
@@ -149,7 +149,7 @@
                 <Parameter value="0.2" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="155" y="72" height="50"/>
+            <DiagramIcon width="50" x="183" y="75" height="50"/>
         </Group>
         <Group id="L-14675-1395147540-1542863998" name="Stats" color="#FFFFFF">
             <Topology>
@@ -166,7 +166,7 @@
                 <Parameter value="0.2" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="107" y="160" height="50"/>
+            <DiagramIcon width="50" x="123" y="203" height="50"/>
         </Group>
         <Group id="L-14675-1395147860-1680186200" name="Empty" color="#FFFFFF">
             <Topology>
@@ -265,10 +265,10 @@
                 <Parameter value="0" name="vmMin"/>
                 <Parameter value="1" name="vmMax"/>
                 <Parameter value="1" name="probability"/>
-                <Parameter value="0.5" name="threshold"/>
+                <Parameter value="0" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="367" y="204" height="50"/>
+            <DiagramIcon width="50" x="334" y="260" height="50"/>
         </Group>
         <Group id="L-14675-1395148116-915190474" name="Discrepancy" color="#FFFFFF">
             <Topology>
@@ -285,7 +285,7 @@
                 <Parameter value="0" name="threshold"/>
             </Neuron>
             <Note></Note>
-            <DiagramIcon width="50" x="274" y="102" height="50"/>
+            <DiagramIcon width="50" x="399" y="99" height="50"/>
         </Group>
         <Group id="L-14675-1395148167-895407754" name="Executed action" color="#FFFFFF">
             <Topology>
@@ -588,7 +588,7 @@
                 <TopologyRect cylinderHor="false" hcount="9" cylinderVert="false" vcount="1"/>
             </Topology>
             <Neuron name="neuronLinearThreshold">
-                <Parameter value="1" name="excGain"/>
+                <Parameter value="0" name="excGain"/>
                 <Parameter value="1.5" name="inhGain"/>
                 <Parameter value="0" name="vmPrs"/>
                 <Parameter value="true" name="clipVm"/>
@@ -1026,7 +1026,7 @@
             <Parameter value="1" name="weight"/>
         </Synapse>
         <Note></Note>
-        <DiagramLine APTarget="6" APSource="13"/>
+        <DiagramLine APTarget="3" APSource="9"/>
     </Connection>
     <Connection target="L-14675-1395147540-1542863998" type="excitatory" id="L-14675-1395147714-723575018" source="L-14675-1395147389-1445350236" name="Connection Pre-stats sensor->Stats">
         <Pattern>
@@ -1048,7 +1048,7 @@
             <Parameter value="1" name="weight"/>
         </Synapse>
         <Note></Note>
-        <DiagramLine APTarget="2" APSource="10"/>
+        <DiagramLine APTarget="0" APSource="10"/>
     </Connection>
     <Connection target="L-14675-1395148221-695219843" type="excitatory" id="L-14675-1395148246-1661865588" source="L-14034-1299602747-838924210" name="Connection prototype->Prototype">
         <Pattern>
@@ -1070,7 +1070,7 @@
             <Parameter value="1" name="weight"/>
         </Synapse>
         <Note></Note>
-        <DiagramLine APTarget="1" APSource="1"/>
+        <DiagramLine APTarget="1" APSource="13"/>
     </Connection>
     <Connection target="CB1393105222CB1392978713CB1392978707L-21140-1391256461-1131353522" type="excitatory" id="L-14675-1395148301-1646092938" source="L-14675-1395147985-738092673" name="Connection Action->Contextual">
         <Pattern>
@@ -1416,6 +1416,28 @@
         <Note></Note>
         <DiagramLine APTarget="14" APSource="5"/>
     </Connection>
+    <Connection target="L-14675-1395148116-915190474" type="excitatory" id="L-22086-1398587185-27404362" source="L-14034-1299602797-848109632" name="Connection descripancy->Discrepancy">
+        <Pattern>
+            <PatternMapped type="center">
+                <All/>
+                <All/>
+            </PatternMapped>
+        </Pattern>
+        <Arborization>
+            <ArbRect width="1" direction="RF" height="1" initialization_probability="1"/>
+        </Arborization>
+        <AttenuationFunction>
+            <FunUniform value="0"/>
+        </AttenuationFunction>
+        <DelayFunction>
+            <FunUniform value="0"/>
+        </DelayFunction>
+        <Synapse name="synapseFixedWeight">
+            <Parameter value="1" name="weight"/>
+        </Synapse>
+        <Note></Note>
+        <DiagramLine APTarget="1" APSource="0"/>
+    </Connection>
     <Connection target="CB1394547921L-4442-1394547906-108884632" type="excitatory" id="L-22216-1395919118-1582213328" source="CB1395919088CB1394547921L-4442-1394547906-108884632" name="Connection Pre Thresh Approach->Approach">
         <Pattern>
             <PatternMapped type="center">
@@ -1546,7 +1568,7 @@
             <Parameter value="1" name="weight"/>
         </Synapse>
         <Note></Note>
-        <DiagramLine APTarget="9" APSource="2"/>
+        <DiagramLine APTarget="1" APSource="2"/>
     </Connection>
     <Connection target="L-14675-1395147389-1445350236" type="excitatory" id="L-22857-1398544772-1506618020" source="L-22857-1398544700-1313022747" name="Connection US (proximity)->Pre-stats sensor">
         <Pattern>
@@ -1657,28 +1679,6 @@
         </Synapse>
         <Note></Note>
         <DiagramLine APTarget="1" APSource="1"/>
-    </Connection>
-    <Connection target="L-14675-1395148116-915190474" type="excitatory" id="L-3910-1398586584-1739638831" source="L-14034-1299602797-848109632" name="Connection descripancy->Discrepancy">
-        <Pattern>
-            <PatternMapped type="center">
-                <All/>
-                <All/>
-            </PatternMapped>
-        </Pattern>
-        <Arborization>
-            <ArbRect width="1" direction="RF" height="1" initialization_probability="1"/>
-        </Arborization>
-        <AttenuationFunction>
-            <FunUniform value="0"/>
-        </AttenuationFunction>
-        <DelayFunction>
-            <FunUniform value="0"/>
-        </DelayFunction>
-        <Synapse name="synapseFixedWeight">
-            <Parameter value="1" name="weight"/>
-        </Synapse>
-        <Note></Note>
-        <DiagramLine APTarget="1" APSource="2"/>
     </Connection>
     <Connection target="CB1393107208CB1392978707L-21140-1391256461-1131353522" type="excitatory" id="L-4442-1394548124-1192362603" source="CB1394547921L-4442-1394547906-108884632" name="Connection Approach->Approach">
         <Pattern>
@@ -1882,7 +1882,7 @@
             <Parameter value="1" name="weight"/>
         </Synapse>
         <Note></Note>
-        <DiagramLine APTarget="1" APSource="1"/>
+        <DiagramLine APTarget="3" APSource="1"/>
     </Connection>
     <Connection target="CB1392978716CB1392978713CB1392978707L-21140-1391256461-1131353522" type="excitatory" id="L-8914-1394706621-1837426378" source="CB1394706589CB1392978716CB1392978713CB1392978707L-21140-1391256461-1131353522" name="Connection Copy of Motor In->Motor In">
         <Pattern>
