@@ -58,6 +58,7 @@ TARGET_LINK_LIBRARIES(
   boost_system
   protobuf
   sdformat
+  pthread
   )
 
 
