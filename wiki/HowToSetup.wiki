@@ -34,7 +34,7 @@ sudo dpkg -i iqr-dev_2.0-0.ubuntu_debian.i386.deb
 
 ===Install Gazebo===
 
-Install Gazebo following the instruction on: http://gazebosim.org/wiki/2.2/install. Please note you need at least gazebo version 2.2 or higher. 
+Install Gazebo following the instruction on: http://gazebosim.org/tutorials/?tut=install. Please note you need at least gazebo version 2.2 or higher. 
 
 === Get the iqr-gazebo Files ===
 Check out the files using svn to your home directory. 
