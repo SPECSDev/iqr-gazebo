@@ -9,11 +9,7 @@ PROJECT(worldcontrol)
 #SET(QT_MT_REQUIRED TRUE)
 FIND_PACKAGE(Qt4 REQUIRED)
 INCLUDE(${QT_USE_FILE})
-
-include (FindPkgConfig)
-if (PKG_CONFIG_FOUND)
-  pkg_check_modules(GAZEBO gazebo)
-endif()
+FIND_PACKAGE(gazebo REQUIRED)
 
 SET(worldcontrol_SOURCES 
   main.cpp 
