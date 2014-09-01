@@ -8,10 +8,7 @@ ADD_DEFINITIONS(-Wall -Iserialstream -DQT_THREAD_SUPPORT -D_REENTRANT -DQT_NO_DE
 FIND_PACKAGE(Qt4 REQUIRED)
 INCLUDE(${QT_USE_FILE})
 
-include (FindPkgConfig)
-if (PKG_CONFIG_FOUND)
-  pkg_check_modules(GAZEBO gazebo)
-endif()
+find_package(gazebo REQUIRED)
 
 SET(libSrc
     gazebo_bug.cpp
@@ -20,7 +17,6 @@ SET(libSrc
 INCLUDE_directories(
   ${CMAKE_CURRENT_SOURCE_DIR} 
   /usr/include/iqr
-  #/usr/include/iqr
   ${QT_INCLUDE_DIR}
   ${GAZEBO_INCLUDE_DIRS}
 )
