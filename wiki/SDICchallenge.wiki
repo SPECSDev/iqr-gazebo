@@ -17,7 +17,7 @@ Two teams of robots will compete in the same arena for limited resources. The ar
 
 ==Rules==
   * The competition lasts 5 min.
-  * The competition follow a double elimination format http://challonge.com/sdic_robot
+  * The competition follow a round robin format http://challonge.com/sdic_robot
   * The robots are controlled over IQR only.
   * During the competition you are allowed to change parameters and start stop the simulation.  
   * During the competition you are not allowed to use the state manipulation panel or any other means of     inducing user defined or predefined activity.
