@@ -29,13 +29,8 @@ Two teams of robots will compete in the same arena for limited resources. The ar
 
 == Preparation ==
 
-For preparing the Robot Challenge you can use the rooms 54.030 or 54.031. On Monday 17th of March to Thursday 20th of March from 10:00 to 20:00 the room 54.030 is reserved for SDIC students. 
+For preparing the Robot Challenge you can use the rooms 54.030 or 54.031. 
 
-
-==Extensions==
-  * Battery 
-  * Pheromone trace
-  * Ballistic gripper able to throw resource
 
 ==Projects==
 Each group is supposed to select a subsystem of their competition system for a more detailed design and analysis following the biomimetic approach. However also the overall system should follow a biomimetic approach. 
