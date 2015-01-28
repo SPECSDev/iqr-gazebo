@@ -68,5 +68,5 @@ Same as for the presentation the report should focus on the subsystem for which 
 
 Please save the file in pdf format and with a meaningful name including your group name and some keywords describing your project.
 {{{
-Example: Rambots_PlaceCellNavigation_SDIC2014.pdf
+Example: Rambots_PlaceCellNavigation_SDIC2015.pdf
 }}}
