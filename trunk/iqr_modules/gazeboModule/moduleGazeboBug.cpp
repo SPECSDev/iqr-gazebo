@@ -8,9 +8,6 @@
 #include "moduleGazeboBug.hpp"
 #include <ModuleIcon_bug.h>
 
-#define MIN_3(a, b, c)        MIN(MIN(a, b), c)
-#define MAX_3(a, b, c)        MAX(MAX(a, b), c)
-
 
 MAKE_MODULE_DLL_INTERFACE(iqrcommon::ClsModuleGazeboBug, "Gazebo Bug Module")
 
@@ -206,7 +203,7 @@ void  iqrcommon::ClsModuleGazeboBug::gpsToNavigation(vector<float> gps,
   float distance;
   for(int ii=0; ii<headCellWidth; ii++){
     xcell =(float)ii/(float)(headCellWidth);
-    distance = MAX(MIN( xcell -rot, 1-(xcell -rot)),MIN(rot-xcell, 1-(rot-xcell)));
+    distance = std::max(std::min( xcell -rot, 1-(xcell -rot)),std::min(rot-xcell, 1-(rot-xcell)));
     //cout<<"Cell "<<ii<<" "<< xcell<<" rot "<<rot<< endl;
     headCell[0][ii]=exp(-((distance)/headSigma)*((distance)/headSigma));
   }
@@ -420,8 +417,8 @@ void iqrcommon::ClsModuleGazeboBug::RGBtoHSVPixel(float r, float g, float b,
                           float& h, float& s, float& v){
     float min, max, delta;
 
-    min = MIN_3(r, g, b);
-    max = MAX_3(r, g, b);
+    min = std::min(r,std::min(g, b));
+    max = std::max(r,std::max(g, b));
     delta = max-min;
 
     // value
