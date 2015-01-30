@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+    <!-- World Camera -->    
+    <gui>
+        <camera name='camera_view'>
+        <pose>-12 0 3 0 0.2 0</pose>
+        </camera>
+    </gui>
+    <!-- Ground -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Global light source -->
+     <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Robot model -->
+    <include>
+      <pose>-5.3 -3.8 0 0 0 0</pose>
+      <uri>model://DAC_Bug</uri>
+    </include>
+
+
+    <!-- Wall -->
+    <include>
+        <uri>model://lineFollow</uri>
+    </include>
+
+    
+  </world>
+</sdf>
+

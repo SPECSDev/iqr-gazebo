@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE System PUBLIC '-//INI/iqr421' 'iqrSystem.dtd'>
+<System syncPlots="false" port="54923" author="Armin Duff" id="L-2960-1390229637-1765900425" cylesPerSecond="25" name="Gazebo System" date="Mon Jan 20 15:53:57 2014&#xa;">
+    <Note></Note>
+    <Process port="54923" path="" hostname="" id="L-21140-1391256391-1268359437" name="Bug" enableModule="true" color="#FFFFFF">
+        <Module name="moduleGazeboBug">
+            <Parameter value="SDIC_Bug" name="device_name"/>
+            <Parameter value="25" name="cps"/>
+            <Parameter value="default_com_key_0" name="comkey"/>
+            <Parameter value="false" name="gripper"/>
+            <Parameter value="false" name="grayscale"/>
+            <Parameter value="false" name="hsv"/>
+            <Parameter value="1" name="transSpeed"/>
+            <Parameter value="1" name="rotSpeed"/>
+            <Parameter value="0" name="placeXOffset"/>
+            <Parameter value="0" name="placeYOffset"/>
+            <Parameter value="10" name="placeXMax"/>
+            <Parameter value="10" name="placeYMax"/>
+            <Parameter value="0.2" name="placeSigma"/>
+            <Parameter value="0.1" name="headSigma"/>
+            <XRefHolder name="InputFromGroup">
+                <XRef target="L-21140-1391256461-1131353522" name="_motor"/>
+                <XRef target="L-7682-1391584902-1579767840" name="_gripper"/>
+                <XRef target="L-5187-1392113039-752108502" name="_audio_out"/>
+            </XRefHolder>
+            <XRefHolder name="OutputToGroup">
+                <XRef target="L-26978-1392987234-217453633" name="_proximity"/>
+                <XRef target="CB1392985437L-21140-1391256483-1795368048" name="_target"/>
+                <XRef target="L-14827-1391619839-708665346" name="_proximityGripper"/>
+                <XRef target="L-21140-1391256502-559135222" name="_gps"/>
+                <XRef target="L-7682-1391584698-1118956004" name="_image_RH"/>
+                <XRef target="L-7682-1391584747-543418880" name="_image_GS"/>
+                <XRef target="L-7682-1391584798-763199705" name="_image_BV"/>
+                <XRef target="L-7682-1391584645-967144301" name="placeCell"/>
+                <XRef target="L-7682-1391584664-40820444" name="headCell"/>
+                <XRef target="L-5187-1392113009-698644756" name="_audio_in"/>
+            </XRefHolder>
+        </Module>
+        <Note></Note>
+        <DiagramIcon width="50" x="90" y="62" height="50"/>
+        <Group id="CB1392985437L-21140-1391256483-1795368048" name="Light" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="32" cylinderVert="false" vcount="1"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="158" y="51" height="50"/>
+        </Group>
+        <Group id="L-14827-1391619839-708665346" name="Sensor Gripper" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="16" cylinderVert="false" vcount="1"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="346" y="293" height="50"/>
+        </Group>
+        <Group id="L-21140-1391256461-1131353522" name="Motor" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="9" cylinderVert="false" vcount="9"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="37" y="51" height="50"/>
+        </Group>
+        <Group id="L-21140-1391256502-559135222" name="GPS" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="3" cylinderVert="false" vcount="1"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="340" y="50" height="50"/>
+        </Group>
+        <Group id="L-26978-1392987234-217453633" name="Sensor" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="32" cylinderVert="false" vcount="1"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="347" y="376" height="50"/>
+        </Group>
+        <Group id="L-26978-1392987284-1621150873" name="Low Res. Sensor" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="7" cylinderVert="false" vcount="1"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="452" y="378" height="50"/>
+        </Group>
+        <Group id="L-5187-1392113009-698644756" name="Listen" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="36" cylinderVert="false" vcount="1"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0.001" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="345" y="210" height="50"/>
+        </Group>
+        <Group id="L-5187-1392113039-752108502" name="Shout" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="36" cylinderVert="false" vcount="1"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="447" y="213" height="50"/>
+        </Group>
+        <Group id="L-7682-1391584645-967144301" name="Place Cells" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="20" cylinderVert="false" vcount="20"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="442" y="50" height="50"/>
+        </Group>
+        <Group id="L-7682-1391584664-40820444" name="Head Direciton Cells" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="16" cylinderVert="false" vcount="1"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="541" y="49" height="50"/>
+        </Group>
+        <Group id="L-7682-1391584698-1118956004" name="Red - Hue" color="#ff0000">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="32" cylinderVert="false" vcount="28"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="343" y="129" height="50"/>
+        </Group>
+        <Group id="L-7682-1391584747-543418880" name="Green - Saturation" color="#00ff00">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="32" cylinderVert="false" vcount="28"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="445" y="130" height="50"/>
+        </Group>
+        <Group id="L-7682-1391584798-763199705" name="Blue - Value" color="#0000ff">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="32" cylinderVert="false" vcount="28"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="544" y="132" height="50"/>
+        </Group>
+        <Group id="L-7682-1391584902-1579767840" name="Gripper" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="1" cylinderVert="false" vcount="1"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="451" y="294" height="50"/>
+        </Group>
+    </Process>
+</System>
+
