@@ -4,14 +4,14 @@
 Gazebo and iqr work as a server client aplication that can work on a single machine or  on multiple machines. To run gazebo on a single machine you best run gazebo and iqr in two different terminals. 
 Run gazebo in the first terminal:
 {{{
-cd $HOME/iqr-gazebo/gazebo_files
+cd $HOME/iqr-gazebo/SDIC_challenge
 gazebo SDIC_arena.world
 
 }}}
 
 Run iqr in  the second terminal:
 {{{
-cd $HOME/iqr-gazebo/iqr_files
+cd $HOME/iqr-gazebo/SDIC_challenge
 iqr -f  gazeboBug.iqr
 
 }}}
@@ -25,7 +25,7 @@ Gazebo itself is a server client application. The command *gazebo* is a script t
 
 On machine A (the server):
 {{{
-cd $HOME/iqr-gazebo/gazebo_files
+cd $HOME/iqr-gazebo/SDIC_challenge
 gzserver SDIC_arena.world
 }}}
 
@@ -49,10 +49,10 @@ You should now be able to see the graphical user interface with the robot arena.
 iqr uses the same communication technology as gzserver and gzclient. As such iqr is just another client accessing the gazebo server. So to run iqr on machine B type:
 {{{
 source $HOME/iqr-gazebo/scripts/set_server_ip.sh 192.168.95.180 
-cd $HOME/iqr-gazebo/iqr_files
+cd $HOME/iqr-gazebo/SDIC_challenge
 iqr -f  gazeboBug.iqr
 }}}
 
-Please note that the script set_server_ip.sh does set the environment varialbe in the .bashrc file. So it will be set or all the new terminals you open. Thus you only need to set the server ip once per machine. 
+Please note that the script set_server_ip.sh does set the environment varialbe in the .bashrc file. So it will be set on all the new terminals you open. Thus you only need to set the server ip once per machine. 
 
 If you want to again run both gazebo and iqr just on machine B you have to unset the GAZEBO_MASTER_URI variable. You can do this by invoking set_server_ip.sh without any arguments. You need to do this in all open terminals. 
