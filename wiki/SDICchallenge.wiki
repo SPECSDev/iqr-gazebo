@@ -5,7 +5,7 @@
 Two teams of robots will compete in the same arena for limited resources. The arena is surrounded by walls and comprises, resources i.e. small spheres of different colours,  obstacles and two home corners for each team. The goal of the competition is to search for resources and bring them back to the home corner. Different resources will be associated to different number of points. [GroupsSDICchallenge  Groups] for the SDIC robot challenge 2014.
 
 ==Groups==
-|| *Group 1* || *Group 2* || *Group 3* || *Group 4* || *Group 5* ||
+|| *Group 1* || *Group 2: TANSTAAFL* || *Group 3* || *Group 4* || *Group 5* ||
 ||Marwecki Sebastian||Pastor Sanchez Alvaro||Castillo Perez Heidi Beatriz||Demir Benan||Crowell Ciera||
 ||Li Zhao||Low Sock Ching||Matamoros Llopis Elisabet||Ramirez Gomez Argenis||Dieckhoff Anita||
 ||Vasile Valentina||Moreno Dionis Monica	||Berga Garreta David||Turquois Chloe||Bargues i Ribera Maria||
