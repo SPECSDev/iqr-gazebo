@@ -133,7 +133,7 @@
                 <TopologyRect cylinderHor="false" hcount="9" cylinderVert="false" vcount="9"/>
             </Topology>
             <Neuron name="neuronLinearThreshold">
-                <Parameter value="0" name="excGain"/>
+                <Parameter value="1" name="excGain"/>
                 <Parameter value="1" name="inhGain"/>
                 <Parameter value="0" name="vmPrs"/>
                 <Parameter value="false" name="clipVm"/>
