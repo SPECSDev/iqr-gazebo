@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE System PUBLIC '-//INI/iqr421' 'iqrSystem.dtd'>
+<System syncPlots="false" port="54923" author="armin" id="L-2532-1296237782-284401058" cylesPerSecond="24" name="new system" date="Fri Jan 28 19:03:02 2011&#xa;">
+    <Note></Note>
+    <Process port="54923" path="" hostname="" id="L-2532-1296237912-1007795619" name="Camera" enableModule="true" color="#FFFFFF">
+        <Module name="moduleVideo">
+            <Parameter value="/dev/video0" name="DeviceName"/>
+            <Parameter value="0" name="Input"/>
+            <Parameter value="0" name="Standard"/>
+            <Parameter value="25" name="FPS"/>
+            <Parameter value="false" name="InfoWindow"/>
+            <Parameter value="true" name="ShowOutput"/>
+            <Parameter value="160" name="imgWidth"/>
+            <Parameter value="120" name="imgHeight"/>
+            <Parameter value="50" name="Brightness"/>
+            <Parameter value="50" name="Saturation"/>
+            <Parameter value="50" name="Contrast"/>
+            <Parameter value="1" name="AutoGain"/>
+            <Parameter value="false" name="HSV"/>
+            <Parameter value="true" name="Monochrome"/>
+            <XRefHolder name="InputFromGroup"/>
+            <XRefHolder name="OutputToGroup">
+                <XRef target="L-2532-1296237951-579734217" name="videoOutputRed"/>
+                <XRef target="L-2532-1296237951-579734217" name="videoOutputGreen"/>
+                <XRef target="L-2532-1296237951-579734217" name="videoOutputBlue"/>
+            </XRefHolder>
+        </Module>
+        <Note></Note>
+        <DiagramIcon width="50" x="110" y="142" height="50"/>
+        <Group id="L-2532-1296237951-579734217" name="Camera" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="32" cylinderVert="false" vcount="32"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="56" y="41" height="50"/>
+        </Group>
+        <Group id="L-2697-1296239523-1993615902" name="CameraNoise" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="32" cylinderVert="false" vcount="32"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="182" y="187" height="50"/>
+        </Group>
+        <Group id="L-2697-1296239722-797665853" name="Noise" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="32" cylinderVert="false" vcount="32"/>
+            </Topology>
+            <Neuron name="neuronRandomSpike">
+                <Parameter value="0.1" name="probability"/>
+                <Parameter value="0.2" name="spkAmpl"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="305" y="43" height="50"/>
+        </Group>
+        <Group id="L-3820-1298024822-1915231194" name="DeNoised" color="#FFFFFF">
+            <Topology>
+                <TopologyRect cylinderHor="false" hcount="32" cylinderVert="false" vcount="32"/>
+            </Topology>
+            <Neuron name="neuronLinearThreshold">
+                <Parameter value="1" name="excGain"/>
+                <Parameter value="1" name="inhGain"/>
+                <Parameter value="0" name="vmPrs"/>
+                <Parameter value="false" name="clipVm"/>
+                <Parameter value="0" name="vmMin"/>
+                <Parameter value="1" name="vmMax"/>
+                <Parameter value="1" name="probability"/>
+                <Parameter value="0" name="threshold"/>
+            </Neuron>
+            <Note></Note>
+            <DiagramIcon width="50" x="181" y="308" height="50"/>
+        </Group>
+    </Process>
+    <Connection target="L-2697-1296239523-1993615902" type="excitatory" id="L-2697-1296239550-2086212536" source="L-2532-1296237951-579734217" name="Connection CameraCG->CameraNoise">
+        <Pattern>
+            <PatternMapped type="center">
+                <All/>
+                <All/>
+            </PatternMapped>
+        </Pattern>
+        <Arborization>
+            <ArbRect width="1" direction="RF" height="1" initialization_probability="1"/>
+        </Arborization>
+        <AttenuationFunction>
+            <FunUniform value="0"/>
+        </AttenuationFunction>
+        <DelayFunction>
+            <FunUniform value="0"/>
+        </DelayFunction>
+        <Synapse name="synapseFixedWeight">
+            <Parameter value="1" name="weight"/>
+        </Synapse>
+        <Note></Note>
+        <DiagramLine APTarget="0" APSource="11"/>
+    </Connection>
+    <Connection target="L-2697-1296239523-1993615902" type="excitatory" id="L-2697-1296239785-1137130913" source="L-2697-1296239722-797665853" name="Connection Noise->CameraNoise">
+        <Pattern>
+            <PatternMapped type="center">
+                <All/>
+                <All/>
+            </PatternMapped>
+        </Pattern>
+        <Arborization>
+            <ArbRect width="1" direction="RF" height="1" initialization_probability="1"/>
+        </Arborization>
+        <AttenuationFunction>
+            <FunUniform value="0"/>
+        </AttenuationFunction>
+        <DelayFunction>
+            <FunUniform value="0"/>
+        </DelayFunction>
+        <Synapse name="synapseFixedWeight">
+            <Parameter value="1" name="weight"/>
+        </Synapse>
+        <Note></Note>
+        <DiagramLine APTarget="3" APSource="8"/>
+    </Connection>
+</System>
+
