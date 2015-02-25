@@ -96,7 +96,7 @@
             </Topology>
             <Neuron name="neuronRandomSpike">
                 <Parameter value="1" name="probability"/>
-                <Parameter value="0" name="spkAmpl"/>
+                <Parameter value="0.3" name="spkAmpl"/>
             </Neuron>
             <Note></Note>
             <DiagramIcon width="50" x="211" y="539" height="50"/>
@@ -283,11 +283,12 @@
             <DiagramIcon width="50" x="180" y="153" height="50"/>
         </Group>
     </Process>
-    <Process port="54923" path="" hostname="" id="L-21140-1391256391-1268359437" name="Bug_01" enableModule="false" color="#FFFFFF">
+    <Process port="54923" path="" hostname="" id="L-21140-1391256391-1268359437" name="Bug_01" enableModule="true" color="#FFFFFF">
         <Module name="moduleGazeboBug">
             <Parameter value="TeamA_Bug_01" name="device_name"/>
             <Parameter value="25" name="cps"/>
             <Parameter value="default_com_key_0" name="comkey"/>
+            <Parameter value="true" name="gripper"/>
             <Parameter value="false" name="grayscale"/>
             <Parameter value="false" name="hsv"/>
             <Parameter value="1" name="transSpeed"/>
@@ -317,7 +318,7 @@
             </XRefHolder>
         </Module>
         <Note></Note>
-        <DiagramIcon width="50" x="85" y="57" height="50"/>
+        <DiagramIcon width="50" x="86" y="57" height="50"/>
         <Group id="CB1391262521L-10816-1390650339-936236343" name="Const Speed" color="#FFFFFF">
             <Topology>
                 <TopologyRect cylinderHor="false" hcount="1" cylinderVert="false" vcount="1"/>
