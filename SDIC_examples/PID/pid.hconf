@@ -1,0 +1,10 @@
+<!DOCTYPE HarborConfig>
+<HarborConfig>
+ <ParamTrade itemType="Connection" itemChild="Fixed weight" ParamName="weight" itemID="L-2563-1300105474-1737146827" ParamLabel="Weight"/>
+ <ParamTrade itemType="Connection" itemChild="Fixed weight" ParamName="weight" itemID="L-2563-1300105498-285348090" ParamLabel="Weight"/>
+ <ParamTrade itemType="Connection" itemChild="Fixed weight" ParamName="weight" itemID="L-2563-1300105324-860242085" ParamLabel="Weight"/>
+ <ParamTrade itemType="Connection" itemChild="Fixed weight" ParamName="weight" itemID="L-2563-1300105289-1108370429" ParamLabel="Weight"/>
+ <ParamTrade itemType="Connection" itemChild="Fixed weight" ParamName="weight" itemID="L-11002-1268837677-1554876030" ParamLabel="Weight"/>
+ <ParamTrade itemType="Connection" itemChild="Fixed weight" ParamName="weight" itemID="L-11002-1268837715-566166777" ParamLabel="Weight"/>
+</HarborConfig>
+
