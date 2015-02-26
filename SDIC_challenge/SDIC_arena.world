@@ -16,10 +16,11 @@
       <uri>model://ground_plane</uri>
     </include>
 
-    <!-- Global light source -->
+    <!-- Global light source
      <include>
       <uri>model://sun</uri>
     </include>
+    -->
 
     <!-- Robots Team A-->
     <include>
