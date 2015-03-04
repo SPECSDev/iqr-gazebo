@@ -34,8 +34,7 @@ void
 iqrcommon::ClsNeuronTDValue::update()
 {
   StateArray &state = getExcitatoryInput();
-  StateArray &reward = getModulatoryInput();
-   
+  StateArray &reward = getModulatoryInput();   
 
   
   StateArray &value   = pValue->getStateArray();
