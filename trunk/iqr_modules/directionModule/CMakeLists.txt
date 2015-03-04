@@ -10,7 +10,7 @@ INCLUDE(${QT_USE_FILE})
 
 
 SET(libSrc
-  differenceModule.cpp
+  directionModule.cpp
 )
 INCLUDE_directories(
   ${CMAKE_CURRENT_SOURCE_DIR} 
@@ -18,12 +18,12 @@ INCLUDE_directories(
   ${QT_INCLUDE_DIR}
   )
 
-ADD_LIBRARY(differenceModule SHARED ${libSrc})
+ADD_LIBRARY(directionModule SHARED ${libSrc})
 
-SET_TARGET_PROPERTIES(differenceModule PROPERTIES PREFIX "")
+SET_TARGET_PROPERTIES(directionModule PROPERTIES PREFIX "")
 
 TARGET_LINK_LIBRARIES(
-  differenceModule 
+  directionModule 
   )
 
 
@@ -31,9 +31,10 @@ TARGET_LINK_LIBRARIES(
 
 
 INSTALL(TARGETS 
-  differenceModule
+  directionModule
   LIBRARY DESTINATION ~/iqr/lib/Modules/
   ARCHIVE DESTINATION ~/iqr/lib/Modules/
+  RUNTIME DESTINATION bin 
 )
 
 

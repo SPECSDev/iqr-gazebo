@@ -6,6 +6,7 @@ ADD_SUBDIRECTORY(iqr_neurons)
 
 ADD_SUBDIRECTORY(iqr_modules/differenceModule)
 ADD_SUBDIRECTORY(iqr_modules/gazeboModule)
+ADD_SUBDIRECTORY(iqr_modules/directionModule)
 
 ADD_SUBDIRECTORY(world_control)
 
